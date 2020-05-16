@@ -4,6 +4,7 @@ import { AdminComponent } from './admin/admin.component';
 import { MainComponent } from './main/main.component';
 import { DashboardComponent } from '../modules/dashboard/dashboard.component';
 import { HomePageComponent } from '../modules/home-page/home-page.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { HomePageComponent } from '../modules/home-page/home-page.component';
     HomePageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class LayoutsModule { }
