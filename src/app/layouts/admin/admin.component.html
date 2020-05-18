@@ -1,8 +1,8 @@
-<app-header [status]="status"></app-header>
+<app-header [status]="status" (toggleSideBarForMe)="sideBarToggler($event)"></app-header>
 
 <mat-drawer-container dir="rtl">
 
-  <mat-drawer mode="side" opened>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
 
     <app-sidebar></app-sidebar>
 

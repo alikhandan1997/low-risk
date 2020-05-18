@@ -1,0 +1,40 @@
+<div class="container"
+  fxLayout="row"
+  fxLayout.lt-md="row wrap"
+  fxLayoutAlign="center"
+  fxLayoutAlign.lt-md="center"
+  dir="rtl">
+
+  <mat-card fxFlex=50 fxFlex.lt-md=80>
+
+    <mat-toolbar>
+      <mat-toolbar-row>
+          <span class="span">Login</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>موبایل</mat-label>
+        <input matInput [(ngModel)]="name" name="mobile" placeholder="شماره موبایل خود را وارد نمایید">
+      </mat-form-field>
+
+
+      <br>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>پسورد</mat-label>
+        <input matInput placeholder="پسورد خود را وارد نمایید">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>تکرار پسورد</mat-label>
+        <input matInput placeholder="پسورد خود را تکرار کنید">
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="click()">ثبت نام</button>
+
+
+    </form>
+  </mat-card>
+</div>

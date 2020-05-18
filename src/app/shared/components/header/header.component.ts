@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -7,12 +6,18 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   @Input() status;
+  register: boolean = false;
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.status)
+  ngOnInit(){
+  }
+
+  toggleSideBar() {
+    this.toggleSideBarForMe.emit();
   }
 
 }
+

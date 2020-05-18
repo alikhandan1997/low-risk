@@ -1,0 +1,42 @@
+*{
+  font-family: "BKoodakBold";
+}
+
+.container {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+
+mat-toolbar {
+  background-color: white;
+  .span{
+    margin: auto;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+
+mat-label {
+  font-size: 17px;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-right: 10%;
+  margin-top: 5%;
+}
+
+button {
+  margin-right: 50%;
+  margin-top: 5%;
+  width: 30%;
+  font-size: 20px;
+  padding: 1%;
+}

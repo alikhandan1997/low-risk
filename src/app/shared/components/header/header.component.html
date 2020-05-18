@@ -1,37 +1,163 @@
 <mat-toolbar color="primary" dir="rtl">
     <mat-toolbar-row>
-      <button mat-icon-button *ngIf="status">
+      <button mat-icon-button *ngIf="status=='admin'" (click)="toggleSideBar()">
         <mat-icon>menu</mat-icon>
       </button>
 
-      <span> LowRisk </span>
+      <span class="logo">
+        <a [routerLink]="['']"> LowRisk </a>
+      </span>
 
-      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
-        <ul fxLayout="row" fxLayoutGap="10px">
-          <!-- <li>
-            <button mat-icon-button>
-              <mat-icon>settings</mat-icon>
+      <div fxFlex fxLayout="row" fxLayoutAlign="start" *ngIf="status=='main'">
+        <ul fxLayout="row" fxLayoutGap="5px">
+          <li>
+            <button mat-button class="nav_items">
+              <span>
+                <a [routerLink]="['/']" style="color:white;text-decoration:none;">صفحه اصلی</a>
+              </span>
             </button>
           </li>
           <li>
-            <button mat-icon-button>
-              <mat-icon>help_outline</mat-icon>
+            <button mat-button [matMenuTriggerFor]="menu1" class="nav_items">
+              <span>آموزش</span>
+              <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
-          </li> -->
-          <li>
-            <button mat-button [matMenuTriggerFor]="menu">
-              <mat-icon>person_outline</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
+            <mat-menu #menu1="matMenu">
               <button mat-menu-item>
-                <mat-icon>exit_to_app</mat-icon>
-                Sign Out
+                <a [routerLink]="['/learn/film']" style="color:black;text-decoration:none;">فیلم آموزشی</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/learn/article']" style="color:black;text-decoration:none;">مقاله آموزشی</a>
               </button>
             </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="menu2" class="nav_items">
+              <span>تحلیل</span>
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu2="matMenu">
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/short']" style="color:black;text-decoration:none;">کوتاه مدت</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/medium']" style="color:black;text-decoration:none;">میان مدت</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/long']" style="color:black;text-decoration:none;">بلند مدت</a>
+              </button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button [matMenuTriggerFor]="menu3" class="nav_items">
+              <span>بازار بورس</span>
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu3="matMenu">
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/short']" style="color:black;text-decoration:none;">شاخص</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/medium']" style="color:black;text-decoration:none;">سهام</a>
+              </button>
+            </mat-menu>
+          </li>
+          <li>
+            <button mat-button class="nav_items">
+              <span>
+                <a [routerLink]="['/news']" style="color:white;text-decoration:none;">اخبار</a>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button mat-button class="nav_items">
+              <span>
+                <a [routerLink]="['/about-us']" style="color:white;text-decoration:none;">درباره ما</a>
+              </span>
+            </button>
+          </li>
+          <li>
+            <button mat-button class="nav_items">
+              <span>
+                <a [routerLink]="['/contact']" style="color:white;text-decoration:none;">ارتباط با ما</a>
+              </span>
+            </button>
           </li>
         </ul>
       </div>
 
+      <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="10px">
+          <li>
+            <button mat-button [matMenuTriggerFor]="menu">
+              <mat-icon>person_outline</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item *ngIf="!register">
+                <mat-icon>exit_to_app</mat-icon>
+                ورود
+              </button>
+              <button mat-menu-item *ngIf="!register">
+                <mat-icon>how_to_reg</mat-icon>
+                <a [routerLink]="['/register']" style="color:black;text-decoration:none;">عضویت</a>
+              </button>
+              <button mat-menu-item *ngIf="register">
+                <mat-icon>account_box</mat-icon>
+                <a [routerLink]="['/admin']" style="color:black;text-decoration:none;">پنل کاربری</a>
+              </button>
+            </mat-menu>
+          </li>
+          <li class="nav_toggler" dir="ltr" *ngIf="status=='main'">
+            <button mat-button [matMenuTriggerFor]="navItem">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #navItem="matMenu">
+              <button mat-menu-item [matMenuTriggerFor]="learn">
+                <span>آموزش</span>
+              </button>
+              <button mat-menu-item [matMenuTriggerFor]="analysis">
+                <span>تحلیل</span>
+              </button>
+              <button mat-menu-item>
+                <span>
+                  <a [routerLink]="['/news']" style="color:black;text-decoration:none;">اخبار</a>
+                </span>
+              </button>
+              <button mat-menu-item>
+                <span>
+                  <a [routerLink]="['/about-us']" style="color:black;text-decoration:none;">درباره ما</a>
+                </span>
+              </button>
+              <button mat-menu-item>
+                <span>
+                  <a [routerLink]="['/contact']" style="color:black;text-decoration:none;">ارتباط با ما</a>
+                </span>
+              </button>
+            </mat-menu>
 
+            <mat-menu #learn="matMenu">
+              <button mat-menu-item>
+                <a [routerLink]="['/learn/film']" style="color:black;text-decoration:none;">فیلم آموزشی</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/learn/article']" style="color:black;text-decoration:none;">مقاله آموزشی</a>
+              </button>
+            </mat-menu>
+
+            <mat-menu #analysis="matMenu">
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/short']" style="color:black;text-decoration:none;">کوتاه مدت</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/medium']" style="color:black;text-decoration:none;">میان مدت</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/analysis/long']" style="color:black;text-decoration:none;">بلند مدت</a>
+              </button>
+            </mat-menu>
+
+          </li>
+        </ul>
+      </div>
     </mat-toolbar-row>
 </mat-toolbar>

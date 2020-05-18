@@ -7,11 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  status: boolean = false;
+  status: string = 'main';
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(window.location.href.split('/')[3]);
   }
 
 }

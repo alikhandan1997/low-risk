@@ -7,11 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  status: boolean = true;
+  status: string = 'admin';
+
+  sideBarOpen: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  sideBarToggler(event) {
+    this.sideBarOpen = !this.sideBarOpen;
   }
 
 }

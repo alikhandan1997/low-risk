@@ -1,3 +1,31 @@
 ul li {
   list-style: none;
 }
+
+span, button {
+  font-family: "BKoodakBold";
+  font-size: 17px;
+}
+
+.logo {
+  font-size: 25px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.logo a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav_toggler{
+  display: none;
+}
+
+@media  (max-width:991px) {
+  .nav_items {
+    display: none;
+  }
+  .nav_toggler {
+    display: block;
+  }
+}
