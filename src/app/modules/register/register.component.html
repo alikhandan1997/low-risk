@@ -1,39 +1,61 @@
-<div class="container"
-  fxLayout="row"
-  fxLayout.lt-md="row wrap"
-  fxLayoutAlign="center"
-  fxLayoutAlign.lt-md="center"
-  dir="rtl">
+<div class="container">
+  <div class="row" dir="rtl">
+    <div class="col-lg-7 col-md-12 col-sm-12 register_box">
 
-  <mat-card fxFlex=50 fxFlex.lt-md=80>
+      <mat-card>
 
-    <mat-toolbar>
-      <mat-toolbar-row>
-          <span class="span">Login</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
+        <mat-toolbar>
+          <mat-toolbar-row>
+              <span class="span">ثبت نام</span>
+          </mat-toolbar-row>
+        </mat-toolbar>
 
-    <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <mat-label>موبایل</mat-label>
-        <input matInput type="text" [(ngModel)]="name" name="mobile" placeholder="شماره موبایل خود را وارد نمایید">
-      </mat-form-field>
+        <form class="example-form">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <mat-form-field class="example-full-width">
+                <mat-label>موبایل</mat-label>
+                <input matInput type="text" [(ngModel)]="name" name="mobile" placeholder="شماره موبایل خود را وارد نمایید">
+              </mat-form-field>
+            </div>
 
-      <br>
+            <br>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>پسورد</mat-label>
-        <input matInput type="password" placeholder="پسورد خود را وارد نمایید">
-      </mat-form-field>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <mat-form-field class="example-full-width">
+                <mat-label>پسورد</mat-label>
+                <input matInput type="password" placeholder="پسورد خود را وارد نمایید">
+              </mat-form-field>
+            </div>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>تکرار پسورد</mat-label>
-        <input matInput type="password" placeholder="پسورد خود را تکرار کنید">
-      </mat-form-field>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <mat-form-field class="example-full-width">
+                <mat-label>تکرار پسورد</mat-label>
+                <input matInput type="password" placeholder="پسورد خود را تکرار کنید">
+              </mat-form-field>
+            </div>
 
-      <button mat-raised-button color="primary" (click)="click()">ثبت نام</button>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <mat-form-field class="example-half-width">
+                <mat-label>کدامنیتی</mat-label>
+                <input matInput type="text" placeholder="کد را وارد نمایید">
+              </mat-form-field>
+            </div>
 
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+              <div class="captcha_image">
+                <img src="../../../assets/rick_7680x4320_xtrafondos.com.jpg" alt="">
+              </div>
+            </div>
 
-    </form>
-  </mat-card>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <button mat-raised-button color="primary" (click)="click()">ثبت نام</button>
+            </div>
+          </div>
+        </form>
+
+      </mat-card>
+
+    </div>
+  </div>
 </div>
