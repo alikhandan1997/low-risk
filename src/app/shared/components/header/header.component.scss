@@ -10,6 +10,7 @@ span, button {
 .logo {
   font-size: 25px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  margin-bottom: 2%;
 }
 
 .logo a {
@@ -19,6 +20,10 @@ span, button {
 
 .nav_toggler{
   display: none;
+}
+
+mat-toolbar-row{
+  margin-top: 1%;
 }
 
 @media  (max-width:991px) {

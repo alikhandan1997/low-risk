@@ -16,20 +16,19 @@
     <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>موبایل</mat-label>
-        <input matInput [(ngModel)]="name" name="mobile" placeholder="شماره موبایل خود را وارد نمایید">
+        <input matInput type="text" [(ngModel)]="name" name="mobile" placeholder="شماره موبایل خود را وارد نمایید">
       </mat-form-field>
-
 
       <br>
 
       <mat-form-field class="example-full-width">
         <mat-label>پسورد</mat-label>
-        <input matInput placeholder="پسورد خود را وارد نمایید">
+        <input matInput type="password" placeholder="پسورد خود را وارد نمایید">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>تکرار پسورد</mat-label>
-        <input matInput placeholder="پسورد خود را تکرار کنید">
+        <input matInput type="password" placeholder="پسورد خود را تکرار کنید">
       </mat-form-field>
 
       <button mat-raised-button color="primary" (click)="click()">ثبت نام</button>

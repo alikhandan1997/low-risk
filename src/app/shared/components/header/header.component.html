@@ -55,10 +55,13 @@
             </button>
             <mat-menu #menu3="matMenu">
               <button mat-menu-item>
-                <a [routerLink]="['/analysis/short']" style="color:black;text-decoration:none;">شاخص</a>
+                <a [routerLink]="['/']" style="color:black;text-decoration:none;">نقشه بازار</a>
               </button>
               <button mat-menu-item>
-                <a [routerLink]="['/analysis/medium']" style="color:black;text-decoration:none;">سهام</a>
+                <a [routerLink]="['/']" style="color:black;text-decoration:none;">شاخص ها</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/']" style="color:black;text-decoration:none;">سهام</a>
               </button>
             </mat-menu>
           </li>
@@ -93,10 +96,12 @@
               <mat-icon>person_outline</mat-icon>
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item *ngIf="!register">
-                <mat-icon>exit_to_app</mat-icon>
-                ورود
-              </button>
+              <a (click)="openDialog()">
+                <button mat-menu-item *ngIf="!register">
+                  <mat-icon>exit_to_app</mat-icon>
+                  ورود
+                </button>
+              </a>
               <button mat-menu-item *ngIf="!register">
                 <mat-icon>how_to_reg</mat-icon>
                 <a [routerLink]="['/register']" style="color:black;text-decoration:none;">عضویت</a>
@@ -117,6 +122,9 @@
               </button>
               <button mat-menu-item [matMenuTriggerFor]="analysis">
                 <span>تحلیل</span>
+              </button>
+              <button mat-menu-item [matMenuTriggerFor]="market">
+                <span>بازار بورس</span>
               </button>
               <button mat-menu-item>
                 <span>
@@ -153,6 +161,18 @@
               </button>
               <button mat-menu-item>
                 <a [routerLink]="['/analysis/long']" style="color:black;text-decoration:none;">بلند مدت</a>
+              </button>
+            </mat-menu>
+
+            <mat-menu #market="matMenu">
+              <button mat-menu-item>
+                <a [routerLink]="['/']" style="color:black;text-decoration:none;">نقشه بازار</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/']" style="color:black;text-decoration:none;">شاخص ها</a>
+              </button>
+              <button mat-menu-item>
+                <a [routerLink]="['/']" style="color:black;text-decoration:none;">سهام</a>
               </button>
             </mat-menu>
 

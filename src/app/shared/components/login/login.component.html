@@ -1,0 +1,21 @@
+<h1 matDialogTitle dir="rtl">
+  <span>ورود به سایت</span>
+</h1>
+
+<mat-dialog-content dir="rtl">
+  <mat-form-field>
+    <mat-label>موبایل</mat-label>
+    <input matInput type="text" [(ngModel)]="mobile" name="mobile" placeholder="شماره موبایل خود را وارد نمایید">
+  </mat-form-field>
+<br>
+  <mat-form-field>
+    <mat-label>پسورد</mat-label>
+    <input matInput type="password" [(ngModel)]="password" name="pass" placeholder="رمز خود را وارد نمایید">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" matDialogClose>بستن</button>
+    <button mat-raised-button color="primary" (click)="save()">ورود</button>
+</mat-dialog-actions>
