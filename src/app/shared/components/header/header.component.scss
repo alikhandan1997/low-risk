@@ -2,6 +2,10 @@ ul li {
   list-style: none;
 }
 
+.mat-menu-item{
+  height: 40px;
+}
+
 span, button {
   font-family: "BKoodakBold";
   font-size: 17px;
@@ -23,7 +27,7 @@ span, button {
 }
 
 mat-toolbar-row{
-  margin-top: 1%;
+  padding-top: 20px;
 }
 
 @media  (max-width:991px) {
