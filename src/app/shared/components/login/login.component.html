@@ -24,11 +24,11 @@
           <div class="col-lg-6 col-md-6 col-sm-6 col-6 form_captcha">
             <mat-form-field>
               <mat-label>کد امنیتی</mat-label>
-              <input matInput type="password" placeholder="کد امنیتی را وارد نمایید">
+              <input matInput type="text" [(ngModel)]="captcha" name="pass" placeholder="کد امنیتی را وارد نمایید">
             </mat-form-field>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 col-6 form_capImage">
-            <img src="../../../../assets/rick_7680x4320_xtrafondos.com.jpg" alt="">
+            <img src="data:image/png;base64,{{captcha_image}}" alt="">
           </div>
         </div>
       </mat-dialog-content>

@@ -24,6 +24,8 @@ import { AnalysisComponent } from './analysis/analysis.component';
 import { ContactComponent } from './contact/contact.component';
 import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
+import { TablePageComponent } from './table-page/table-page.component';
+import { MarketMapComponent } from './market-map/market-map.component';
 
 
 
@@ -40,7 +42,9 @@ import { RegisterComponent } from './register/register.component';
     AnalysisComponent,
     ContactComponent,
     DetailsComponent,
-    RegisterComponent
+    RegisterComponent,
+    TablePageComponent,
+    MarketMapComponent
   ],
   imports: [
     CommonModule,

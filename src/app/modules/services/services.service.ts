@@ -41,7 +41,7 @@ export class ServicesService {
 
   postLogin(data){
     this.headers = {'content-type':'application/json'}
-    this.data = data;
+    this.data = JSON.stringify(data);;
     this.apiUrl = ApiMap.api.servicesApi.post.postLogin;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
   }

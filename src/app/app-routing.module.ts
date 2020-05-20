@@ -11,6 +11,8 @@ import { LearnComponent } from './modules/learn/learn.component';
 import { ContactComponent } from './modules/contact/contact.component';
 import { DetailsComponent } from './modules/details/details.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { TablePageComponent } from './modules/table-page/table-page.component';
+import { MarketMapComponent } from './modules/market-map/market-map.component';
 
 
 const routes: Routes = [
@@ -45,6 +47,12 @@ const routes: Routes = [
       },{
         path:'analysis',
         component: AnalysisComponent,
+        children: [
+          {
+            path: ':name',
+            component: AnalysisComponent
+          }
+        ]
       },{
         path:'learn',
         component: LearnComponent,
@@ -63,6 +71,15 @@ const routes: Routes = [
       },{
         path: 'register',
         component: RegisterComponent
+      },{
+        path: 'marketmap',
+        component: MarketMapComponent
+      },{
+        path: 'indexes',
+        component: TablePageComponent
+      },{
+        path: 'stock',
+        component: TablePageComponent
       }
     ]
   }
