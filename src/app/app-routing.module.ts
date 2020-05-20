@@ -59,10 +59,10 @@ const routes: Routes = [
         children:[
           {
             path:'film',
-            component: DetailsComponent
+            component: LearnComponent
           },{
             path:'article',
-            component: DetailsComponent
+            component: LearnComponent
           }
         ]
       },{
