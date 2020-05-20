@@ -5,17 +5,19 @@
       </button>
 
       <span class="logo">
-        <a [routerLink]="['']"> LowRisk </a>
+        <a href="/"> LowRisk </a>
       </span>
 
       <div fxFlex fxLayout="row" fxLayoutAlign="start" *ngIf="status=='main'">
         <ul fxLayout="row" fxLayoutGap="5px">
           <li>
-            <button mat-button class="nav_items">
-              <span>
-                <a [routerLink]="['/']" style="color:white;text-decoration:none;">صفحه اصلی</a>
-              </span>
-            </button>
+            <a href="/" style="color:white;text-decoration:none;">
+              <button mat-button class="nav_items">
+                <span>
+                  صفحه اصلی
+                </span>
+              </button>
+            </a>
           </li>
           <li>
             <button mat-button [matMenuTriggerFor]="menu1" class="nav_items">
@@ -23,12 +25,16 @@
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu1="matMenu">
-              <button mat-menu-item>
-                <a [routerLink]="['/learn/film']" style="color:black;text-decoration:none;">فیلم آموزشی</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/learn/article']" style="color:black;text-decoration:none;">مقاله آموزشی</a>
-              </button>
+              <a href="/learn/film" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  فیلم آموزشی
+                </button>
+              </a>
+              <a href="/learn/article" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  مقاله آموزشی
+                </button>
+              </a>
             </mat-menu>
           </li>
           <li>
@@ -37,15 +43,21 @@
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu2="matMenu">
-              <button mat-menu-item>
-                <a [routerLink]="['/analysis/short']" style="color:black;text-decoration:none;">کوتاه مدت</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/analysis/medium']" style="color:black;text-decoration:none;">میان مدت</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/analysis/long']" style="color:black;text-decoration:none;">بلند مدت</a>
-              </button>
+              <a href="/analysis/short" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  کوتاه مدت
+                </button>
+              </a>
+              <a href="/analysis/medium" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  میان مدت
+                </button>
+              </a>
+              <a href="/analysis/long" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  بلند مدت
+                </button>
+              </a>
             </mat-menu>
           </li>
           <li>
@@ -54,37 +66,49 @@
               <mat-icon>keyboard_arrow_down</mat-icon>
             </button>
             <mat-menu #menu3="matMenu">
-              <button mat-menu-item>
-                <a [routerLink]="['/marketmap']" style="color:black;text-decoration:none;">نقشه بازار</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/indexes']" style="color:black;text-decoration:none;">شاخص ها</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/stock']" style="color:black;text-decoration:none;">سهام</a>
-              </button>
+              <a href="/marketmap" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  نقشه بازار
+                </button>
+              </a>
+              <a href="/indexes" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  شاخص ها
+                </button>
+              </a>
+              <a href="/stock" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  سهام
+                </button>
+              </a>
             </mat-menu>
           </li>
           <li>
-            <button mat-button class="nav_items">
-              <span>
-                <a [routerLink]="['/news']" style="color:white;text-decoration:none;">اخبار</a>
-              </span>
-            </button>
+            <a href="/news" style="color:white;text-decoration:none;">
+              <button mat-button class="nav_items">
+                <span>
+                  اخبار
+                </span>
+              </button>
+            </a>
           </li>
           <li>
-            <button mat-button class="nav_items">
-              <span>
-                <a [routerLink]="['/about-us']" style="color:white;text-decoration:none;">درباره ما</a>
-              </span>
-            </button>
+            <a href="/about-us" style="color:white;text-decoration:none;">
+              <button mat-button class="nav_items">
+                <span>
+                  درباره ما
+                </span>
+              </button>
+            </a>
           </li>
           <li>
-            <button mat-button class="nav_items">
-              <span>
-                <a [routerLink]="['/contact']" style="color:white;text-decoration:none;">ارتباط با ما</a>
-              </span>
-            </button>
+            <a href="/contact" style="color:white;text-decoration:none;">
+              <button mat-button class="nav_items">
+                <span>
+                  ارتباط با ما
+                </span>
+              </button>
+            </a>
           </li>
         </ul>
       </div>
@@ -102,14 +126,18 @@
                   ورود
                 </button>
               </a>
-              <button mat-menu-item *ngIf="!register">
-                <mat-icon>how_to_reg</mat-icon>
-                <a [routerLink]="['/register']" style="color:black;text-decoration:none;">عضویت</a>
-              </button>
-              <button mat-menu-item *ngIf="register">
-                <mat-icon>account_box</mat-icon>
-                <a [routerLink]="['/admin']" style="color:black;text-decoration:none;">پنل کاربری</a>
-              </button>
+              <a href="/register" style="color:black;text-decoration:none;">
+                  <button mat-menu-item *ngIf="!register">
+                  <mat-icon>how_to_reg</mat-icon>
+                  عضویت
+                </button>
+              </a>
+              <a href="/admin" style="color:black;text-decoration:none;">
+                  <button mat-menu-item *ngIf="register">
+                  <mat-icon>account_box</mat-icon>
+                  پنل کاربری
+                </button>
+              </a>
             </mat-menu>
           </li>
           <li class="nav_toggler" dir="ltr" *ngIf="status=='main'">
@@ -126,54 +154,76 @@
               <button mat-menu-item [matMenuTriggerFor]="market">
                 <span>بازار بورس</span>
               </button>
-              <button mat-menu-item>
-                <span>
-                  <a [routerLink]="['/news']" style="color:black;text-decoration:none;">اخبار</a>
-                </span>
-              </button>
-              <button mat-menu-item>
-                <span>
-                  <a [routerLink]="['/about-us']" style="color:black;text-decoration:none;">درباره ما</a>
-                </span>
-              </button>
-              <button mat-menu-item>
-                <span>
-                  <a [routerLink]="['/contact']" style="color:black;text-decoration:none;">ارتباط با ما</a>
-                </span>
-              </button>
+              <a href="/news" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  <span>
+                    اخبار
+                  </span>
+                </button>
+              </a>
+              <a href="/about-us" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  <span>
+                    درباره ما
+                  </span>
+                </button>
+              </a>
+              <a href="/contact" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  <span>
+                    ارتباط با ما
+                  </span>
+                </button>
+              </a>
             </mat-menu>
 
             <mat-menu #learn="matMenu">
-              <button mat-menu-item>
-                <a [routerLink]="['/learn/film']" style="color:black;text-decoration:none;">فیلم آموزشی</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/learn/article']" style="color:black;text-decoration:none;">مقاله آموزشی</a>
-              </button>
+              <a href="/learn/film" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  فیلم آموزشی
+                </button>
+              </a>
+              <a href="/learn/article" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  مقاله آموزشی
+                </button>
+              </a>
             </mat-menu>
 
             <mat-menu #analysis="matMenu">
-              <button mat-menu-item>
-                <a [routerLink]="['/analysis/short']" style="color:black;text-decoration:none;">کوتاه مدت</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/analysis/medium']" style="color:black;text-decoration:none;">میان مدت</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/analysis/long']" style="color:black;text-decoration:none;">بلند مدت</a>
-              </button>
+              <a href="/analysis/short" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  کوتاه مدت
+                </button>
+              </a>
+              <a href="/analysis/medium" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  میان مدت
+                </button>
+              </a>
+              <a href="/analysis/long" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  بلند مدت
+                </button>
+              </a>
             </mat-menu>
 
             <mat-menu #market="matMenu">
-              <button mat-menu-item>
-                <a [routerLink]="['/']" style="color:black;text-decoration:none;">نقشه بازار</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/']" style="color:black;text-decoration:none;">شاخص ها</a>
-              </button>
-              <button mat-menu-item>
-                <a [routerLink]="['/']" style="color:black;text-decoration:none;">سهام</a>
-              </button>
+              <a href="/" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  نقشه بازار
+                </button>
+              </a>
+              <a href="/" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  شاخص ها
+                </button>
+              </a>
+              <a href="/" style="color:black;text-decoration:none;">
+                <button mat-menu-item>
+                  سهام
+                </button>
+              </a>
             </mat-menu>
 
           </li>
