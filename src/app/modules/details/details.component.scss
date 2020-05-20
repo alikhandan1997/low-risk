@@ -1,8 +1,27 @@
+* {
+  font-family: "BKoodakBold";
+}
+
 .example-card {
   max-width: 400px;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
+.content_box {
+  margin-top: 5%;
+  mat-card-title{
+    font-size: 30px;
+    margin-top: 25%;
+  }
+
+  mat-card-subtitle {
+    margin-top: 20%;
+    .score, .date {
+      margin-right: 100%;
+      padding: 0 80% 0 80%;
+    }
+  }
+}
+
+.sub_menu {
+  margin-top: 5%;
 }
