@@ -59,7 +59,13 @@ const routes: Routes = [
         children:[
           {
             path:'film',
-            component: LearnComponent
+            component: LearnComponent,
+            children: [
+              {
+                path: ':id',
+                component: LearnComponent
+              }
+            ]
           },{
             path:'article',
             component: LearnComponent

@@ -24,7 +24,8 @@ export class MarketMapComponent implements OnInit {
   ngOnInit(): void {
 
     this.chartOptions = {
-      series: [{
+      series: [
+        {
           type: "treemap",
           layoutAlgorithm: 'stripes',
           alternateStartingDirection: true,
@@ -48,7 +49,7 @@ export class MarketMapComponent implements OnInit {
           }, {
               id: 'B',
               name: 'Bananas',
-              color: "#ECE100"
+              color: "#ECE100",
           }, {
               id: 'O',
               name: 'Oranges',
@@ -73,6 +74,7 @@ export class MarketMapComponent implements OnInit {
               name: 'Rick',
               parent: 'B',
               value: 10,
+              age:12
           }, {
               name: 'Peter',
               parent: 'B',
