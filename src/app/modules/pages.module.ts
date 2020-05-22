@@ -18,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { LearnComponent } from './learn/learn.component';
@@ -62,7 +64,8 @@ import { MarketMapComponent } from './market-map/market-map.component';
     MatToolbarModule,
     HttpClientModule,
     MatIconModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    HighchartsChartModule
   ]
 })
 export class PagesModule { }
