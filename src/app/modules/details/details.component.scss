@@ -2,23 +2,20 @@
   font-family: "BKoodakBold";
 }
 
-.example-card {
-  max-width: 400px;
-}
-
 .content_box {
   margin-top: 5%;
-  margin-bottom: 5%;
-  mat-card-title{
+  h1{
     font-size: 30px;
-    margin-top: 25%;
+    text-align: right;
+    font-family: "BKoodakBold";
   }
 
-  mat-card-subtitle {
-    margin-top: 20%;
+  .sub_title{
+    text-align: right;
+    margin-bottom: 3%;
     p{
       display: inline;
-      padding-left: 100%;
+      padding-left: 10%;
     }
   }
 
@@ -36,5 +33,35 @@
 }
 
 .sub_menu {
+  margin-top: 4%;
+  .example-card {
+    margin-bottom: 5%;
+    img {
+      max-width: 400px;
+      height: 170px;
+    }
+    mat-card-content {
+      span {
+        padding-left: 12%;
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+.news_list {
   margin-top: 5%;
+  mat-list {
+    width: 100%;
+    margin-left: 5%;
+    box-shadow: 5px 10px 18px #cecece;
+    height: 530px;
+    background-color: white;
+    mat-list-item {
+      height: 70px;
+    }
+  }
 }

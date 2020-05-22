@@ -3,14 +3,12 @@
     <div class="col-lg-9 content_box">
       <div>
         <mat-card class="main-news">
-          <mat-card-header>
-            <mat-card-title>عنوان خبر</mat-card-title>
-            <mat-card-subtitle>
-                <p>نویسنده</p>
-                <p>تاریخ</p>
-                <p>امتیاز</p>
-            </mat-card-subtitle>
-          </mat-card-header>
+          <h1>عنوان خبر</h1>
+          <div class="sub_title">
+            <p>نویسنده</p>
+            <p>تاریخ</p>
+            <p>امتیاز</p>
+          </div>
           <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
           <mat-card-content>
             <p>
@@ -33,21 +31,55 @@
     </div>
 
     <div class="col-lg-3 sub_menu">
-      <mat-card class="example-card">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and
-          </p>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="example-card">
-        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and
-          </p>
-        </mat-card-content>
-      </mat-card>
+      <div class="sticky-top" style="padding-top: 5%;">
+        <mat-card class="example-card">
+          <mat-card-content>
+            <span>
+              <img src="../../../assets/telegram.png" alt="">
+            </span>
+            <span>
+              <img src="../../../assets/whatsapp.png" alt="">
+            </span>
+            <span>
+              <img src="../../../assets/instagram.png" alt="">
+            </span>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="example-card">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="example-card">
+          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <mat-divider></mat-divider>
+      <!-- <div class=" sticky-top news_list">
+        <mat-list role="list">
+          <mat-list-item role="listitem">
+            <a>sdkjsjd</a>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item role="listitem">Itdfgsd sdfg sddg sgsdfbem 2</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item role="listitem">Item 3</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item role="listitem">Item 3</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item role="listitem">Item 3</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+      </div> -->
     </div>
   </div>
 </div>
