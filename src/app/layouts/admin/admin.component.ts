@@ -9,7 +9,7 @@ export class AdminComponent implements OnInit {
 
   status: string = 'admin';
 
-  sideBarOpen: boolean = false;
+  sideBarOpen: boolean = true;
 
   constructor() { }
 
