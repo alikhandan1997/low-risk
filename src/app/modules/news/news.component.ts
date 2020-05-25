@@ -9,7 +9,13 @@ export class NewsComponent implements OnInit {
 
   constructor() { }
 
+  mainNews: boolean = true;
+
   ngOnInit(): void {
+    console.log(window.location.href.split('/').length)
+    if(window.location.href.split('/').length == 5) {
+      this.mainNews = false;
+    }
   }
 
 }

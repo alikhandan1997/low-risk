@@ -12,7 +12,6 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(window.location.href.split('/')[3]);
   }
 
 }
