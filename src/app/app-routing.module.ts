@@ -68,7 +68,13 @@ const routes: Routes = [
             ]
           },{
             path:'article',
-            component: LearnComponent
+            component: LearnComponent,
+            children: [
+              {
+                path:':id',
+                component: LearnComponent
+              }
+            ]
           }
         ]
       },{

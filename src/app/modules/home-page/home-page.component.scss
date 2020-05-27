@@ -19,6 +19,10 @@ h2 {
 }
 
 .main_news{
+  h1 a {
+    margin-right: 70%;
+    font-size: 20px;
+  }
   .main-news {
     width: 100%;
   }
@@ -31,15 +35,29 @@ h2 {
 .data_table {
   table {
     width: 100%;
+    text-align: right;
   }
 }
 
 .sub_news {
   margin-top: 5%;
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    mat-card-content p {
+      color: rgb(5, 128, 199);
+    }
+  }
 }
 
 .learn {
   .main_video {
+    h1 a {
+      margin-right: 65%;
+      font-size: 20px;
+    }
     .main-news{
       max-width: 100%;
     }
@@ -58,6 +76,14 @@ h2 {
       background-color: white;
       mat-list-item {
         height: 70px;
+        a {
+          text-decoration: none;
+          color: black;
+        }
+
+        a:hover {
+          color: rgb(5, 128, 199);
+        }
       }
     }
   }
@@ -105,6 +131,9 @@ h2 {
 
 @media screen and (max-width:576px) {
   .main_news{
+    h1 a {
+      margin-right: 40%;
+    }
     .main-news img {
       width: 100%;
       height: 300px;
@@ -113,6 +142,9 @@ h2 {
 
   .learn {
     .main_video {
+      h1 a {
+        margin-right: 35%;
+      }
       .main-news img {
         width: 100%;
         height: 300px;
