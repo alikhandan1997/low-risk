@@ -10,15 +10,24 @@ export class NewsComponent implements OnInit {
   constructor() { }
 
   mainNews: boolean = true;
+  isFilm: boolean = false;
+  isArticle: boolean = false;
+  isNews: boolean = false;
 
   ngOnInit(): void {
-    console.log(window.location.href.split('/'))
-    // if(window.location.href.split('/').length == 5) {
-    //   this.mainNews = false;
-    // }
+
+    if(window.location.href.split('/')[4] == 'film') {
+      this.isFilm = true;
+    } else if(window.location.href.split('/')[4] == 'article'){
+      this.isArticle = true;
+    } else if(window.location.href.split('/')[3] == 'news' && window.location.href.split('/').length == 4){
+      this.isNews = true;
+    }
     if(window.location.href.split('/').length == 6){
       this.mainNews = false;
     }
+
+    console.log(window.location.href.split('/')[3], this.isFilm)
   }
 
 }
