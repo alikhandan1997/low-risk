@@ -10,17 +10,22 @@ export class LearnComponent implements OnInit {
 
   isFilm: boolean = false;
   isArticle: boolean = false;
+  isDetail: boolean = false;
 
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    if(window.location.href.split('/')[4] == 'film') {
-      this.isFilm = true;
-      console.log(this.isFilm);
-    } else if(window.location.href.split('/')[4] == 'article') {
-      this.isArticle = true;
-      console.log(this.isArticle);
+
+    if (window.location.href.split('/').length == 6 ) {
+      this.isDetail = true;
     }
+    if(window.location.href.split('/')[4] == "article") {
+      this.isArticle = true;
+    } else if(window.location.href.split('/')[4] == "film") {
+      this.isFilm = true;
+    }
+
+    console.log('isfilm',this.isFilm,'isArticle', this.isArticle, 'isDetail', this.isDetail);
   }
 
   getEmbedUrl() {
