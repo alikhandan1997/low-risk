@@ -55,11 +55,10 @@ const routes: Routes = [
         ]
       },{
         path:'learn',
-        component: LearnComponent,
         children:[
           {
             path:'film',
-            component: LearnComponent,
+            component: NewsComponent,
             children: [
               {
                 path: ':id',
@@ -68,7 +67,7 @@ const routes: Routes = [
             ]
           },{
             path:'article',
-            component: LearnComponent,
+            component: NewsComponent,
             children: [
               {
                 path:':id',
