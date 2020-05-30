@@ -1,5 +1,14 @@
 .container {
   margin-top: 5%;
+  .row {
+    margin-top: 5%;
+    width: 100%;
+  }
+}
+
+.mat-tab-label {
+  font-family: "BKoodakBold";
+  font-size: 20px;
 }
 
 mat-divider {

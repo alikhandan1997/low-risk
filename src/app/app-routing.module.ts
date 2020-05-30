@@ -58,7 +58,7 @@ const routes: Routes = [
         children:[
           {
             path: '',
-            component: HomePageComponent
+            component: NewsComponent
           },
           {
             path:'film',

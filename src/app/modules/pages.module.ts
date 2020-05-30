@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -65,7 +66,8 @@ import { MarketMapComponent } from './market-map/market-map.component';
     HttpClientModule,
     MatIconModule,
     MatPaginatorModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    MatTabsModule
   ]
 })
 export class PagesModule { }
