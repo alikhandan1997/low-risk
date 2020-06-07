@@ -30,6 +30,7 @@ import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
 import { TablePageComponent } from './table-page/table-page.component';
 import { MarketMapComponent } from './market-map/market-map.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 
 
@@ -48,7 +49,8 @@ import { MarketMapComponent } from './market-map/market-map.component';
     DetailsComponent,
     RegisterComponent,
     TablePageComponent,
-    MarketMapComponent
+    MarketMapComponent,
+    AddPostComponent
   ],
   imports: [
     CommonModule,
