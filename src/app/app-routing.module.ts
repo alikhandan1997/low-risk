@@ -13,6 +13,7 @@ import { DetailsComponent } from './modules/details/details.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { TablePageComponent } from './modules/table-page/table-page.component';
 import { MarketMapComponent } from './modules/market-map/market-map.component';
+import { AddPostComponent } from './modules/add-post/add-post.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardComponent
+      },
+      {
+        path:'post',
+        component:AddPostComponent
       }
     ]
   },{
