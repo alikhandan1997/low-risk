@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-12">
+      <form>
+        <div class="row">
+
+          <div class="col-lg-3">
+            <label>عکس موضوع را انتخاب کنید</label>
+            <input type='file' name="image" [(ngModel)]="mainImage" (change)="readURL($event);" />
+          </div>
+          <div class="col-lg-9"></div><br>
+
+          <div class="col-lg-4 image_pre">
+            <p style="text-align: right;">
+              <img [src]="imageSrc" *ngIf="imageSrc != '' "/>
+            </p>
+          </div>
+          <div class="col-lg-9"></div><br>
+
+          <div class="col-lg-4">
+            <label>عنوان پست را انتخاب کنید</label>
+            <input type="text" name="title" [(ngModel)]="mainTitle">
+          </div>
+          <div class="col-lg-9"></div><br>
+
+          <div class="col-lg-9">
+            <label>خلاصه ای از پست را وارد نمایید</label>
+            <textarea name="description" [(ngModel)]="mainDesc" cols="30" rows="5" style="width: 100%;"></textarea>
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-12">
+      <h2>پست خود را ایجاد نمایید</h2>
+      <div class="editor_box">
+        <ckeditor
+          [editor]="Editor"
+          (change)="loadData()"
+          (ready)="onReady($event)"
+          [(ngModel)]="ckeditorContent"
+          data="<p>Hello, world!</p>"></ckeditor>
+
+        <button mat-raised-button (click)="send()">ذخیره</button>
+      </div>
+    </div>
+  </div>
+</div>

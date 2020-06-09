@@ -1,6 +1,6 @@
 {
   "api": {
-      "baseUrl" : "http://lowrisk.ir/",
+      "baseUrl" : "http://lowrisk.ir",
       "servicesApi": {
           "get": {
             "getUsers": "/api/account/users/",

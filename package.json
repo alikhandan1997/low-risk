@@ -22,6 +22,8 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "@ckeditor/ckeditor5-angular": "^1.2.3",
+    "@ckeditor/ckeditor5-build-classic": "^19.0.2",
     "highcharts": "^8.1.0",
     "highcharts-angular": "^2.4.0",
     "material-design-icons": "^3.0.1",

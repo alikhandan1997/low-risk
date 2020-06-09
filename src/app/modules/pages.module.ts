@@ -20,6 +20,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { NewsComponent } from './news/news.component';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -30,6 +31,7 @@ import { DetailsComponent } from './details/details.component';
 import { RegisterComponent } from './register/register.component';
 import { TablePageComponent } from './table-page/table-page.component';
 import { MarketMapComponent } from './market-map/market-map.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 
 
@@ -48,7 +50,8 @@ import { MarketMapComponent } from './market-map/market-map.component';
     DetailsComponent,
     RegisterComponent,
     TablePageComponent,
-    MarketMapComponent
+    MarketMapComponent,
+    AddPostComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +70,8 @@ import { MarketMapComponent } from './market-map/market-map.component';
     MatIconModule,
     MatPaginatorModule,
     HighchartsChartModule,
-    MatTabsModule
+    MatTabsModule,
+    CKEditorModule
   ]
 })
 export class PagesModule { }
