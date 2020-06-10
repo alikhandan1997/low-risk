@@ -16,16 +16,6 @@ h1{
   }
 }
 
-.sticky-top {
-  width: 100%;
-  margin-top: 10%;
-  padding-top: 3%;
-  h1 img{
-    width: 30px;
-    height: 30px;
-  }
-}
-
 .content_box {
   margin-top: 3%;
   h1{
@@ -57,11 +47,21 @@ h1{
 }
 
 .sub_menu {
+  .sticky-top {
+    width: 100%;
+    margin-top: 10%;
+    padding-top: 3%;
+    h1 img{
+      width: 30px;
+      height: 30px;
+    }
+  }
+
   .example-card {
     margin-bottom: 5%;
     img {
       max-width: 400px;
-      height: 170px;
+      height: 200px;
     }
     mat-card-content {
       span {
@@ -122,17 +122,24 @@ h1{
 }
 
 .learn_list {
+  .sticky-top {
+    margin-top: 5%;
+    h1 img {
+      width: 40px;
+      height: 40px;
+    }
+  }
   mat-list {
     margin-left: 5%;
     box-shadow: 5px 10px 18px #b9b8b8;
-    height: 350px;
+    height: 360px;
     background-color: white;
     mat-divider{
       width: 90%;
       margin-right: 5%;
     }
     mat-list-item {
-      height: 65px;
+      height: 70px;
       a {
         text-decoration: none;
         color: black;
@@ -159,6 +166,10 @@ h1{
         }
       }
     }
+  }
+
+  mat-list{
+    width: 100%;
   }
 }
 
