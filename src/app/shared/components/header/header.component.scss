@@ -42,3 +42,9 @@ mat-toolbar-row{
     display: block;
   }
 }
+
+@media screen and (max-width:576px){
+  .logo {
+    margin-bottom: 5%;
+  }
+}

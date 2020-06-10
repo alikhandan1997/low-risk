@@ -55,3 +55,14 @@ mat-divider {
   width: 55px;
   height: 55px;
 }
+
+@media screen and (max-width:576px){
+  .container .row {
+    margin-top: 5%;
+    width: 100%;
+    margin-left: 1%;
+  }
+  .example-card {
+    margin-bottom: 5%;
+  }
+}
