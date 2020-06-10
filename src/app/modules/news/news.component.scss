@@ -25,7 +25,35 @@ mat-divider {
   }
 }
 
+.news_box{
+  margin-bottom: 5%;
+  a{
+    text-decoration: none;
+  }
+  .example-card{
+    .little_desc:hover {
+      color: rgb(17, 158, 158);
+    }
+  }
+}
+
+.article_box{
+  margin-bottom: 5%;
+  a {
+    text-decoration: none;
+  }
+  .example-card{
+    .little_desc:hover {
+      color: rgb(17, 158, 158);
+    }
+  }
+}
+
 .video_box {
+  margin-bottom: 5%;
+  a{
+    text-decoration: none;
+  }
   .example-card {
     .play_icon img {
       position: absolute;
@@ -38,6 +66,10 @@ mat-divider {
     .play_icon img:hover {
       width: 55px;
       height: 55px;
+    }
+
+    .little_desc:hover {
+      color: rgb(17, 158, 158);
     }
   }
 }
