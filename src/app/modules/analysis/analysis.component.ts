@@ -7,24 +7,18 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AnalysisComponent implements OnInit {
-
-  showTab: boolean = false;
   showShort: boolean = false;
   showMedium: boolean = false;
   showLong: boolean = false;
-  showMain: boolean = true;
+  showMain: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
     console.log(window.location.href.split('/'))
 
-    if(window.location.href.split('/').length == 6){
-      this.showMain = false;
-    }
-
     if(window.location.href.split('/')[3] == 'analysis' && window.location.href.split('/').length == 4) {
-      this.showTab = true;
+      this.showMain = true;
     }
 
     if(window.location.href.split('/')[4] == 'short') {
