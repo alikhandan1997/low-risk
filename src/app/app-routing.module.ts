@@ -27,9 +27,32 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path:'post',
-        component:AddPostComponent
-      }
+        path:'learn',
+        children: [
+          {
+            path:'post',
+            component:AddPostComponent
+          }
+        ]
+      },
+      {
+        path:'news',
+        children: [
+          {
+            path:'post',
+            component:AddPostComponent
+          }
+        ]
+      },
+      {
+        path:'analysis',
+        children: [
+          {
+            path:'post',
+            component:AddPostComponent
+          }
+        ]
+      },
     ]
   },{
     path: '',
