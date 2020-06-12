@@ -16,7 +16,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list'
+import { MatListModule } from '@angular/material/list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -41,7 +42,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule
   ],
   exports: [
     HeaderComponent,
