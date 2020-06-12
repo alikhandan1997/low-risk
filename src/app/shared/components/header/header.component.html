@@ -138,6 +138,12 @@
                   پنل کاربری
                 </button>
               </a>
+              <a style="color:black;text-decoration:none;" (click)="logout()">
+                <button mat-menu-item *ngIf="register">
+                <mat-icon>cancel</mat-icon>
+                خروج
+              </button>
+            </a>
             </mat-menu>
           </li>
           <li class="nav_toggler" dir="ltr" *ngIf="status=='main'">
