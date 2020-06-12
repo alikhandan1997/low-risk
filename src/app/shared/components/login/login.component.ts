@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   save(){
-    this.data = {
+    this.dataObj = {
       "username": this.mobile,
       "password": this.password,
       "captcha_key": this.captcha_key,
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
   }
 
   postLogin(){
-    this.http.postLogin(this.data).subscribe((data) => {
+    this.http.postLogin(this.dataObj).subscribe((data) => {
       console.log(data)
       if(data['status'] == 200 ) {
         localStorage.setItem('access', data['result']['access']);
