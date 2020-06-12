@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('access');
+    localStorage.clear();
     location.reload();
   }
 
