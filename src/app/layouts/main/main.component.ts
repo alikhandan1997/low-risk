@@ -9,7 +9,7 @@ export class MainComponent implements OnInit {
 
   status: string = 'main';
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
