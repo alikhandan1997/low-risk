@@ -32,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
 import { TablePageComponent } from './table-page/table-page.component';
 import { MarketMapComponent } from './market-map/market-map.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { AnalysisDetailComponent } from './analysis-detail/analysis-detail.component';
 
 
 
@@ -51,7 +52,8 @@ import { AddPostComponent } from './add-post/add-post.component';
     RegisterComponent,
     TablePageComponent,
     MarketMapComponent,
-    AddPostComponent
+    AddPostComponent,
+    AnalysisDetailComponent
   ],
   imports: [
     CommonModule,

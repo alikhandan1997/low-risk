@@ -1,0 +1,100 @@
+.container {
+  margin-top: 5%;
+  .row {
+    margin-top: 5%;
+    width: 100%;
+  }
+}
+
+.mat-tab-label {
+  font-family: "BKoodakBold";
+  font-size: 20px;
+}
+
+mat-divider {
+  margin: 5%;
+  border: 1px solid rgb(212, 212, 212);
+}
+.title h1 {
+  text-align: right;
+  font-family: "BKoodakBold";
+  font-size: 30px;
+  a {
+    float: left;
+    font-size: 18px;
+  }
+}
+
+.news_box{
+  margin-bottom: 5%;
+  a{
+    text-decoration: none;
+  }
+  .example-card{
+    .little_desc:hover {
+      color: rgb(17, 158, 158);
+    }
+  }
+}
+
+.article_box{
+  margin-bottom: 5%;
+  a {
+    text-decoration: none;
+  }
+  .example-card{
+    .little_desc:hover {
+      color: rgb(17, 158, 158);
+    }
+  }
+}
+
+.video_box {
+  margin-bottom: 5%;
+  a{
+    text-decoration: none;
+  }
+  .example-card {
+    .play_icon img {
+      position: absolute;
+      left: 40%;
+      top: 25%;
+      width: 50px;
+      height: 50px;
+    }
+
+    .play_icon img:hover {
+      width: 55px;
+      height: 55px;
+    }
+
+    .little_desc:hover {
+      color: rgb(17, 158, 158);
+    }
+  }
+}
+
+
+.play_icon img {
+  position: absolute;
+  left: 40%;
+  top: 25%;
+  width: 50px;
+  height: 50px;
+}
+
+.play_icon img:hover {
+  width: 55px;
+  height: 55px;
+}
+
+@media screen and (max-width:576px){
+  .container .row {
+    margin-top: 5%;
+    width: 100%;
+    margin-left: 1%;
+  }
+  .example-card {
+    margin-bottom: 5%;
+  }
+}
