@@ -16,6 +16,11 @@ export class ServicesService {
   data;
 
   getUsers(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
     this.apiUrl = ApiMap.api.servicesApi.get.getUsers;
     return this.http.get(`${this.baseurl}${this.apiUrl}`);
   }
@@ -26,7 +31,11 @@ export class ServicesService {
   }
 
   postUsers(data) {
-    this.headers = {'content-type':'application/json'}
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
     this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postUsers;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
@@ -47,7 +56,11 @@ export class ServicesService {
   }
 
   postPosts(data){
-    this.headers = {'content-type':'application/json'}
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
     this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postPosts;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
