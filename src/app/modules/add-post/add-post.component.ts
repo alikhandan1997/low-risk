@@ -47,7 +47,7 @@ export class AddPostComponent implements OnInit {
     // this.dataContainer.nativeElement.innerHTML = this.ckeditorContent;
     this.postData = {
       title: this.mainTitle,
-      desc: this.mainDesc,
+      description: this.mainDesc,
       image: this.mainImage,
       content: this.ckeditorContent
     }
