@@ -14,6 +14,7 @@ import { RegisterComponent } from './modules/register/register.component';
 import { TablePageComponent } from './modules/table-page/table-page.component';
 import { MarketMapComponent } from './modules/market-map/market-map.component';
 import { AddPostComponent } from './modules/add-post/add-post.component';
+import { AnalysisDetailComponent } from './modules/analysis-detail/analysis-detail.component';
 
 
 const routes: Routes = [
@@ -51,11 +52,20 @@ const routes: Routes = [
         component: AboutUsComponent
       },{
         path:'analysis',
-        component: AnalysisComponent,
         children: [
           {
+            path: '',
+            component:AnalysisComponent
+          },
+          {
             path: ':name',
-            component: AnalysisComponent
+            component: AnalysisComponent,
+            children:[
+              {
+                path: ':id',
+                component:AnalysisDetailComponent
+              }
+            ]
           }
         ]
       },{
