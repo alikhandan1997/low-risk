@@ -1,20 +1,110 @@
 <mat-nav-list>
-  <!-- <div class="profile_card">
-    <div class="header">
-      <h2>Ali khandan</h2>
-      <h4>example@email.com</h4>
-    </div>
-    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="">
-  </div> -->
-<!--
-  <mat-divider></mat-divider> -->
 
-  <h2 matSubheader>Pages</h2>
+  <h2 matSubheader>صفحات</h2>
 
-  <a mat-list-item href="/admin">Dashboard</a>
+  <mat-accordion>
+    <mat-expansion-panel>
 
-  <mat-divider></mat-divider>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          داشبورد
+        </mat-panel-title>
+      </mat-expansion-panel-header>
 
-  <a mat-list-item href="/admin/post">Add Post</a>
+        <a href="/admin">
+          <button mat-button>
+            <mat-icon>add</mat-icon>
+            درخواست ها
+          </button>
+        </a>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          آموزش
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <a href="/admin/learn/post">
+        <button mat-button>
+          <mat-icon>add</mat-icon>
+          اضافه کردن آموزش
+        </button>
+      </a>
+
+      <a>
+        <button mat-button>
+          <mat-icon>add</mat-icon>
+          لیست اموزش ها
+        </button>
+      </a>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          اخبار
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <a href="/admin/news/post">
+        <button mat-button>
+          <mat-icon>add</mat-icon>
+          اضافه کردن خبر
+        </button>
+      </a>
+
+      <a>
+        <button mat-button>
+          <mat-icon>add</mat-icon>
+          لیست خبر ها
+        </button>
+      </a>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          تحلیل
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <a href="/admin/analysis/post">
+        <button mat-button>
+          <mat-icon>add</mat-icon>
+          اضافه کردن تحلیل
+        </button>
+      </a>
+
+      <a>
+        <button mat-button>
+          <mat-icon>add</mat-icon>
+          لیست تحلیل ها
+        </button>
+      </a>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          پیام ها
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+    </mat-expansion-panel>
+  </mat-accordion>
 
 </mat-nav-list>

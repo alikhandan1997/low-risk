@@ -1,10 +1,22 @@
-.profile_card {
-  text-align: center;
-  padding: 0 20px 20px 20px;
-  img{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
+.mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+h2{
+  font-family: "BKoodakBold";
+}
+
+mat-expansion-panel {
+  padding: 2%;
+  mat-panel-title{
+    font-family: "BKoodakBold";
+    font-size: 18px;
+  }
+  a {
+    button {
+      text-align: right;
+      width: 100%;
+      font-family: "BKoodakBold";
+    }
   }
 }
