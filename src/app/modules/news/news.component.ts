@@ -31,8 +31,6 @@ export class NewsComponent implements OnInit {
     if(window.location.href.split('/').length == 6){
       this.mainNews = false;
     }
-
-    console.log(window.location.href.split('/')[3], this.isFilm)
   }
 
 }

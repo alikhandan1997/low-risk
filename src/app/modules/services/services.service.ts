@@ -15,6 +15,8 @@ export class ServicesService {
   headers;
   data;
 
+  // ======================== gets ============================
+
   getUsers(): Observable<Object> {
     this.headers = new Headers(
       {
@@ -22,40 +24,44 @@ export class ServicesService {
          'content-type':'application/json'
       });
     this.apiUrl = ApiMap.api.servicesApi.get.getUsers;
-    return this.http.get(`${this.baseurl}${this.apiUrl}`);
+    return this.http.get(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
   getPost(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
     this.apiUrl = ApiMap.api.servicesApi.get.getPosts;
-    return this.http.get(`${this.baseurl}${this.apiUrl}`);
+    return this.http.get(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  postUsers(data) {
+// =============================== posts ========================================
+
+  postRegister(data): Observable<Object>{
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
     this.data = data;
-    this.apiUrl = ApiMap.api.servicesApi.post.postUsers;
-    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
-  }
-
-  postRegister(data){
-    this.headers = {'content-type':'application/json'}
-    this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postRegister;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
   }
 
-  postLogin(data){
-    this.headers = {'content-type':'application/json'}
+  postLogin(data): Observable<Object>{
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
     this.data = JSON.stringify(data);;
     this.apiUrl = ApiMap.api.servicesApi.post.postLogin;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
   }
 
-  postPosts(data){
+  postPosts(data): Observable<Object>{
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -66,10 +72,79 @@ export class ServicesService {
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
   }
 
-  postCaptcha(){
-    this.headers = {'content-type':'application/json'}
+  postCaptcha(): Observable<Object>{
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
     this.apiUrl = ApiMap.api.servicesApi.post.postCaptcha;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
+  // ========================  delete ========================
+
+  deletePosts(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.delete.deletePosts;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  deleteUsers(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.delete.deleteUsers;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  // =========================== patchs ===========================
+
+  patchNews(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.patch.patchNews;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  patchUsers(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.patch.patchUsers;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  // ============================== puts ============================
+
+  putNews(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.put.putNews;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  putUsers(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.put.putUsers;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
 }

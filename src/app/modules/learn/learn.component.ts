@@ -24,8 +24,6 @@ export class LearnComponent implements OnInit {
     } else if(window.location.href.split('/')[4] == "film") {
       this.isFilm = true;
     }
-
-    console.log('isfilm',this.isFilm,'isArticle', this.isArticle, 'isDetail', this.isDetail);
   }
 
   getEmbedUrl() {

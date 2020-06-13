@@ -4,16 +4,25 @@
       "servicesApi": {
           "get": {
             "getUsers": "/api/account/users/",
-            "getRegister": "/api/account/register/",
-            "getLogin": "/api/account/login/",
             "getPosts": "/api/posts/news/"
           },
           "post": {
-            "postUsers": "/api/account/users/",
             "postRegister": "/api/account/register/",
             "postLogin": "/api/account/login/",
             "postPosts": "/api/posts/news/",
             "postCaptcha": "/api/utils/captcha/"
+          },
+          "delete": {
+            "deletePosts": "/api/posts/news/",
+            "deleteUsers": "/api/account/users/"
+          },
+          "patch": {
+            "patchNews": "/api/posts/news/",
+            "patchUsers": "/api/account/users/"
+          },
+          "put": {
+            "putNews": "/api/posts/news/",
+            "putUsers": "/api/account/users/"
           }
       }
   }

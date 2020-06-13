@@ -17,12 +17,23 @@ export class AddPostComponent implements OnInit {
   mainDesc;
   mainTitle;
   postData;
+  postType: string;
 
   @ViewChild('preView') dataContainer: ElementRef;
 
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
+    console.log(window.location.href.split('/')[6])
+
+    if(window.location.href.split('/')[6] == 'film'){
+      this.postType = 'learnFilm';
+    } else if(window.location.href.split('/')[6] == 'file'){
+      this.postType = 'learnFile';
+    } else if(window.location.href.split('/')[6] == 'article'){
+      this.postType = 'learnArticle';
+    }
+
   }
 
   onReady(eventData) {

@@ -15,14 +15,10 @@ export class HeaderComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(){
-    console.log(localStorage.getItem('access'))
     this.register = false
     if(localStorage.getItem('access') != null) {
-      console.log("logged")
       this.register = true;
     }
-
-    console.log(this.register)
   }
 
   toggleSideBar() {

@@ -15,7 +15,6 @@ export class AnalysisComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(window.location.href.split('/'))
 
     if(window.location.href.split('/')[3] == 'analysis' && window.location.href.split('/').length == 4) {
       this.showMain = true;
