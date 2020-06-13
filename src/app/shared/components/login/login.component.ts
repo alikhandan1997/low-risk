@@ -48,7 +48,6 @@ export class LoginComponent implements OnInit {
 
   postLogin(){
     this.http.postLogin(this.dataObj).subscribe((data) => {
-      console.log(data)
       if(data['status'] == 200 ) {
         localStorage.setItem('access', data['result']['access']);
         localStorage.setItem('refresh', data['result']['refresh']);
@@ -57,9 +56,7 @@ export class LoginComponent implements OnInit {
       }
     },
     (error) => {
-      console.log(error);
       if(error['status'] == 400 || error['status'] == 500 ) {
-        console.log('error');
         this.ngOnInit();
         this._snackBar.open('اطلاعات اشتباه است', '', {
           duration: 2000,
