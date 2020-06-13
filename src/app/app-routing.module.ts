@@ -31,7 +31,20 @@ const routes: Routes = [
         children: [
           {
             path:'post',
-            component:AddPostComponent
+            children:[
+              {
+                path: 'film',
+                component: AddPostComponent
+              },
+              {
+                path: 'file',
+                component: AddPostComponent
+              },
+              {
+                path: 'article',
+                component: AddPostComponent
+              }
+            ]
           }
         ]
       },
