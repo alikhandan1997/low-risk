@@ -21,11 +21,11 @@ export class AnalysisComponent implements OnInit {
       this.showMain = true;
     }
 
-    if(window.location.href.split('/')[4] == 'short') {
+    if(window.location.href.split('/')[4] == 'short' && window.location.href.split('/').length == 5) {
       this.showShort = true;
-    } else if(window.location.href.split('/')[4] == 'medium'){
+    } else if(window.location.href.split('/')[4] == 'medium' && window.location.href.split('/').length == 5){
       this.showMedium = true;
-    } else if(window.location.href.split('/')[4] == 'long'){
+    } else if(window.location.href.split('/')[4] == 'long' && window.location.href.split('/').length == 5){
       this.showLong = true;
     }
   }
