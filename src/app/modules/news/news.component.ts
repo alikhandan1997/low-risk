@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-news',
@@ -8,13 +9,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class NewsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: ServicesService) { }
 
   mainNews: boolean = true;
   isFilm: boolean = false;
   isArticle: boolean = false;
   isNews: boolean = false;
   isLearn: boolean = false;
+  apiData: string = '';
 
   ngOnInit(): void {
 
@@ -31,8 +33,29 @@ export class NewsComponent implements OnInit {
     if(window.location.href.split('/').length == 6){
       this.mainNews = false;
     }
+
+    this.getData();
   }
 
+  getData() {
+    if(this.isNews){
+      console.log("isnews");
+      this.http.getNews(this.apiData).subscribe((data) => {
+        console.log(data);
+      });
+    }
+    if(this.isArticle){
+      console.log("isArticle");
+      this.http.getEducations(this.apiData).subscribe((data) => {
+        console.log(data);
+      });
+    } else if(this.isFilm){
+      console.log("isFilm");
+      this.http.getEducations(this.apiData).subscribe((data) => {
+        console.log(data);
+      });
+    }
 
+  }
 
 }
