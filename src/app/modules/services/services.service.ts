@@ -82,6 +82,17 @@ export class ServicesService {
     return this.http.post(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
+  postEducation(data): Observable<Object>{
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.data = data;
+    this.apiUrl = ApiMap.api.servicesApi.post.postEducation;
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
+  }
+
   // ========================  delete ========================
 
   deleteNews(): Observable<Object> {
