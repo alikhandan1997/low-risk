@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from '../services/services.service';
 
 export interface PeriodicElement {
   name: string;
@@ -29,10 +30,21 @@ export class HomePageComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
+  apiData: string = '';
 
-  constructor() { }
+  constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
+    this.http.getNews(this.apiData).subscribe((data)=> {
+      console.log(data);
+    });
+    this.http.getEducations(this.apiData).subscribe((data) => {
+      console.log(data);
+    });
   }
 
 }
