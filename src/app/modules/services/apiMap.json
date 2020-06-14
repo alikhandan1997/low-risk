@@ -3,9 +3,11 @@
       "baseUrl" : "http://lowrisk.ir",
       "servicesApi": {
           "get": {
-            "getUsers": "/api/account/users/",
-            "getNews": "/api/posts/news/",
-            "getEducation": "/api/posts/education/"
+            "getAdminUsers": "/api/account/users/",
+            "getAdminNews": "/api/posts/news/",
+            "getAdminEducation": "/api/posts/education/",
+            "getEducation": "/api/interface/posts/education/",
+            "getNews": "/api/interface/posts/news/"
           },
           "post": {
             "postRegister": "/api/account/register/",
