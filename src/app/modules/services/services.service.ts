@@ -17,24 +17,34 @@ export class ServicesService {
 
   // ======================== gets ============================
 
-  getUsers(): Observable<Object> {
+  getUsers(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
     this.apiUrl = ApiMap.api.servicesApi.get.getUsers;
-    return this.http.get(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
   }
 
-  getNews(): Observable<Object> {
+  getNews(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
     this.apiUrl = ApiMap.api.servicesApi.get.getNews;
-    return this.http.get(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
+  }
+
+  getEducations(data): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.get.getEducation;
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
   }
 
 // =============================== posts ========================================
