@@ -53,7 +53,16 @@ const routes: Routes = [
         children: [
           {
             path:'post',
-            component:AddPostComponent
+            children: [
+              {
+                path: 'film',
+                component: AddPostComponent
+              },
+              {
+                path: 'article',
+                component: AddPostComponent
+              }
+            ]
           }
         ]
       },
@@ -62,7 +71,16 @@ const routes: Routes = [
         children: [
           {
             path:'post',
-            component:AddPostComponent
+            children: [
+              {
+                path: 'monetary',
+                component: AddPostComponent
+              },
+              {
+                path: 'free',
+                component: AddPostComponent
+              }
+            ]
           }
         ]
       },

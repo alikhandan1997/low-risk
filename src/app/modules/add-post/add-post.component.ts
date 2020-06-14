@@ -17,6 +17,7 @@ export class AddPostComponent implements OnInit {
   mainDesc;
   mainTitle;
   postData;
+  Type: string;
   postType: string;
 
   @ViewChild('preView') dataContainer: ElementRef;
@@ -24,14 +25,34 @@ export class AddPostComponent implements OnInit {
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
-    console.log(window.location.href.split('/')[6])
+    console.log(window.location.href.split('/'))
 
-    if(window.location.href.split('/')[6] == 'film'){
-      this.postType = 'learnFilm';
-    } else if(window.location.href.split('/')[6] == 'file'){
-      this.postType = 'learnFile';
-    } else if(window.location.href.split('/')[6] == 'article'){
-      this.postType = 'learnArticle';
+    // learn post and types
+    if(window.location.href.split('/')[4] == 'learn') {
+      this.Type = 'learn';
+      if(window.location.href.split('/')[6] == 'file'){
+        this.postType = 'file';
+      } else if(window.location.href.split('/')[6] == 'film'){
+        this.postType = 'film';
+      } else if(window.location.href.split('/')[6] == 'article') {
+        this.postType = 'article';
+      }
+    // news post and types
+    } else if(window.location.href.split('/')[4] == 'news'){
+      this.Type = 'news';
+      if(window.location.href.split('/')[6] == 'film'){
+        this.postType = 'film';
+      } else if(window.location.href.split('/')[6] == 'article') {
+        this.postType = 'article';
+      }
+    // analysis post and types
+    } else if(window.location.href.split('/')[4] == 'analysis') {
+      this.Type = 'analysis';
+      if(window.location.href.split('/')[6] == 'free'){
+        this.postType = 'free';
+      } else if(window.location.href.split('/')[6] == 'monetary'){
+        this.postType = 'monetary';
+      }
     }
 
   }
