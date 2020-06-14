@@ -11,11 +11,16 @@ import { ServicesService } from '../services/services.service';
 export class AddPostComponent implements OnInit {
 
   public Editor = ClassicEditor;
-  ckeditorContent = "";
   imageSrc: any = '';
-  mainImage;
-  mainDesc;
+
   mainTitle;
+  mainImage;
+  ckeditorContent = "";
+  mainDesc;
+  mainPrice;
+  mainVideo;
+  mainFile;
+
   postData;
   Type: string;
   postType: string;
@@ -76,12 +81,23 @@ export class AddPostComponent implements OnInit {
   }
 
   loadData() {
-    this.postData = {
-      title: this.mainTitle,
-      description: this.mainDesc,
-      image: this.mainImage,
-      content: this.ckeditorContent
-    }
+    if(this.Type == 'news') {
+      this.postData = {
+        title: this.mainTitle,
+        description: this.mainDesc,
+        image: this.mainImage,
+        content: this.ckeditorContent
+      }
+    } else if(this.Type == 'learn') {
+      this.postData = {
+        title: this.mainTitle,
+        image: this.mainImage,
+        content: this.ckeditorContent,
+        price: this.mainPrice,
+        video: this.mainVideo,
+        file: this.mainFile
+      }
+    } else if(this.Type == 'analysis') {}
   }
 
   send(){
