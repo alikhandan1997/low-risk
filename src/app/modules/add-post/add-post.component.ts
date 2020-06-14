@@ -65,7 +65,7 @@ export class AddPostComponent implements OnInit {
   }
 
   send(){
-    this.http.postPosts(this.postData).subscribe((data) => {
+    this.http.postٔNews(this.postData).subscribe((data) => {
       console.log(data);
     });
   }
