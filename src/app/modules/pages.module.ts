@@ -17,6 +17,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -73,7 +74,8 @@ import { AnalysisDetailComponent } from './analysis-detail/analysis-detail.compo
     MatPaginatorModule,
     HighchartsChartModule,
     MatTabsModule,
-    CKEditorModule
+    CKEditorModule,
+    MatSnackBarModule
   ]
 })
 export class PagesModule { }

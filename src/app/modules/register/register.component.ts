@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from 'src/app/modules/services/services.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -19,7 +20,9 @@ export class RegisterComponent implements OnInit {
   captcha_key: string;
 
 
-  constructor( private http: ServicesService) { }
+  constructor(
+    private http: ServicesService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getCaptcha();
@@ -47,7 +50,15 @@ export class RegisterComponent implements OnInit {
   postLogin(){
     this.http.postRegister(this.dataObj).subscribe((data) => {
       console.log(data)
-    })
+    },
+    (error) => {
+      if(error['status'] == 400 || error['status'] == 500 ) {
+        this.ngOnInit();
+        this._snackBar.open('اطلاعات اشتباه است', '', {
+          duration: 2000,
+        });
+      }
+    });
   }
 
 }
