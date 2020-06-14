@@ -47,6 +47,8 @@ export class ServicesService {
     return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
   }
 
+  // interface get items
+
   getNews(data): Observable<Object> {
     this.headers = new Headers(
       {

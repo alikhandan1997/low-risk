@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-learn',
@@ -11,8 +12,11 @@ export class LearnComponent implements OnInit {
   isFilm: boolean = false;
   isArticle: boolean = false;
   isDetail: boolean = false;
+  apiData: string = '';
 
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private http: ServicesService) { }
 
   ngOnInit(): void {
 
@@ -24,10 +28,24 @@ export class LearnComponent implements OnInit {
     } else if(window.location.href.split('/')[4] == "film") {
       this.isFilm = true;
     }
+
+    this.getData();
   }
 
   getEmbedUrl() {
     return this.sanitizer.bypassSecurityTrustResourceUrl('assets/video.mp4');
+  }
+
+  getData() {
+    if(this.isFilm) {
+      this.http.getEducations(this.apiData).subscribe((data) => {
+        console.log(data);
+      });
+    } else if(this.isArticle){
+      this.http.getEducations(this.apiData).subscribe((data) => {
+        console.log(data);
+      });
+    }
   }
 
 }
