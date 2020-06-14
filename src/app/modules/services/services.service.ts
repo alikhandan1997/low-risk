@@ -17,13 +17,33 @@ export class ServicesService {
 
   // ======================== gets ============================
 
-  getUsers(data): Observable<Object> {
+  getAdminUsers(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
-    this.apiUrl = ApiMap.api.servicesApi.get.getUsers;
+    this.apiUrl = ApiMap.api.servicesApi.get.getAdminUsers;
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
+  }
+
+  getAdminNews(data): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.get.getAdminNews;
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
+  }
+
+  getAdminEducations(data): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.get.getAdminEducation;
     return this.http.get(`${this.baseurl}${this.apiUrl}${data}/`,{'headers':this.headers});
   }
 
