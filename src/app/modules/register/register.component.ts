@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ServicesService } from 'src/app/modules/services/services.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -6,7 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
 
@@ -38,24 +39,29 @@ export class RegisterComponent implements OnInit {
   click(){
     console.log('name',this.mobile,'pass',this.password,'conf',this.conf_password,'captcha', this.captcha)
     this.dataObj = {
-      "mobile": this.mobile,
-      "password": this.password,
-      "confirm_password": this.conf_password,
-      "captcha_key": this.captcha_key,
-      "captcha_value": this.captcha
+      mobile: this.mobile,
+      password: this.password,
+      confirm_password: this.conf_password,
+      captcha_key: this.captcha_key,
+      captcha_value: this.captcha
     }
     this.postLogin();
   }
 
   postLogin(){
     this.http.postRegister(this.dataObj).subscribe((data) => {
-      console.log(data)
+      console.log(data);
+      if(data['status'] == 201) {
+        this._snackBar.open('ثبت نام با موفقیت انجام شد', '', {
+          duration: 3000,
+        });
+      }
     },
     (error) => {
       if(error['status'] == 400 || error['status'] == 500 ) {
         this.ngOnInit();
         this._snackBar.open('اطلاعات اشتباه است', '', {
-          duration: 2000,
+          duration: 3000,
         });
       }
     });
