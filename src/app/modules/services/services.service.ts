@@ -27,13 +27,13 @@ export class ServicesService {
     return this.http.get(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  getPost(): Observable<Object> {
+  getNews(): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
-    this.apiUrl = ApiMap.api.servicesApi.get.getPosts;
+    this.apiUrl = ApiMap.api.servicesApi.get.getNews;
     return this.http.get(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
@@ -61,14 +61,14 @@ export class ServicesService {
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
   }
 
-  postPosts(data): Observable<Object>{
+  postٔNews(data): Observable<Object>{
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
     this.data = data;
-    this.apiUrl = ApiMap.api.servicesApi.post.postPosts;
+    this.apiUrl = ApiMap.api.servicesApi.post.postNews;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{'headers':this.headers});
   }
 
@@ -84,13 +84,13 @@ export class ServicesService {
 
   // ========================  delete ========================
 
-  deletePosts(): Observable<Object> {
+  deleteNews(): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
          'content-type':'application/json'
       });
-    this.apiUrl = ApiMap.api.servicesApi.delete.deletePosts;
+    this.apiUrl = ApiMap.api.servicesApi.delete.deleteNews;
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
@@ -101,6 +101,16 @@ export class ServicesService {
          'content-type':'application/json'
       });
     this.apiUrl = ApiMap.api.servicesApi.delete.deleteUsers;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  deleteEducation(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.delete.deleteEducation;
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
@@ -126,6 +136,16 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
+  patchEducation(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.patch.patchEducation;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
   // ============================== puts ============================
 
   putNews(): Observable<Object> {
@@ -145,6 +165,16 @@ export class ServicesService {
          'content-type':'application/json'
       });
     this.apiUrl = ApiMap.api.servicesApi.put.putUsers;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
+  }
+
+  putEducation(): Observable<Object> {
+    this.headers = new Headers(
+      {
+         'Authorization': `Bearer ${localStorage.getItem('access')}`,
+         'content-type':'application/json'
+      });
+    this.apiUrl = ApiMap.api.servicesApi.put.putEducation;
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 }
