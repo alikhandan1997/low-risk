@@ -29,4 +29,8 @@ export class AnalysisComponent implements OnInit {
     }
   }
 
+  getData() {
+
+  }
+
 }
