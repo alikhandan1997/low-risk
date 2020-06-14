@@ -76,7 +76,6 @@ export class AddPostComponent implements OnInit {
   }
 
   loadData() {
-    // this.dataContainer.nativeElement.innerHTML = this.ckeditorContent;
     this.postData = {
       title: this.mainTitle,
       description: this.mainDesc,
@@ -86,9 +85,18 @@ export class AddPostComponent implements OnInit {
   }
 
   send(){
-    this.http.postٔNews(this.postData).subscribe((data) => {
-      console.log(data);
-    });
+    // send to news api
+    if(this.Type == 'news') {
+      this.http.postٔNews(this.postData).subscribe((data) => {
+        console.log(data);
+      });
+    // send to learn api
+    } else if(this.Type == 'learn') {
+      this.http.postEducation(this.postData).subscribe((data) => {
+        console.log(data);
+      });
+    // send to analysis api
+    } else if(this.Type == 'analysis'){}
   }
 
 }
