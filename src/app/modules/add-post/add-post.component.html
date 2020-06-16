@@ -6,12 +6,12 @@
         <div class="row">
 
           <div class="col-lg-3">
-            <label>عکس موضوع را انتخاب کنید</label>
-            <input type='file' name="image" [(ngModel)]="mainImage" (change)="readURL($event);" />
+            <h3>عکس موضوع را انتخاب کنید</h3>
+            <input type='file' name="image" (change)="readURL($event);" />
           </div>
           <div class="col-lg-9"></div><br>
 
-          <div class="col-lg-4 image_pre">
+          <div class="col-lg-4 image_pre" *ngIf="imageSrc != ''">
             <p style="text-align: right;">
               <img [src]="imageSrc" *ngIf="imageSrc != '' "/>
             </p>
@@ -19,13 +19,13 @@
           <div class="col-lg-9"></div><br>
 
           <div class="col-lg-4">
-            <label>عنوان پست را انتخاب کنید</label>
+            <h3>عنوان پست را انتخاب کنید</h3>
             <input type="text" name="title" [(ngModel)]="mainTitle">
           </div>
           <div class="col-lg-9"></div><br>
 
           <div class="col-lg-9">
-            <label>خلاصه ای از پست را وارد نمایید</label>
+            <h3>خلاصه ای از پست را وارد نمایید</h3>
             <textarea name="description" [(ngModel)]="mainDesc" cols="30" rows="5" style="width: 100%;"></textarea>
           </div>
 
@@ -42,9 +42,25 @@
           (ready)="onReady($event)"
           [(ngModel)]="ckeditorContent"
           data="<p>Hello, world!</p>"></ckeditor>
-
-        <button mat-raised-button (click)="send()">ذخیره</button>
       </div>
+    </div>
+
+    <div class="col-lg-3" *ngIf="postType == 'film'">
+      <div class="video_input">
+        <h3>ویدئو خود را انتخاب نمایید</h3>
+        <input type='file' name="video" (change)="readFile($event, 'video');" />
+      </div>
+    </div>
+
+    <div class="col-lg-3" *ngIf="postType == 'file'">
+      <div class="video_input">
+        <h3>فایل خود را انتخاب نمایید</h3>
+        <input type='file' name="file" (change)="readFile($event, 'file');" />
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <button mat-raised-button color="primary" (click)="send()">ذخیره اطلاعات</button>
     </div>
   </div>
 </div>
