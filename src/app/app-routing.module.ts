@@ -15,6 +15,7 @@ import { TablePageComponent } from './modules/table-page/table-page.component';
 import { MarketMapComponent } from './modules/market-map/market-map.component';
 import { AddPostComponent } from './modules/add-post/add-post.component';
 import { AnalysisDetailComponent } from './modules/analysis-detail/analysis-detail.component';
+import { ListItemsComponent } from './modules/list-items/list-items.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
               {
                 path: 'article',
                 component: AddPostComponent
+              },
+              {
+                path: 'list',
+                component: ListItemsComponent
               }
             ]
           }
@@ -61,6 +66,10 @@ const routes: Routes = [
               {
                 path: 'article',
                 component: AddPostComponent
+              },
+              {
+                path: 'list',
+                component: ListItemsComponent
               }
             ]
           }
@@ -79,6 +88,10 @@ const routes: Routes = [
               {
                 path: 'free',
                 component: AddPostComponent
+              },
+              {
+                path: 'list',
+                component: ListItemsComponent
               }
             ]
           }
