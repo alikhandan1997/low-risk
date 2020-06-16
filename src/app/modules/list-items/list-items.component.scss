@@ -1,0 +1,20 @@
+* {
+  font-family: "BKoodakBold";
+}
+
+h1 {
+  text-align: right;
+  font-family: "BKoodakBold";
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  .little_desc:hover {
+    color: rgb(5, 128, 199);;
+  }
+}
+
+button {
+  font-size: 16px;
+}
