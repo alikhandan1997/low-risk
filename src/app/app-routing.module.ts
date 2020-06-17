@@ -47,7 +47,18 @@ const routes: Routes = [
               },
               {
                 path: 'list',
-                component: ListItemsComponent
+                component: ListItemsComponent,
+                children: [
+                  {
+                    path: 'edit',
+                    children: [
+                      {
+                        path: ':id',
+                        component: AddPostComponent
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -69,7 +80,18 @@ const routes: Routes = [
               },
               {
                 path: 'list',
-                component: ListItemsComponent
+                component: ListItemsComponent,
+                children: [
+                  {
+                    path: 'edit',
+                    children: [
+                      {
+                        path: ':id',
+                        component: AddPostComponent
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -91,7 +113,18 @@ const routes: Routes = [
               },
               {
                 path: 'list',
-                component: ListItemsComponent
+                component: ListItemsComponent,
+                children: [
+                  {
+                    path: 'edit',
+                    children: [
+                      {
+                        path: ':id',
+                        component: AddPostComponent
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
