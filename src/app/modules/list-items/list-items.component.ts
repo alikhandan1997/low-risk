@@ -10,10 +10,15 @@ export class ListItemsComponent implements OnInit {
 
   Type: string = "";
   apiData: string = "";
+  listDisplay: boolean = true;
 
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
+
+    if(window.location.href.split('/')[7] == 'edit') {
+      this.listDisplay = false;
+    }
 
     if(window.location.href.split('/')[4] == 'learn') {
       this.Type = 'learn';

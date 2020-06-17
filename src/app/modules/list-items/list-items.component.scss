@@ -2,6 +2,10 @@
   font-family: "BKoodakBold";
 }
 
+.mat-icon{
+  font-family: 'Material Icons' !important;
+}
+
 h1 {
   text-align: right;
   font-family: "BKoodakBold";
@@ -10,6 +14,10 @@ h1 {
 a {
   cursor: pointer;
   text-decoration: none;
+  button {
+    margin-left: 3%;
+  }
+
   .little_desc:hover {
     color: rgb(5, 128, 199);;
   }
