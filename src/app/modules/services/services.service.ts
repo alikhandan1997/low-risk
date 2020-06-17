@@ -127,7 +127,7 @@ export class ServicesService {
 
   // ========================  delete ========================
 
-  deleteNews(): Observable<Object> {
+  deleteNews(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -137,7 +137,7 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  deleteUsers(): Observable<Object> {
+  deleteUsers(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -147,7 +147,7 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  deleteEducation(): Observable<Object> {
+  deleteEducation(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -159,7 +159,7 @@ export class ServicesService {
 
   // =========================== patchs ===========================
 
-  patchNews(): Observable<Object> {
+  patchNews(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -169,7 +169,7 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  patchUsers(): Observable<Object> {
+  patchUsers(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -179,7 +179,7 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  patchEducation(): Observable<Object> {
+  patchEducation(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -191,7 +191,7 @@ export class ServicesService {
 
   // ============================== puts ============================
 
-  putNews(): Observable<Object> {
+  putNews(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -201,7 +201,7 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  putUsers(): Observable<Object> {
+  putUsers(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
@@ -211,7 +211,7 @@ export class ServicesService {
     return this.http.delete(`${this.baseurl}${this.apiUrl}`,{'headers':this.headers});
   }
 
-  putEducation(): Observable<Object> {
+  putEducation(data): Observable<Object> {
     this.headers = new Headers(
       {
          'Authorization': `Bearer ${localStorage.getItem('access')}`,
