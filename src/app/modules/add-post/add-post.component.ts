@@ -12,6 +12,7 @@ export class AddPostComponent implements OnInit {
 
   public Editor = ClassicEditor;
   imageSrc: any = '';
+  isEdit: boolean = false;
 
   mainTitle;
   mainImage;
@@ -30,7 +31,10 @@ export class AddPostComponent implements OnInit {
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
-    console.log(window.location.href.split('/'))
+
+    if(window.location.href.split('/')[7] == 'edit'){
+      this.isEdit = true;
+    }
 
     // learn post and types
     if(window.location.href.split('/')[4] == 'learn') {
@@ -58,6 +62,10 @@ export class AddPostComponent implements OnInit {
       } else if(window.location.href.split('/')[6] == 'monetary'){
         this.postType = 'monetary';
       }
+    }
+
+    if(this.isEdit){
+      this.editPost();
     }
 
   }
@@ -119,18 +127,46 @@ export class AddPostComponent implements OnInit {
   }
 
   send(){
-    // send to news api
-    if(this.Type == 'news') {
-      this.http.postٔNews(this.postData).subscribe((data) => {
+    if(!this.isEdit) {
+      // send to news api
+      if(this.Type == 'news') {
+        this.http.postٔNews(this.postData).subscribe((data) => {
+          console.log(data);
+        });
+      // send to learn api
+      } else if(this.Type == 'learn') {
+        this.http.postEducation(this.postData).subscribe((data) => {
+          console.log(data);
+        });
+      // send to analysis api
+      } else if(this.Type == 'analysis'){}
+
+    } else if(this.isEdit){
+
+      if(this.Type == 'news') {
+        this.http.putNews(this.postData).subscribe((data) => {
+          console.log(data);
+        });
+
+      } else if(this.Type == 'learn') {
+        this.http.putEducation(this.postData).subscribe((data) => {
+          console.log(data);
+        });
+
+      } else if(this.Type == 'analysis'){}
+    }
+  }
+
+  editPost() {
+    if(this.Type == 'learn') {
+      this.http.getAdminEducations(this.postData).subscribe((data) => {
         console.log(data);
       });
-    // send to learn api
-    } else if(this.Type == 'learn') {
-      this.http.postEducation(this.postData).subscribe((data) => {
+    } else if(this.Type == 'news'){
+      this.http.getAdminNews(this.postData).subscribe((data) => {
         console.log(data);
       });
-    // send to analysis api
-    } else if(this.Type == 'analysis'){}
+    } else if(this.Type == 'analysis') {}
   }
 
 }
