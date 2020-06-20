@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog'
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -77,7 +78,8 @@ import { ListItemsComponent } from './list-items/list-items.component';
     HighchartsChartModule,
     MatTabsModule,
     CKEditorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class PagesModule { }
