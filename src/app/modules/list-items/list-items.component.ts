@@ -43,4 +43,8 @@ export class ListItemsComponent implements OnInit {
     } else if(this.Type == 'analysis'){}
   }
 
+  deletePost(){
+
+  }
+
 }

@@ -14,15 +14,16 @@ export class AddPostComponent implements OnInit {
   imageSrc: any = '';
   isEdit: boolean = false;
 
-  mainTitle;
-  mainImage;
-  ckeditorContent = "";
-  mainDesc;
-  mainPrice;
-  mainVideo;
-  mainFile;
+  mainTitle: string = "";
+  mainImage: any = "";
+  ckeditorContent: string = "";
+  mainDesc: string = "";
+  mainPrice: string = "";
+  mainVideo: any = "";
+  mainFile: any = "";
 
   postData;
+  postId;
   Type: string;
   postType: string;
 
@@ -127,6 +128,7 @@ export class AddPostComponent implements OnInit {
   }
 
   send(){
+    // if it is not edit do the post
     if(!this.isEdit) {
       // send to news api
       if(this.Type == 'news') {
@@ -141,15 +143,16 @@ export class AddPostComponent implements OnInit {
       // send to analysis api
       } else if(this.Type == 'analysis'){}
 
+      // if it is edit put the post
     } else if(this.isEdit){
 
       if(this.Type == 'news') {
-        this.http.putNews(this.postData).subscribe((data) => {
+        this.http.putNews(this.postData,this.postId).subscribe((data) => {
           console.log(data);
         });
 
       } else if(this.Type == 'learn') {
-        this.http.putEducation(this.postData).subscribe((data) => {
+        this.http.putEducation(this.postData,this.postId).subscribe((data) => {
           console.log(data);
         });
 
