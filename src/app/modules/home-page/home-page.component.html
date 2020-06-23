@@ -9,15 +9,13 @@
         اخبار
         <a href="/news">مشاهده بیشتر</a>
       </h1>
-      <mat-card class="main-news">
-        <a href="/news/1">
-          <img src="../../../assets/528629_169.jpg" alt="Photo of a Shiba Inu">
+      <mat-card class="main-news" *ngFor="let item of mainNews">
+        <a href="/news/{{item.id}}">
+          <img src="{{item.image}}" alt="Photo of a Shiba Inu">
         </a>
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            {{item.description}}
           </p>
         </mat-card-content>
       </mat-card>
@@ -69,65 +67,13 @@
 
     <!-- sub news mat card  -->
 
-    <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-      <a href="/news/id">
+    <div class="col-lg-2 col-md-6 col-sm-6 col-12" *ngFor="let item of subNews">
+      <a href="/news/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image [src]="item.image != '' ? item.image : 'https://material.angular.io/assets/img/examples/shiba2.jpg'">
           <mat-card-content>
             <p>
-              The Shiba Inu is the smallest of the six original and
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-      <a href="/news/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-      <a href="/news/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-      <a href="/news/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-2 col-md-6 col-sm-6 col-12">
-      <a href="/news/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and
+              {{item.description}}
             </p>
           </mat-card-content>
         </mat-card>

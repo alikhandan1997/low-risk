@@ -32,6 +32,12 @@ export class HomePageComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   apiData: string = '';
 
+  mainNews = [];
+  subNews = [];
+
+  mainEducation = [];
+  subEducation = [];
+
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
@@ -40,10 +46,17 @@ export class HomePageComponent implements OnInit {
 
   getData() {
     this.http.getNews(this.apiData).subscribe((data)=> {
-      console.log(data);
+      this.mainNews.push(data['result'][4]);
+      for(let i = 0; i < data['result'].length-1 ; i++) {
+        this.subNews.push(data['result'][i])
+      }
     });
     this.http.getEducations(this.apiData).subscribe((data) => {
-      console.log(data);
+      console.log(data)
+      // this.mainEducation.push(data['result'][4]);
+      // for(let i = 0; i < data['result'].length-1 ; i++) {
+      //   this.subEducation.push(data['result'][i])
+      // }
     });
   }
 
