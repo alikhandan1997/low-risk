@@ -59,7 +59,6 @@ export class ServicesService {
   getNews(data): Observable<Object> {
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
-      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     let options = {
       headers: httpHeaders
@@ -71,7 +70,6 @@ export class ServicesService {
   getEducations(data): Observable<Object> {
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
-      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     let options = {
       headers: httpHeaders
@@ -123,7 +121,6 @@ export class ServicesService {
   postCaptcha(): Observable<Object>{
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
-      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     let options = {
       headers: httpHeaders
