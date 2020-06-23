@@ -123,13 +123,24 @@ export class AddPostComponent implements OnInit {
   }
 
   loadData() {
-      console.log("ckeditor filling data")
+    console.log("ckeditor filling data")
+    if(this.Type == 'learn'){
+      this.postData = {
+        title: this.mainTitle,
+        image: this.mainImage,
+        content: this.mainDesc,
+        price: this.mainPrice,
+        video: this.mainVideo,
+        file: this.mainFile
+      }
+    } else if(this.Type == 'news') {
       this.postData = {
         title: this.mainTitle,
         description: this.mainDesc,
         image: this.mainImage,
         content: this.ckeditorContent
       }
+    }
   }
 
   fillData() {
