@@ -18,9 +18,9 @@ export class AddPostComponent implements OnInit {
   mainImage: any = "";
   ckeditorContent: string = "";
   mainDesc: string = "";
-  mainPrice: string = "";
-  mainVideo: any = "";
-  mainFile: any = "";
+  mainPrice: any = 0;
+  mainVideo: any = null;
+  mainFile: any = null;
 
   postData;
   postId;
@@ -39,39 +39,51 @@ export class AddPostComponent implements OnInit {
 
     // learn post and types
     if(window.location.href.split('/')[4] == 'learn') {
+      console.log("it is learn")
       this.Type = 'learn';
       if(window.location.href.split('/')[6] == 'file'){
+        console.log("learn file")
         this.postType = 'file';
       } else if(window.location.href.split('/')[6] == 'film'){
+        console.log("learn film")
         this.postType = 'film';
       } else if(window.location.href.split('/')[6] == 'article') {
+        console.log("learn article")
         this.postType = 'article';
       }
     // news post and types
     } else if(window.location.href.split('/')[4] == 'news'){
+      console.log("it is news")
       this.Type = 'news';
       if(window.location.href.split('/')[6] == 'film'){
+        console.log("news film")
         this.postType = 'film';
       } else if(window.location.href.split('/')[6] == 'article') {
+        console.log("news article")
         this.postType = 'article';
       }
     // analysis post and types
     } else if(window.location.href.split('/')[4] == 'analysis') {
+      console.log("it is analysis")
       this.Type = 'analysis';
       if(window.location.href.split('/')[6] == 'free'){
+        console.log("analysis free")
         this.postType = 'free';
       } else if(window.location.href.split('/')[6] == 'monetary'){
+        console.log("analysis monetry")
         this.postType = 'monetary';
       }
     }
 
     if(this.isEdit){
+      console.log("is edit")
       this.editPost();
     }
 
   }
 
   onReady(eventData) {
+    console.log("ckeditor image uploader")
     eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
       console.log(btoa(loader.file));
       return new UploadAdapter(loader);
@@ -79,6 +91,8 @@ export class AddPostComponent implements OnInit {
   }
 
   readURL(event: Event): void {
+
+    console.log("main image function")
 
     if ((<HTMLInputElement>event.target).files && (<HTMLInputElement>event.target).files[0]) {
         const file = (<HTMLInputElement>event.target).files[0];
@@ -92,6 +106,7 @@ export class AddPostComponent implements OnInit {
   }
 
   readFile(event: Event, fileType: string): void {
+    console.log(fileType ,"uploader function")
 
     if ((<HTMLInputElement>event.target).files && (<HTMLInputElement>event.target).files[0]) {
       const file = (<HTMLInputElement>event.target).files[0];
@@ -108,37 +123,46 @@ export class AddPostComponent implements OnInit {
   }
 
   loadData() {
-    if(this.Type == 'news') {
+      console.log("ckeditor filling data")
       this.postData = {
         title: this.mainTitle,
         description: this.mainDesc,
         image: this.mainImage,
         content: this.ckeditorContent
       }
-    } else if(this.Type == 'learn') {
+  }
+
+  fillData() {
+    console.log("posts without ckeditor")
+    if(this.Type == 'learn' && this.postType != "article") {
       this.postData = {
         title: this.mainTitle,
         image: this.mainImage,
-        content: this.ckeditorContent,
+        content: this.mainDesc,
         price: this.mainPrice,
         video: this.mainVideo,
         file: this.mainFile
       }
-    } else if(this.Type == 'analysis') {}
+    } else if(this.Type == 'news' && this.postType != "article") {}
   }
 
   send(){
+    console.log("sending data")
+    this.fillData();
     // if it is not edit do the post
     if(!this.isEdit) {
       // send to news api
       if(this.Type == 'news') {
+        console.log("post news")
         this.http.postٔNews(this.postData).subscribe((data) => {
           console.log(data);
+          console.log("posting news")
         });
       // send to learn api
       } else if(this.Type == 'learn') {
         this.http.postEducation(this.postData).subscribe((data) => {
           console.log(data);
+          console.log("posting education")
         });
       // send to analysis api
       } else if(this.Type == 'analysis'){}
@@ -149,11 +173,13 @@ export class AddPostComponent implements OnInit {
       if(this.Type == 'news') {
         this.http.putNews(this.postData,this.postId).subscribe((data) => {
           console.log(data);
+          console.log("editing news")
         });
 
       } else if(this.Type == 'learn') {
         this.http.putEducation(this.postData,this.postId).subscribe((data) => {
           console.log(data);
+          console.log("editing education")
         });
 
       } else if(this.Type == 'analysis'){}
@@ -164,10 +190,12 @@ export class AddPostComponent implements OnInit {
     if(this.Type == 'learn') {
       this.http.getAdminEducations(this.postData).subscribe((data) => {
         console.log(data);
+        console.log("get education post for edit")
       });
     } else if(this.Type == 'news'){
       this.http.getAdminNews(this.postData).subscribe((data) => {
         console.log(data);
+        console.log("get news post for edit")
       });
     } else if(this.Type == 'analysis') {}
   }
