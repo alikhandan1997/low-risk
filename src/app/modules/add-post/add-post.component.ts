@@ -11,6 +11,7 @@ import { ServicesService } from '../services/services.service';
 export class AddPostComponent implements OnInit {
 
   public Editor = ClassicEditor;
+
   imageSrc: any = '';
   isEdit: boolean = false;
 
@@ -18,7 +19,7 @@ export class AddPostComponent implements OnInit {
   mainImage: any = "";
   ckeditorContent: string = "";
   mainDesc: string = "";
-  mainPrice: any = 0;
+  mainPrice: number = 0;
   mainVideo: any = null;
   mainFile: any = null;
 
@@ -76,8 +77,23 @@ export class AddPostComponent implements OnInit {
     }
 
     if(this.isEdit){
-      console.log("is edit")
-      this.editPost();
+      console.log("is edit");
+      this.postData = window.location.href.split('/')[8];
+      if(this.Type == 'learn') {
+        this.http.getAdminEducations(this.postData).subscribe((data) => {
+          console.log(data);
+        })
+      } else if(this.Type == 'news') {
+        this.http.getAdminNews(this.postData).subscribe((data) => {
+          console.log(data);
+          this.mainTitle = data['result']['title'];
+          this.mainDesc = data['result']['description'];
+          this.mainImage = data['result']['image'];
+          this.imageSrc = data['result']['image'];
+          this.ckeditorContent = data['result']['content'];
+          this.postId = data['result']['id'];
+        })
+      }
     }
 
   }
@@ -99,7 +115,7 @@ export class AddPostComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = () => {
           this.imageSrc = reader.result;
-          this.mainImage = reader.result;
+          this.mainImage = (<HTMLInputElement>event.target).files[0];
         }
         reader.readAsDataURL(file);
     }
@@ -113,9 +129,9 @@ export class AddPostComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         if(fileType == 'video') {
-          this.mainVideo = reader.result;
+          this.mainVideo = (<HTMLInputElement>event.target).files[0];
         } else if(fileType == 'file') {
-          this.mainFile = reader.result;
+          this.mainFile = (<HTMLInputElement>event.target).files[0];
         }
       }
       reader.readAsDataURL(file);
@@ -123,13 +139,15 @@ export class AddPostComponent implements OnInit {
   }
 
   loadData() {
-      console.log("ckeditor filling data")
+    console.log("ckeditor filling data")
+    if(!this.isEdit){
       this.postData = {
         title: this.mainTitle,
         description: this.mainDesc,
         image: this.mainImage,
         content: this.ckeditorContent
       }
+    }
   }
 
   fillData() {
@@ -143,7 +161,14 @@ export class AddPostComponent implements OnInit {
         video: this.mainVideo,
         file: this.mainFile
       }
-    } else if(this.Type == 'news' && this.postType != "article") {}
+    } else if(this.Type == 'news' && this.postType != "article") {
+      this.postData = {
+        title: this.mainTitle,
+        description: this.mainDesc,
+        image: this.mainImage,
+        content: this.ckeditorContent
+      }
+    }
   }
 
   send(){
@@ -184,20 +209,6 @@ export class AddPostComponent implements OnInit {
 
       } else if(this.Type == 'analysis'){}
     }
-  }
-
-  editPost() {
-    if(this.Type == 'learn') {
-      this.http.getAdminEducations(this.postData).subscribe((data) => {
-        console.log(data);
-        console.log("get education post for edit")
-      });
-    } else if(this.Type == 'news'){
-      this.http.getAdminNews(this.postData).subscribe((data) => {
-        console.log(data);
-        console.log("get news post for edit")
-      });
-    } else if(this.Type == 'analysis') {}
   }
 
 }
