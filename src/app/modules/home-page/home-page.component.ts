@@ -39,10 +39,10 @@ export class HomePageComponent implements OnInit {
   }
 
   getData() {
-    this.http.getNews(this.apiData).subscribe((data)=> {
+    this.http.getNews(this.apiData).subscribe(data => {
       console.log(data);
     });
-    this.http.getEducations(this.apiData).subscribe((data) => {
+    this.http.getEducations(this.apiData).subscribe(data => {
       console.log(data);
     });
   }

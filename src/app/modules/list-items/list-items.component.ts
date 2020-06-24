@@ -12,6 +12,9 @@ export class ListItemsComponent implements OnInit {
   apiData: string = "";
   listDisplay: boolean = true;
 
+  newsData;
+  educationData = [];
+
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
@@ -33,18 +36,29 @@ export class ListItemsComponent implements OnInit {
 
   getData() {
     if(this.Type == 'learn') {
-      this.http.getEducations(this.apiData).subscribe((data) => {
-        console.log(data);
+      this.http.getAdminEducations(this.apiData).subscribe((data) => {
+        this.educationData.push(data['result']);
       });
+      console.log(this.educationData)
     } else if (this.Type == 'news') {
-      this.http.getNews(this.apiData).subscribe((data) => {
-        console.log(data);
+      this.http.getAdminNews(this.apiData).subscribe((data) => {
+        this.newsData = (data['result']);
       });
     } else if(this.Type == 'analysis'){}
   }
 
-  deletePost(){
-
+  deletePost(id){
+    this.apiData = id
+    if(this.Type == 'learn'){
+      this.http.deleteEducation(this.apiData).subscribe((data) => {
+        console.log(data);
+        location.reload();
+      });
+    } else if(this.Type == 'news'){
+      this.http.deleteNews(this.apiData).subscribe((data) => {
+        console.log(data);
+        location.reload();
+      });
+    } else if(this.Type == 'analysis'){}
   }
-
 }
