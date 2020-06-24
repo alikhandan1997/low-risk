@@ -23,11 +23,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.get.getAdminUsers;
-    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,options);
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
   getAdminNews(data): Observable<Object> {
@@ -35,11 +34,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.get.getAdminNews;
-    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,options);
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
   getAdminEducations(data): Observable<Object> {
@@ -47,11 +45,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.get.getAdminEducation;
-    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,options);
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
   // interface get items
@@ -60,22 +57,22 @@ export class ServicesService {
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.get.getNews;
-    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,options);
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders,
+      observe: 'body',
+      responseType: 'json'
+    });
   }
 
   getEducations(data): Observable<Object> {
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.get.getEducation;
-    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,options);
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
 // =============================== posts ========================================
@@ -85,12 +82,11 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postRegister;
-    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,options);
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{
+      headers: httpHeaders
+    });
   }
 
   postLogin(data): Observable<Object>{
@@ -98,11 +94,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.post.postLogin;
-    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,options);
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{
+      headers: httpHeaders
+    });
   }
 
   postٔNews(data): Observable<Object>{
@@ -110,23 +105,21 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postNews;
-    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,options);
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{
+      headers: httpHeaders
+    });
   }
 
   postCaptcha(): Observable<Object>{
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.post.postCaptcha;
-    return this.http.post(`${this.baseurl}${this.apiUrl}`,options);
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,{
+      headers: httpHeaders
+    });
   }
 
   postEducation(data): Observable<Object>{
@@ -134,11 +127,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.post.postEducation;
-    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,options);
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{
+      headers: httpHeaders
+    });
   }
 
   // ========================  delete ========================
@@ -148,11 +140,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.delete.deleteNews;
-    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,options);
+    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
   deleteUsers(itemId): Observable<Object> {
@@ -160,11 +151,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.delete.deleteUsers;
-    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,options);
+    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
   deleteEducation(itemId): Observable<Object> {
@@ -172,11 +162,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.delete.deleteEducation;
-    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,options);
+    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,{
+      headers: httpHeaders
+    });
   }
 
   // =========================== patchs ===========================
@@ -186,11 +175,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.patch.patchNews;
-    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,options);
+    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,{
+      headers: httpHeaders
+    });
   }
 
   patchUsers(data): Observable<Object> {
@@ -198,11 +186,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.patch.patchUsers;
-    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,options);
+    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,{
+      headers: httpHeaders
+    });
   }
 
   patchEducation(data): Observable<Object> {
@@ -210,11 +197,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.patch.patchEducation;
-    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,options);
+    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,{
+      headers: httpHeaders
+    });
   }
 
   // ============================== puts ============================
@@ -224,11 +210,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.put.putNews;
-    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,options);
+    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,{
+      headers: httpHeaders
+    });
   }
 
   putUsers(data,itemId): Observable<Object> {
@@ -236,11 +221,10 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.put.putUsers;
-    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,options);
+    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,{
+      headers: httpHeaders
+    });
   }
 
   putEducation(data,itemId): Observable<Object> {
@@ -248,10 +232,9 @@ export class ServicesService {
       .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    let options = {
-      headers: httpHeaders
-    };
     this.apiUrl = ApiMap.api.servicesApi.put.putEducation;
-    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,options);
+    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,{
+      headers: httpHeaders
+    });
   }
 }
