@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
 HC_exporting(Highcharts);
@@ -11,7 +11,8 @@ HC_treemap(Highcharts);
 @Component({
   selector: 'app-market-map',
   templateUrl: './market-map.component.html',
-  styleUrls: ['./market-map.component.scss']
+  styleUrls: ['./market-map.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MarketMapComponent implements OnInit {
 
@@ -100,8 +101,18 @@ export class MarketMapComponent implements OnInit {
       }],
       title: {
           text: 'Fruit consumption'
-      }
-  }
+      },
+        tooltip: {
+            useHTML: true,
+            pointFormatter: function() {
+                return `<div id="inTooltip_box">
+                          <div id="header">
+                            <h3>Tooltip${this.name}</h3>
+                          </div>
+                        </div>`;
+            }
+        }
+    }
   }
 
 }
