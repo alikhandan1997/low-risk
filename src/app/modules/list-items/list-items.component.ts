@@ -39,7 +39,6 @@ export class ListItemsComponent implements OnInit {
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
         this.educationData.push(data['result']);
       });
-      console.log(this.educationData)
     } else if (this.Type == 'news') {
       this.http.getAdminNews(this.apiData).subscribe((data) => {
         this.newsData = (data['result']);
