@@ -103,7 +103,6 @@ export class ServicesService {
   postٔNews(data): Observable<Object>{
 
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','multipart/form-data')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.post.postNews;
@@ -124,7 +123,6 @@ export class ServicesService {
 
   postEducation(data): Observable<Object>{
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.post.postEducation;
