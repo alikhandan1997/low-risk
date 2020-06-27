@@ -3,12 +3,17 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UploadAdapter } from './UploadAdapter';
 import { ServicesService } from '../services/services.service';
 
+import { FormBuilder, FormGroup } from "@angular/forms";
+
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent implements OnInit {
+
+  formArticle: FormGroup;
+  formFile: FormGroup;
 
   public Editor = ClassicEditor;
 
@@ -20,8 +25,8 @@ export class AddPostComponent implements OnInit {
   ckeditorContent: string = "";
   mainDesc: string = "";
   mainPrice: number = 0;
-  mainVideo: any = null;
-  mainFile: any = null;
+  mainVideo: File = null;
+  mainFile: File = null;
 
   postData;
   postId;
@@ -30,7 +35,27 @@ export class AddPostComponent implements OnInit {
 
   @ViewChild('preView') dataContainer: ElementRef;
 
-  constructor(private http: ServicesService) { }
+  constructor(
+    private http: ServicesService,
+    public fb: FormBuilder
+    ) {
+      this.formArticle = this.fb.group({
+        image: [null],
+        title: [''],
+        description: [''],
+        content: ['']
+      });
+
+      this.formFile = this.fb.group({
+        image: [null],
+        title: [''],
+        description: [''],
+        content: [''],
+        price: [0],
+        video: [null],
+        file: [null]
+      })
+    }
 
   ngOnInit(): void {
 
@@ -98,6 +123,63 @@ export class AddPostComponent implements OnInit {
 
   }
 
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageSrc = reader.result;
+    }
+    reader.readAsDataURL(file);
+    if(this.postType == "article") {
+      this.formArticle.patchValue({
+        image: file
+      });
+      this.formArticle.get('image').updateValueAndValidity();
+    } else if(this.postType == "file" || this.postType == "film"){
+      this.formFile.patchValue({
+        image: file
+      });
+      this.formFile.get('image').updateValueAndValidity();
+    }
+  }
+
+  submitForm() {
+    if(this.postType == "article") {
+
+    console.log(this.formArticle.value);
+    // filling the post api data
+    var formData: any = new FormData();
+    formData.append("title", this.formArticle.get("title").value);
+    formData.append("image", this.formArticle.get("image").value);
+    formData.append("description", this.formArticle.get("description").value);
+    formData.append("content", this.formArticle.get("content").value);
+
+    this.http.postٔNews(formData).subscribe((data) => {
+      console.log(data);
+      console.log("posting news")
+    });
+
+    } else if(this.postType == "file" || this.postType == "film") {
+
+      console.log(this.formFile.value);
+      // filling the post api data
+      var formData: any = new FormData();
+      formData.append("title", this.formFile.get("title").value);
+      formData.append("image", this.formFile.get("image").value);
+      formData.append("description", this.formFile.get("description").value);
+      formData.append("content", this.formFile.get("content").value);
+      formData.append("price", this.formFile.get("price").value);
+      formData.append("video", this.formFile.get("video").value);
+      formData.append("file", this.formFile.get("file").value);
+
+      this.http.postٔNews(formData).subscribe((data) => {
+        console.log(data);
+        console.log("posting news")
+      });
+    }
+  }
+
+  // ckeditor image uploader function
   onReady(eventData) {
     console.log("ckeditor image uploader")
     eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
@@ -106,82 +188,27 @@ export class AddPostComponent implements OnInit {
     };
   }
 
-  readURL(event): void {
+  readFile(event, fileType: string): void {
 
-    console.log("main image function")
-
-    if ((<HTMLInputElement>event.target).files && (<HTMLInputElement>event.target).files[0]) {
-        const file = (<HTMLInputElement>event.target).files[0];
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.imageSrc = reader.result;
-          this.mainImage = <File>event.target.files[0];
-          console.log(this.mainImage);
-        }
-        reader.readAsDataURL(file);
+    const file = (event.target as HTMLInputElement).files[0];
+    if(fileType == 'video') {
+      this.formFile.patchValue({
+        video: file
+      });
+      this.formFile.get('video').updateValueAndValidity();
+    } else if(fileType == 'file') {
+      this.formFile.patchValue({
+        file: file
+      });
+      this.formFile.get('file').updateValueAndValidity();
     }
-  }
 
-  readFile(event: Event, fileType: string): void {
-    console.log(fileType ,"uploader function")
-
-    if ((<HTMLInputElement>event.target).files && (<HTMLInputElement>event.target).files[0]) {
-      const file = (<HTMLInputElement>event.target).files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        if(fileType == 'video') {
-          this.mainVideo = (<HTMLInputElement>event.target).files[0];
-        } else if(fileType == 'file') {
-          this.mainFile = (<HTMLInputElement>event.target).files[0];
-        }
-      }
-      reader.readAsDataURL(file);
-    }
-  }
-
-  loadData() {
-    if(!this.isEdit){
-      console.log("ckeditor filling data")
-      // this.postData = {
-      //   title: this.mainTitle,
-      //   description: this.mainDesc,
-      //   image: this.mainImage,
-      //   content: this.ckeditorContent
-      // }
-
-      this.postData = new FormData();
-      this.postData.append('title', this.mainTitle);
-      this.postData.append('description', this.mainDesc);
-      this.postData.append('image', this.mainImage);
-      this.postData.append('content', this.ckeditorContent);
-    }
-  }
-
-  fillData() {
-    console.log("posts without ckeditor")
-    if(this.Type == 'learn' && this.postType != "article") {
-      this.postData = {
-        title: this.mainTitle,
-        image: this.mainImage,
-        content: this.mainDesc,
-        price: this.mainPrice,
-        video: this.mainVideo,
-        file: this.mainFile
-      }
-    } else if(this.Type == 'news' && this.postType != "article") {
-      this.postData = {
-        title: this.mainTitle,
-        description: this.mainDesc,
-        image: this.mainImage,
-        content: this.ckeditorContent
-      }
-    }
   }
 
   send(){
     console.log("sending data")
     if(this.postType != "article"){
-      this.fillData();
+      // this.fillData();
     }
     // if it is not edit do the post
     if(!this.isEdit) {
