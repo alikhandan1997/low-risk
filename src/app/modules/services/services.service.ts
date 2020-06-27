@@ -101,11 +101,11 @@ export class ServicesService {
   }
 
   postٔNews(data): Observable<Object>{
+
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','application/json')
+      .set('Content-Type','multipart/form-data')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
-    this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postNews;
     return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{
       headers: httpHeaders

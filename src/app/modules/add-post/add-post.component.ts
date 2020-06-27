@@ -16,7 +16,7 @@ export class AddPostComponent implements OnInit {
   isEdit: boolean = false;
 
   mainTitle: string = "";
-  mainImage: any = "";
+  mainImage: File = null;
   ckeditorContent: string = "";
   mainDesc: string = "";
   mainPrice: number = 0;
@@ -106,7 +106,7 @@ export class AddPostComponent implements OnInit {
     };
   }
 
-  readURL(event: Event): void {
+  readURL(event): void {
 
     console.log("main image function")
 
@@ -115,7 +115,8 @@ export class AddPostComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = () => {
           this.imageSrc = reader.result;
-          this.mainImage = (<HTMLInputElement>event.target).files[0];
+          this.mainImage = <File>event.target.files[0];
+          console.log(this.mainImage);
         }
         reader.readAsDataURL(file);
     }
@@ -139,14 +140,20 @@ export class AddPostComponent implements OnInit {
   }
 
   loadData() {
-    console.log("ckeditor filling data")
     if(!this.isEdit){
-      this.postData = {
-        title: this.mainTitle,
-        description: this.mainDesc,
-        image: this.mainImage,
-        content: this.ckeditorContent
-      }
+      console.log("ckeditor filling data")
+      // this.postData = {
+      //   title: this.mainTitle,
+      //   description: this.mainDesc,
+      //   image: this.mainImage,
+      //   content: this.ckeditorContent
+      // }
+
+      this.postData = new FormData();
+      this.postData.append('title', this.mainTitle);
+      this.postData.append('description', this.mainDesc);
+      this.postData.append('image', this.mainImage);
+      this.postData.append('content', this.ckeditorContent);
     }
   }
 
@@ -173,12 +180,14 @@ export class AddPostComponent implements OnInit {
 
   send(){
     console.log("sending data")
-    this.fillData();
+    if(this.postType != "article"){
+      this.fillData();
+    }
     // if it is not edit do the post
     if(!this.isEdit) {
       // send to news api
       if(this.Type == 'news') {
-        console.log("post news")
+        console.log("post news",this.postData)
         this.http.postٔNews(this.postData).subscribe((data) => {
           console.log(data);
           console.log("posting news")
