@@ -12,21 +12,12 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 })
 export class AddPostComponent implements OnInit {
 
-  formArticle: FormGroup;
-  formFile: FormGroup;
+  form: FormGroup;
 
   public Editor = ClassicEditor;
 
   imageSrc: any = '';
   isEdit: boolean = false;
-
-  mainTitle: string = "";
-  mainImage: File = null;
-  ckeditorContent: string = "";
-  mainDesc: string = "";
-  mainPrice: number = 0;
-  mainVideo: File = null;
-  mainFile: File = null;
 
   postData;
   postId;
@@ -39,21 +30,14 @@ export class AddPostComponent implements OnInit {
     private http: ServicesService,
     public fb: FormBuilder
     ) {
-      this.formArticle = this.fb.group({
-        image: [null],
-        title: [''],
-        description: [''],
-        content: ['']
-      });
-
-      this.formFile = this.fb.group({
+      this.form = this.fb.group({
         image: [null],
         title: [''],
         description: [''],
         content: [''],
         price: [0],
-        video: [null],
-        file: [null]
+        video: [''],
+        file: ['']
       });
     }
 
@@ -117,17 +101,49 @@ export class AddPostComponent implements OnInit {
       if(this.Type == 'learn') {
         this.http.getAdminEducations(this.postData).subscribe((data) => {
           console.log(data);
+          const file = data['result']['image'];
+          this.imageSrc = file;
+          this.form.setValue({
+            description: data['result']['description'],
+            title: data['result']['title'],
+            image: data['result']['image'],
+            video: null,
+            file: null,
+            price: 0,
+            content: data['result']['content']
+          });
         });
 
       } else if(this.Type == 'news') {
         this.http.getAdminNews(this.postData).subscribe((data) => {
           console.log(data);
-          this.mainTitle = data['result']['title'];
-          this.mainDesc = data['result']['description'];
-          this.mainImage = data['result']['image'];
-          this.imageSrc = data['result']['image'];
-          this.ckeditorContent = data['result']['content'];
-          this.postId = data['result']['id'];
+          const file = data['result']['image'];
+          this.imageSrc = file;
+          this.form.setValue({
+            description: data['result']['description'],
+            title: data['result']['title'],
+            image: data['result']['image'],
+            video: null,
+            file: null,
+            price: 0,
+            content: data['result']['content']
+          });
+        });
+
+      } else if(this.Type == "analysis") {
+        this.http.getAdminAnalysis(this.postData).subscribe((data) => {
+          console.log(data);
+          const file = data['result']['image'];
+          this.imageSrc = file;
+          this.form.setValue({
+            description: data['result']['description'],
+            title: data['result']['title'],
+            image: data['result']['image'],
+            video: null,
+            file: null,
+            price: 0,
+            content: data['result']['content']
+          });
         });
 
       }
@@ -137,39 +153,31 @@ export class AddPostComponent implements OnInit {
 
   uploadFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({
+      image: file
+    });
+    this.form.get('image').updateValueAndValidity();
+
     const reader = new FileReader();
     reader.onload = () => {
       this.imageSrc = reader.result;
     }
     reader.readAsDataURL(file);
-    if(this.postType == "article") {
-      this.formArticle.patchValue({
-        image: file
-      });
-      this.formArticle.get('image').updateValueAndValidity();
-
-    } else if(this.postType == "file" || this.postType == "film"){
-      this.formFile.patchValue({
-        image: file
-      });
-      this.formFile.get('image').updateValueAndValidity();
-
-    }
   }
 
   readFile(event, fileType: string): void {
 
     const file = (event.target as HTMLInputElement).files[0];
     if(fileType == 'video') {
-      this.formFile.patchValue({
+      this.form.patchValue({
         video: file
       });
-      this.formFile.get('video').updateValueAndValidity();
+      this.form.get('video').updateValueAndValidity();
     } else if(fileType == 'file') {
-      this.formFile.patchValue({
+      this.form.patchValue({
         file: file
       });
-      this.formFile.get('file').updateValueAndValidity();
+      this.form.get('file').updateValueAndValidity();
     }
 
   }
@@ -184,51 +192,32 @@ export class AddPostComponent implements OnInit {
 
   submitForm() {
 
-    console.log(this.formArticle.value);
-    console.log(this.formFile.value);
-
-    var newsData: any = new FormData();
-    newsData.append("title", this.formArticle.get("title").value);
-    newsData.append("image", this.formArticle.get("image").value);
-    newsData.append("description", this.formArticle.get("description").value);
-    newsData.append("content", this.formArticle.get("content").value);
+    console.log(this.form.value);
 
     var formData: any = new FormData();
-    formData.append("title", this.formFile.get("title").value);
-    formData.append("image", this.formFile.get("image").value);
-    formData.append("description", this.formFile.get("description").value);
-    formData.append("content", this.formFile.get("content").value);
-    formData.append("price", this.formFile.get("price").value);
-    formData.append("video", this.formFile.get("video").value);
-    formData.append("file", this.formFile.get("file").value);
+    formData.append("title", this.form.get("title").value);
+    formData.append("image", this.form.get("image").value);
+    formData.append("description", this.form.get("description").value);
+    formData.append("content", this.form.get("content").value);
+    formData.append("price", this.form.get("price").value);
+    formData.append("video", this.form.get("video").value);
+    formData.append("file", this.form.get("file").value);
 
-    if(!this.isEdit){
+    if(this.isEdit){
+      if(this.Type == "news") {
+        this.http.putNews(formData,this.postId).subscribe((data) => {
+          console.log(data);
+          console.log("editing news")
+        });
 
-    } else if(this.isEdit){
-      if(this.postType == "article"){
-        if(this.Type == "news"){
-          this.http.postٔNews(formData).subscribe((data) => {
-            console.log(data);
-            console.log("posting news")
-          });
+      } else if(this.Type == "learn") {
+        this.http.putEducation(formData,this.postId).subscribe((data) => {
+          console.log(data);
+          console.log("editing education")
+        });
 
-        } else if(this.Type == "learn") {
-          this.http.postEducation(this.postData).subscribe((data) => {
-            console.log(data);
-            console.log("posting education")
-          });
-
-        } else if(this.Type == "analysis"){
-
-        }
       }
-    }
-
-    if(this.postType == "article") {
-    // filling the post api data
-
-
-    if(!this.isEdit){
+    } else if(!this.isEdit){
       if(this.Type == "news") {
         this.http.postٔNews(formData).subscribe((data) => {
           console.log(data);
@@ -236,86 +225,18 @@ export class AddPostComponent implements OnInit {
         });
 
       } else if(this.Type == "learn") {
-        this.http.postEducation(this.postData).subscribe((data) => {
+        this.http.postEducation(formData).subscribe((data) => {
+          console.log(data);
+          console.log("posting education")
+        });
+
+      } else if(this.Type == "analysis"){
+        this.http.postAnalysis(formData).subscribe((data) => {
           console.log(data);
           console.log("posting education")
         });
 
       }
-    } else if(this.isEdit) {
-      if(this.Type == "news") {
-        this.http.putNews(this.postData,this.postId).subscribe((data) => {
-          console.log(data);
-          console.log("editing news")
-        });
-
-      } else if(this.Type == "learn") {
-        this.http.putEducation(this.postData,this.postId).subscribe((data) => {
-          console.log(data);
-          console.log("editing education")
-        });
-
-      }
-    }
-
-    } else if(this.postType == "file" || this.postType == "film") {
-
-      console.log(this.formFile.value);
-      // filling the post api data
-
-
-      this.http.postٔNews(formData).subscribe((data) => {
-        console.log(data);
-        console.log("posting news")
-      });
-
-    }
-  }
-
-  // ckeditor image uploader function
-
-
-
-
-  send(){
-    console.log("sending data")
-    if(this.postType != "article"){
-      // this.fillData();
-    }
-    // if it is not edit do the post
-    if(!this.isEdit) {
-      // send to news api
-      if(this.Type == 'news') {
-        console.log("post news",this.postData)
-        this.http.postٔNews(this.postData).subscribe((data) => {
-          console.log(data);
-          console.log("posting news")
-        });
-      // send to learn api
-      } else if(this.Type == 'learn') {
-        this.http.postEducation(this.postData).subscribe((data) => {
-          console.log(data);
-          console.log("posting education")
-        });
-      // send to analysis api
-      } else if(this.Type == 'analysis'){}
-
-      // if it is edit put the post
-    } else if(this.isEdit){
-
-      if(this.Type == 'news') {
-        this.http.putNews(this.postData,this.postId).subscribe((data) => {
-          console.log(data);
-          console.log("editing news")
-        });
-
-      } else if(this.Type == 'learn') {
-        this.http.putEducation(this.postData,this.postId).subscribe((data) => {
-          console.log(data);
-          console.log("editing education")
-        });
-
-      } else if(this.Type == 'analysis'){}
     }
   }
 

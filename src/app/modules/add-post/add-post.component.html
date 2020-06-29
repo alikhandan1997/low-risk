@@ -4,9 +4,8 @@
     <div class="col-lg-12">
 
       <form
-        [formGroup]="formArticle"
-        (ngSubmit)="submitForm()"
-        *ngIf="postType == 'article' || Type == 'analysis' || isEdit">
+        [formGroup]="form"
+        (ngSubmit)="submitForm()">
         <div class="row">
 
           <div class="col-lg-3">
@@ -37,61 +36,12 @@
             <h2>پست خود را ایجاد نمایید</h2>
             <div class="editor_box">
               <ckeditor
+                *ngIf="postType == 'article' || isEdit"
                 [editor]="Editor"
                 (ready)="onReady($event)"
                 formControlName="content"
                 ></ckeditor>
             </div>
-          </div>
-
-          <div class="col-lg-3" *ngIf="postType == 'film'">
-            <div class="video_input">
-              <h3>ویدئو خود را انتخاب نمایید</h3>
-              <input type='file' name="video" (change)="readFile($event, 'video');" />
-            </div>
-          </div>
-
-          <div class="col-lg-3" *ngIf="postType == 'file'">
-            <div class="video_input">
-              <h3>فایل خود را انتخاب نمایید</h3>
-              <input type='file' name="file" (change)="readFile($event, 'file');" />
-            </div>
-          </div>
-
-          <div class="col-lg-12">
-            <button mat-raised-button color="primary">ذخیره اطلاعات</button>
-          </div>
-
-        </div>
-      </form>
-
-      <!-- ====================================================================  -->
-
-      <form [formGroup]="formFile" (ngSubmit)="submitForm()" *ngIf="postType != 'article'">
-        <div class="row">
-
-          <div class="col-lg-3">
-            <h3>عکس موضوع را انتخاب کنید</h3>
-            <input type='file' name="image" (change)="uploadFile($event)"/>
-          </div>
-          <div class="col-lg-9"></div><br>
-
-          <div class="col-lg-4 image_pre" *ngIf="imageSrc != ''">
-            <p style="text-align: right;">
-              <img [src]="imageSrc" *ngIf="imageSrc != '' "/>
-            </p>
-          </div>
-          <div class="col-lg-9"></div><br>
-
-          <div class="col-lg-4">
-            <h3>عنوان پست را انتخاب کنید</h3>
-            <input type="text" name="title" formControlName="title">
-          </div>
-          <div class="col-lg-9"></div><br>
-
-          <div class="col-lg-9">
-            <h3>خلاصه ای از پست را وارد نمایید</h3>
-            <textarea name="description" formControlName="description" cols="30" rows="5" style="width: 100%;"></textarea>
           </div>
 
           <div class="col-lg-3" *ngIf="postType == 'film'">
