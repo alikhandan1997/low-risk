@@ -32,6 +32,15 @@ export class HomePageComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   apiData: string = '';
 
+  mainNews = [];
+  subNews = [];
+
+  mainLearn = [];
+  subLearn = [];
+
+  analysis = [];
+  videoList = [];
+
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
