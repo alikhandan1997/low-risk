@@ -1,0 +1,25 @@
+<div>
+  <h1>آیا این پست حذف گردد؟</h1>
+</div>
+<mat-card class="example-card">
+  <a>
+    <img mat-card-image [src]="data.data.image" alt="Photo of a Shiba Inu">
+  </a>
+  <mat-card-content>
+    <h3>
+      {{data.data.title}}
+    </h3>
+    <p>
+      {{data.data.description}}
+    </p>
+  </mat-card-content>
+  <a>
+    <button mat-raised-button color="primary" title="بازگشت" matDialogClose>
+      بازگشت
+    </button>
+  </a>
+  <button mat-raised-button color="warn" title="حذف" style="float: right;" (click)="delete()">
+    حذف پست
+  </button>
+</mat-card>
+
