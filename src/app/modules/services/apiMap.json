@@ -6,30 +6,36 @@
             "getAdminUsers": "/api/account/users/",
             "getAdminNews": "/api/posts/news/",
             "getAdminEducation": "/api/posts/education/",
+            "getAdminAnalysis": "/api/posts/analysis/",
             "getEducation": "/api/interface/posts/education/",
-            "getNews": "/api/interface/posts/news/"
+            "getNews": "/api/interface/posts/news/",
+            "getAnalysis": "/api/interface/posts/analysis/"
           },
           "post": {
             "postRegister": "/api/account/register/",
             "postLogin": "/api/account/login/",
             "postNews": "/api/posts/news/",
             "postEducation": "/api/posts/education/",
+            "postAnalysis": "/api/posts/analysis/",
             "postCaptcha": "/api/utils/captcha/"
           },
           "delete": {
             "deleteNews": "/api/posts/news/",
             "deleteUsers": "/api/account/users/",
-            "deleteEducation": "/api/posts/education/"
+            "deleteEducation": "/api/posts/education/",
+            "deleteAnalysis": "/api/posts/analysis/"
           },
           "patch": {
             "patchNews": "/api/posts/news/",
             "patchUsers": "/api/account/users/",
-            "patchEducation": "/api/posts/education/"
+            "patchEducation": "/api/posts/education/",
+            "patchAnalysis": "/api/posts/analysis/"
           },
           "put": {
             "putNews": "/api/posts/news/",
             "putUsers": "/api/account/users/",
-            "putEducation": "/api/posts/education/"
+            "putEducation": "/api/posts/education/",
+            "putAnalysis": "/api/posts/analysis/"
           }
       }
   }
