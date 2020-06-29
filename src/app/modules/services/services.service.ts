@@ -51,6 +51,17 @@ export class ServicesService {
     });
   }
 
+  getAdminAnalysis(data): Observable<Object> {
+    let httpHeaders = new HttpHeaders()
+      .set('Content-Type','application/json')
+      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
+
+    this.apiUrl = ApiMap.api.servicesApi.get.getAdminAnalysis;
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders
+    });
+  }
+
   // interface get items
 
   getNews(data): Observable<Object> {
@@ -70,6 +81,16 @@ export class ServicesService {
       .set('Content-Type','application/json')
 
     this.apiUrl = ApiMap.api.servicesApi.get.getEducation;
+    return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
+      headers: httpHeaders
+    });
+  }
+
+  getAnalysis(data): Observable<Object> {
+    let httpHeaders = new HttpHeaders()
+      .set('Content-Type','application/json')
+
+    this.apiUrl = ApiMap.api.servicesApi.get.getAnalysis;
     return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
       headers: httpHeaders
     });
@@ -131,6 +152,16 @@ export class ServicesService {
     });
   }
 
+  postAnalysis(data): Observable<Object>{
+    let httpHeaders = new HttpHeaders()
+      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
+
+    this.apiUrl = ApiMap.api.servicesApi.post.postAnalysis;
+    return this.http.post(`${this.baseurl}${this.apiUrl}`,data,{
+      headers: httpHeaders
+    });
+  }
+
   // ========================  delete ========================
 
   deleteNews(itemId): Observable<Object> {
@@ -161,6 +192,17 @@ export class ServicesService {
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.delete.deleteEducation;
+    return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,{
+      headers: httpHeaders
+    });
+  }
+
+  deleteAnalysis(itemId): Observable<Object> {
+    let httpHeaders = new HttpHeaders()
+      .set('Content-Type','application/json')
+      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
+
+    this.apiUrl = ApiMap.api.servicesApi.delete.deleteAnalysis;
     return this.http.delete(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`,{
       headers: httpHeaders
     });
@@ -201,6 +243,17 @@ export class ServicesService {
     });
   }
 
+  patchAnalysis(data): Observable<Object> {
+    let httpHeaders = new HttpHeaders()
+      .set('Content-Type','application/json')
+      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
+
+    this.apiUrl = ApiMap.api.servicesApi.patch.patchAnalysis;
+    return this.http.patch(`${this.baseurl}${this.apiUrl}`, data,{
+      headers: httpHeaders
+    });
+  }
+
   // ============================== puts ============================
 
   putNews(data,itemId): Observable<Object> {
@@ -231,6 +284,17 @@ export class ServicesService {
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.put.putEducation;
+    return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,{
+      headers: httpHeaders
+    });
+  }
+
+  putAnalysis(data,itemId): Observable<Object> {
+    let httpHeaders = new HttpHeaders()
+      .set('Content-Type','application/json')
+      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
+
+    this.apiUrl = ApiMap.api.servicesApi.put.putAnalysis;
     return this.http.put(`${this.baseurl}${this.apiUrl}${itemId ? itemId + '/': ''}`, data,{
       headers: httpHeaders
     });
