@@ -258,7 +258,6 @@ export class ServicesService {
 
   putNews(data,itemId): Observable<Object> {
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.put.putNews;
@@ -269,7 +268,6 @@ export class ServicesService {
 
   putUsers(data,itemId): Observable<Object> {
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.put.putUsers;
@@ -280,7 +278,6 @@ export class ServicesService {
 
   putEducation(data,itemId): Observable<Object> {
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.put.putEducation;
@@ -291,7 +288,6 @@ export class ServicesService {
 
   putAnalysis(data,itemId): Observable<Object> {
     let httpHeaders = new HttpHeaders()
-      .set('Content-Type','application/json')
       .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.apiUrl = ApiMap.api.servicesApi.put.putAnalysis;
