@@ -54,7 +54,7 @@ export class AddPostComponent implements OnInit {
         price: [0],
         video: [null],
         file: [null]
-      })
+      });
     }
 
   ngOnInit(): void {
@@ -67,37 +67,47 @@ export class AddPostComponent implements OnInit {
     if(window.location.href.split('/')[4] == 'learn') {
       console.log("it is learn")
       this.Type = 'learn';
+
       if(window.location.href.split('/')[6] == 'file'){
         console.log("learn file")
         this.postType = 'file';
+
       } else if(window.location.href.split('/')[6] == 'film'){
         console.log("learn film")
         this.postType = 'film';
+
       } else if(window.location.href.split('/')[6] == 'article') {
         console.log("learn article")
         this.postType = 'article';
+
       }
     // news post and types
     } else if(window.location.href.split('/')[4] == 'news'){
       console.log("it is news")
       this.Type = 'news';
+
       if(window.location.href.split('/')[6] == 'film'){
         console.log("news film")
         this.postType = 'film';
+
       } else if(window.location.href.split('/')[6] == 'article') {
         console.log("news article")
         this.postType = 'article';
+
       }
     // analysis post and types
     } else if(window.location.href.split('/')[4] == 'analysis') {
       console.log("it is analysis")
       this.Type = 'analysis';
+
       if(window.location.href.split('/')[6] == 'free'){
         console.log("analysis free")
         this.postType = 'free';
+
       } else if(window.location.href.split('/')[6] == 'monetary'){
         console.log("analysis monetry")
         this.postType = 'monetary';
+
       }
     }
 
@@ -107,7 +117,8 @@ export class AddPostComponent implements OnInit {
       if(this.Type == 'learn') {
         this.http.getAdminEducations(this.postData).subscribe((data) => {
           console.log(data);
-        })
+        });
+
       } else if(this.Type == 'news') {
         this.http.getAdminNews(this.postData).subscribe((data) => {
           console.log(data);
@@ -117,7 +128,8 @@ export class AddPostComponent implements OnInit {
           this.imageSrc = data['result']['image'];
           this.ckeditorContent = data['result']['content'];
           this.postId = data['result']['id'];
-        })
+        });
+
       }
     }
 
@@ -135,57 +147,14 @@ export class AddPostComponent implements OnInit {
         image: file
       });
       this.formArticle.get('image').updateValueAndValidity();
+
     } else if(this.postType == "file" || this.postType == "film"){
       this.formFile.patchValue({
         image: file
       });
       this.formFile.get('image').updateValueAndValidity();
+
     }
-  }
-
-  submitForm() {
-    if(this.postType == "article") {
-
-    console.log(this.formArticle.value);
-    // filling the post api data
-    var formData: any = new FormData();
-    formData.append("title", this.formArticle.get("title").value);
-    formData.append("image", this.formArticle.get("image").value);
-    formData.append("description", this.formArticle.get("description").value);
-    formData.append("content", this.formArticle.get("content").value);
-
-    this.http.postٔNews(formData).subscribe((data) => {
-      console.log(data);
-      console.log("posting news")
-    });
-
-    } else if(this.postType == "file" || this.postType == "film") {
-
-      console.log(this.formFile.value);
-      // filling the post api data
-      var formData: any = new FormData();
-      formData.append("title", this.formFile.get("title").value);
-      formData.append("image", this.formFile.get("image").value);
-      formData.append("description", this.formFile.get("description").value);
-      formData.append("content", this.formFile.get("content").value);
-      formData.append("price", this.formFile.get("price").value);
-      formData.append("video", this.formFile.get("video").value);
-      formData.append("file", this.formFile.get("file").value);
-
-      this.http.postٔNews(formData).subscribe((data) => {
-        console.log(data);
-        console.log("posting news")
-      });
-    }
-  }
-
-  // ckeditor image uploader function
-  onReady(eventData) {
-    console.log("ckeditor image uploader")
-    eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      console.log(btoa(loader.file));
-      return new UploadAdapter(loader);
-    };
   }
 
   readFile(event, fileType: string): void {
@@ -204,6 +173,109 @@ export class AddPostComponent implements OnInit {
     }
 
   }
+
+  onReady(eventData) {
+    console.log("ckeditor image uploader")
+    eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      console.log(btoa(loader.file));
+      return new UploadAdapter(loader);
+    };
+  }
+
+  submitForm() {
+
+    console.log(this.formArticle.value);
+    console.log(this.formFile.value);
+
+    var newsData: any = new FormData();
+    newsData.append("title", this.formArticle.get("title").value);
+    newsData.append("image", this.formArticle.get("image").value);
+    newsData.append("description", this.formArticle.get("description").value);
+    newsData.append("content", this.formArticle.get("content").value);
+
+    var formData: any = new FormData();
+    formData.append("title", this.formFile.get("title").value);
+    formData.append("image", this.formFile.get("image").value);
+    formData.append("description", this.formFile.get("description").value);
+    formData.append("content", this.formFile.get("content").value);
+    formData.append("price", this.formFile.get("price").value);
+    formData.append("video", this.formFile.get("video").value);
+    formData.append("file", this.formFile.get("file").value);
+
+    if(!this.isEdit){
+
+    } else if(this.isEdit){
+      if(this.postType == "article"){
+        if(this.Type == "news"){
+          this.http.postٔNews(formData).subscribe((data) => {
+            console.log(data);
+            console.log("posting news")
+          });
+
+        } else if(this.Type == "learn") {
+          this.http.postEducation(this.postData).subscribe((data) => {
+            console.log(data);
+            console.log("posting education")
+          });
+
+        } else if(this.Type == "analysis"){
+
+        }
+      }
+    }
+
+    if(this.postType == "article") {
+    // filling the post api data
+
+
+    if(!this.isEdit){
+      if(this.Type == "news") {
+        this.http.postٔNews(formData).subscribe((data) => {
+          console.log(data);
+          console.log("posting news")
+        });
+
+      } else if(this.Type == "learn") {
+        this.http.postEducation(this.postData).subscribe((data) => {
+          console.log(data);
+          console.log("posting education")
+        });
+
+      }
+    } else if(this.isEdit) {
+      if(this.Type == "news") {
+        this.http.putNews(this.postData,this.postId).subscribe((data) => {
+          console.log(data);
+          console.log("editing news")
+        });
+
+      } else if(this.Type == "learn") {
+        this.http.putEducation(this.postData,this.postId).subscribe((data) => {
+          console.log(data);
+          console.log("editing education")
+        });
+
+      }
+    }
+
+    } else if(this.postType == "file" || this.postType == "film") {
+
+      console.log(this.formFile.value);
+      // filling the post api data
+
+
+      this.http.postٔNews(formData).subscribe((data) => {
+        console.log(data);
+        console.log("posting news")
+      });
+
+    }
+  }
+
+  // ckeditor image uploader function
+
+
+
 
   send(){
     console.log("sending data")
