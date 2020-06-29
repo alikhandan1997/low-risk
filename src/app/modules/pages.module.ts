@@ -36,6 +36,7 @@ import { MarketMapComponent } from './market-map/market-map.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { AnalysisDetailComponent } from './analysis-detail/analysis-detail.component';
 import { ListItemsComponent } from './list-items/list-items.component';
+import { DialogComponent } from './list-items/dialog/dialog.component';
 
 
 
@@ -57,7 +58,8 @@ import { ListItemsComponent } from './list-items/list-items.component';
     MarketMapComponent,
     AddPostComponent,
     AnalysisDetailComponent,
-    ListItemsComponent
+    ListItemsComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,
