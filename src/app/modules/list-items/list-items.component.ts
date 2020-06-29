@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services/services.service';
+import { DialogComponent } from './dialog/dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-list-items',
@@ -12,10 +14,11 @@ export class ListItemsComponent implements OnInit {
   apiData: string = "";
   listDisplay: boolean = true;
 
-  newsData;
-  educationData = [];
+  editData;
 
-  constructor(private http: ServicesService) { }
+  constructor(
+    private http: ServicesService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -37,27 +40,34 @@ export class ListItemsComponent implements OnInit {
   getData() {
     if(this.Type == 'learn') {
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
-        this.educationData.push(data['result']);
+        console.log(data);
+        this.editData = (data['result']);
       });
+
     } else if (this.Type == 'news') {
       this.http.getAdminNews(this.apiData).subscribe((data) => {
-        this.newsData = (data['result']);
+        this.editData = (data['result']);
       });
-    } else if(this.Type == 'analysis'){}
+
+    } else if(this.Type == 'analysis'){
+      this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
+        this.editData = (data['result']);
+      });
+
+    }
   }
 
-  deletePost(id){
-    this.apiData = id
-    if(this.Type == 'learn'){
-      this.http.deleteEducation(this.apiData).subscribe((data) => {
-        console.log(data);
-        location.reload();
-      });
-    } else if(this.Type == 'news'){
-      this.http.deleteNews(this.apiData).subscribe((data) => {
-        console.log(data);
-        location.reload();
-      });
-    } else if(this.Type == 'analysis'){}
+  deletePost(item){
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data:{
+        data: item,
+        type: this.Type
+      },
+      width: '350px',
+      height: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 }
