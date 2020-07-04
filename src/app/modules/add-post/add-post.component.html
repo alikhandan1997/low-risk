@@ -36,7 +36,8 @@
             <h2>پست خود را ایجاد نمایید</h2>
             <div class="editor_box">
               <ckeditor
-                *ngIf="postType == 'article' || isEdit"
+                *ngIf="postType == 'article' || isEdit || Type == 'analysis'"
+                [config]="editorConfig"
                 [editor]="Editor"
                 (ready)="onReady($event)"
                 formControlName="content"

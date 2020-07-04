@@ -15,6 +15,10 @@ export class AddPostComponent implements OnInit {
   form: FormGroup;
 
   public Editor = ClassicEditor;
+  editorConfig = {
+    placeholder: 'Type the content here!',
+
+  };
 
   imageSrc: any = '';
   isEdit: boolean = false;
@@ -23,6 +27,10 @@ export class AddPostComponent implements OnInit {
   postId;
   Type: string;
   postType: string;
+
+  imageType;
+  fileType;
+  videoType;
 
   @ViewChild('preView') dataContainer: ElementRef;
 
@@ -49,47 +57,37 @@ export class AddPostComponent implements OnInit {
 
     // learn post and types
     if(window.location.href.split('/')[4] == 'learn') {
-      console.log("it is learn")
       this.Type = 'learn';
 
       if(window.location.href.split('/')[6] == 'file'){
-        console.log("learn file")
         this.postType = 'file';
 
       } else if(window.location.href.split('/')[6] == 'film'){
-        console.log("learn film")
         this.postType = 'film';
 
       } else if(window.location.href.split('/')[6] == 'article') {
-        console.log("learn article")
         this.postType = 'article';
 
       }
     // news post and types
     } else if(window.location.href.split('/')[4] == 'news'){
-      console.log("it is news")
       this.Type = 'news';
 
       if(window.location.href.split('/')[6] == 'film'){
-        console.log("news film")
         this.postType = 'film';
 
       } else if(window.location.href.split('/')[6] == 'article') {
-        console.log("news article")
         this.postType = 'article';
 
       }
     // analysis post and types
     } else if(window.location.href.split('/')[4] == 'analysis') {
-      console.log("it is analysis")
       this.Type = 'analysis';
 
       if(window.location.href.split('/')[6] == 'free'){
-        console.log("analysis free")
         this.postType = 'free';
 
       } else if(window.location.href.split('/')[6] == 'monetary'){
-        console.log("analysis monetry")
         this.postType = 'monetary';
 
       }
@@ -100,15 +98,16 @@ export class AddPostComponent implements OnInit {
       this.postData = window.location.href.split('/')[8];
       if(this.Type == 'learn') {
         this.http.getAdminEducations(this.postData).subscribe((data) => {
-          console.log(data);
+          console.log(data,"admin education");
           const file = data['result']['image'];
           this.imageSrc = file;
+          this.postId = data['result']['id'];
           this.form.setValue({
             description: data['result']['description'],
             title: data['result']['title'],
             image: data['result']['image'],
-            video: null,
-            file: null,
+            video: data['result']['video'],
+            file:data['result']['file'],
             price: 0,
             content: data['result']['content']
           });
@@ -119,12 +118,13 @@ export class AddPostComponent implements OnInit {
           console.log(data);
           const file = data['result']['image'];
           this.imageSrc = file;
+          this.postId = data['result']['id'];
           this.form.setValue({
             description: data['result']['description'],
             title: data['result']['title'],
             image: data['result']['image'],
-            video: null,
-            file: null,
+            video: [''],
+            file: [''],
             price: 0,
             content: data['result']['content']
           });
@@ -135,12 +135,13 @@ export class AddPostComponent implements OnInit {
           console.log(data);
           const file = data['result']['image'];
           this.imageSrc = file;
+          this.postId = data['result']['id'];
           this.form.setValue({
             description: data['result']['description'],
             title: data['result']['title'],
             image: data['result']['image'],
-            video: null,
-            file: null,
+            video: [''],
+            file: [''],
             price: 0,
             content: data['result']['content']
           });
@@ -183,25 +184,40 @@ export class AddPostComponent implements OnInit {
   }
 
   onReady(eventData) {
-    console.log("ckeditor image uploader")
     eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      console.log(btoa(loader.file));
       return new UploadAdapter(loader);
     };
   }
 
   submitForm() {
 
-    console.log(this.form.value);
+    console.log(this.form.value, "from value");
+
+    this.imageType = typeof  this.form.get("image").value;
+    this.fileType = typeof  this.form.get("file").value;
+    this.videoType = typeof  this.form.get("video").value;
 
     var formData: any = new FormData();
     formData.append("title", this.form.get("title").value);
-    formData.append("image", this.form.get("image").value);
+    if(this.isEdit) {
+      if(this.imageType == 'object' && this.form.get("image").value != null) {
+        formData.append("image", this.form.get("image").value);
+      }
+      if(this.fileType == 'object' && this.form.get("file").value != null) {
+        formData.append("file", this.form.get("file").value);
+      }
+      if(this.videoType == 'object' && this.form.get("video").value != null) {
+        formData.append("video", this.form.get("video").value);
+      }
+    } else if(!this.isEdit) {
+      formData.append("image", this.form.get("image").value);
+      formData.append("file", this.form.get("file").value);
+      formData.append("video", this.form.get("video").value);
+    }
     formData.append("description", this.form.get("description").value);
     formData.append("content", this.form.get("content").value);
     formData.append("price", this.form.get("price").value);
-    formData.append("video", this.form.get("video").value);
-    formData.append("file", this.form.get("file").value);
+    formData.append("id", this.postId);
 
     if(this.isEdit){
       if(this.Type == "news") {
@@ -211,6 +227,7 @@ export class AddPostComponent implements OnInit {
         });
 
       } else if(this.Type == "learn") {
+        console.log(this.postId);
         this.http.putEducation(formData,this.postId).subscribe((data) => {
           console.log(data);
           console.log("editing education")
