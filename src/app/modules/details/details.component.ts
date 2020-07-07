@@ -9,10 +9,12 @@ import { ServicesService } from '../services/services.service';
 export class DetailsComponent implements OnInit {
 
   Type: string;
-  mainImage: string;
-  postTitle: string;
-  postLittleDescription: string;
-  postContent: string;
+  Post = [];
+  data = "";
+  // mainImage: string;
+  // postTitle: string;
+  // postLittleDescription: string;
+  // postContent: string;
   postId: string;
 
   constructor(private http: ServicesService) { }
@@ -31,11 +33,13 @@ export class DetailsComponent implements OnInit {
   getData(){
     if(this.Type == 'news'){
       this.http.getNews(this.postId).subscribe((data) => {
-        console.log(data['result']);
-        this.mainImage = data['result']['image'];
-        this.postTitle = data['result']['title'];
-        this.postLittleDescription = data['result']['description'];
-        this.postContent = data['result']['content'];
+        console.log(data);
+        this.Post.push(data['result']);
+        console.log(this.Post)
+        // this.mainImage = data['result']['image'];
+        // this.postTitle = data['result']['title'];
+        // this.postLittleDescription = data['result']['description'];
+        // this.postContent = data['result']['content'];
       });
     }
   }
