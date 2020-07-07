@@ -51,6 +51,7 @@ export class ListItemsComponent implements OnInit {
 
     } else if(this.Type == 'analysis'){
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
+        console.log(data)
         this.editData = (data['result']);
       });
 
