@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../services/services.service';
+import { ThrowStmt } from '@angular/compiler';
 
 export interface PeriodicElement {
   name: string;
@@ -48,14 +49,37 @@ export class HomePageComponent implements OnInit {
   }
 
   getData() {
+    // getting main news
+    this.apiData = "?page_size=1&last";
     this.http.getNews(this.apiData).subscribe(data => {
-      console.log(data,"news");
+      this.mainNews = data['result']['results'];
     });
+
+    // getting sub news
+    this.apiData = "?page_size=6&last";
+    this.http.getNews(this.apiData).subscribe(data => {
+      for(let i=1; i<data['result']['results'].length; i++){
+        this.subNews.push(data['result']['results'][i])
+      }
+    });
+
+    // getting main education
+    this.apiData = "?page_size=1&last";
     this.http.getEducations(this.apiData).subscribe(data => {
-      console.log(data,"education");
+      this.mainLearn = data['result']['results'];
     });
+
+    // getting sub news
+    this.apiData = "?page_size=6&last";
+    this.http.getEducations(this.apiData).subscribe(data => {
+      for(let i=1; i<data['result']['results'].length; i++){
+        this.subLearn.push(data['result']['results'][i])
+      }
+    });
+
+    this.apiData = "?page_size=4&last";
     this.http.getAnalysis(this.apiData).subscribe(data => {
-      console.log(data, "analysis");
+      this.analysis = data['result']['results'];
     });
   }
 
