@@ -233,6 +233,12 @@ export class AddPostComponent implements OnInit {
           console.log("editing education")
         });
 
+      } else if(this.Type == "analysis") {
+        console.log(this.postId);
+        this.http.putAnalysis(formData,this.postId).subscribe((data) => {
+          console.log(data);
+          console.log("editing analysis")
+        });
       }
     } else if(!this.isEdit){
       if(this.Type == "news") {
