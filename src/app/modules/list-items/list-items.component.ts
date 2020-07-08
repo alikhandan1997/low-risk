@@ -14,7 +14,7 @@ export class ListItemsComponent implements OnInit {
   apiData: string = "";
   listDisplay: boolean = true;
 
-  editData;
+  editData = [];
 
   constructor(
     private http: ServicesService,
@@ -41,18 +41,18 @@ export class ListItemsComponent implements OnInit {
     if(this.Type == 'learn') {
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
         console.log(data);
-        this.editData = (data['result']);
+        this.editData = (data['result']['results']);
       });
 
     } else if (this.Type == 'news') {
       this.http.getAdminNews(this.apiData).subscribe((data) => {
-        this.editData = (data['result']);
+        this.editData = (data['result']['results']);
       });
 
     } else if(this.Type == 'analysis'){
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
         console.log(data)
-        this.editData = (data['result']);
+        this.editData = (data['result']['results']);
       });
 
     }
