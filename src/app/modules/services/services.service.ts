@@ -70,9 +70,7 @@ export class ServicesService {
 
     this.apiUrl = ApiMap.api.servicesApi.get.getNews;
     return this.http.get(`${this.baseurl}${this.apiUrl}${data ? data + '/': ''}`,{
-      headers: httpHeaders,
-      observe: 'body',
-      responseType: 'json'
+      headers: httpHeaders
     });
   }
 
