@@ -115,7 +115,7 @@ export class AddPostComponent implements OnInit {
 
       } else if(this.Type == 'news') {
         this.http.getAdminNews(this.postData).subscribe((data) => {
-          console.log(data);
+          console.log(data['result']['content']);
           const file = data['result']['image'];
           this.imageSrc = file;
           this.postId = data['result']['id'];
@@ -191,7 +191,7 @@ export class AddPostComponent implements OnInit {
 
   submitForm() {
 
-    console.log(this.form.value, "from value");
+    console.log(this.form.get("content").value, "from value");
 
     this.imageType = typeof  this.form.get("image").value;
     this.fileType = typeof  this.form.get("file").value;
