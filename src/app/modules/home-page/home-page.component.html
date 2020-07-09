@@ -10,7 +10,7 @@
         <a href="/news">مشاهده بیشتر</a>
       </h1>
       <mat-card class="main-news">
-        <a href="/news/{{item.id}}">
+        <a href="/news/article/{{item.id}}">
           <img src="{{item.image}}" alt="{{item.title}}">
         </a>
         <mat-card-content>
@@ -68,7 +68,7 @@
     <!-- sub news mat card  -->
 
     <div class="col-lg-2 col-md-6 col-sm-6 col-12" *ngFor="let item of subNews">
-      <a href="/news/{{item.id}}">
+      <a href="/news/article/{{item.id}}">
         <mat-card class="example-card">
           <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
@@ -150,46 +150,11 @@
       </h1>
 
       <mat-list role="list">
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            sdkjsjd
+        <mat-list-item role="listitem" *ngFor="let item of learnList">
+          <a href="/learn/article/{{item.id}}">
+            {{item.title}}
           </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            Itdfgsd sdfg sddg sgsdfbem 2
-          </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            Item 3
-          </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            Item 3
-          </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            Item 3
-          </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            Item 3
-          </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item role="listitem">
-          <a href="/learn/article/id">
-            Item 3
-          </a>
+          <mat-divider style="width: 90%;margin-left: 5%;"></mat-divider>
         </mat-list-item>
       </mat-list>
     </div>

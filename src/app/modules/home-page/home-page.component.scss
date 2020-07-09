@@ -142,6 +142,13 @@ h2 {
     h1 a{
       margin-right: 50%;
     }
+
+    .example-card{
+      margin-bottom: 5%;
+      img {
+        height: 200px;
+      }
+    }
   }
 
   .sub_video{
@@ -170,6 +177,9 @@ h2 {
 
   .sub_news {
     margin-top: 10%;
+    img{
+      height: 200px;
+    }
     div{
       padding-bottom: 5%;
     }
