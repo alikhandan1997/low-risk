@@ -45,8 +45,15 @@ export class ListItemsComponent implements OnInit {
       });
 
     } else if (this.Type == 'news') {
+      console.log("news")
+      this.apiData = "?page_size=20&last"
       this.http.getAdminNews(this.apiData).subscribe((data) => {
+<<<<<<< HEAD
         this.editData = (data['result']['results']);
+=======
+        this.editData = data['result']['results'];
+        console.log(data['result'])
+>>>>>>> 0417-detailTemplate
       });
 
     } else if(this.Type == 'analysis'){

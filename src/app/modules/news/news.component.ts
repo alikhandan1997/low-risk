@@ -18,6 +18,8 @@ export class NewsComponent implements OnInit {
   isLearn: boolean = false;
   apiData: string = '';
 
+  newsData = [];
+
   ngOnInit(): void {
 
     if(window.location.href.split('/')[4] == 'film' && window.location.href.split('/').length == 5) {
@@ -40,8 +42,10 @@ export class NewsComponent implements OnInit {
   getData() {
     if(this.isNews){
       console.log("isnews");
+      this.apiData = "?page_size=4&last"
       this.http.getNews(this.apiData).subscribe((data) => {
         console.log(data);
+        this.newsData = data['result']['results']
       });
     }
     if(this.isArticle){

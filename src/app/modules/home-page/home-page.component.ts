@@ -38,6 +38,7 @@ export class HomePageComponent implements OnInit {
 
   mainLearn = [];
   subLearn = [];
+  learnList = [];
 
   analysis = [];
   videoList = [];
@@ -72,6 +73,12 @@ export class HomePageComponent implements OnInit {
 
     // getting sub news
     this.apiData = "?page_size=6&last";
+    this.http.getEducations(this.apiData).subscribe(data => {
+      console.log("list", data)
+      this.learnList = data['result']['results'];
+    });
+
+    this.apiData = "?page_size=7&last";
     this.http.getEducations(this.apiData).subscribe(data => {
       for(let i=1; i<data['result']['results'].length; i++){
         this.subLearn.push(data['result']['results'][i])

@@ -63,4 +63,53 @@
       </div>
     </div>
   </div>
+
+  <div class="row " dir="rtl">
+    <div class="col-lg-8 opinion">
+      <mat-card class="opinion_card">
+        <h1>
+          <img src="../../../assets/opinion (1).png" alt="">
+          دیدگاه شما
+        </h1>
+        <form class="example-form">
+
+          <mat-form-field appearance="fill" class="input_name">
+            <mat-label>نام</mat-label>
+            <input matInput placeholder="نام خود را وارد نمایید">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="input_email">
+            <mat-label>ایمیل</mat-label>
+            <input matInput placeholder="ایمیل خود را وارد نمایید">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="text_area">
+            <mat-label>پیام شما</mat-label>
+            <textarea rows="10" matInput placeholder="نظر خود را وارد نمایید"></textarea>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary">ارسال</button>
+
+        </form>
+      </mat-card>
+    </div>
+
+    <div class="col-lg-4 learn_list">
+      <div class="sticky-top">
+        <h1>
+          <img src="../../../assets/article_icon.png" alt="">
+          اخبار
+        </h1>
+
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let item of otherPostList">
+            <a href="/news/article/{{item.id}}">
+              {{item.title}}
+            </a>
+            <mat-divider style="width: 90%;margin-left: 5%;"></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
 </div>

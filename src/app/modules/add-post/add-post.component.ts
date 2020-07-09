@@ -17,10 +17,30 @@ export class AddPostComponent implements OnInit {
   public Editor = ClassicEditor;
   editorConfig = {
     placeholder: 'Type the content here!',
+    toolbar: [
+      'heading',
+      '|',
+      'bold',
+      'italic',
+      'link',
+      "bulletedList",
+      "numberedList",
+      "|",
+      "indent",
+      "outdent",
+      "|",
+      "blockQuote",
+      "insertTable",
+      "mediaEmbed",
+      "undo",
+      "redo"
+     ]
 
   };
 
   imageSrc: any = '';
+  imageSrc2: any = '';
+  imageSrc3: any = '';
   isEdit: boolean = false;
 
   postData;
@@ -29,6 +49,8 @@ export class AddPostComponent implements OnInit {
   postType: string;
 
   imageType;
+  imageType2;
+  imageType3;
   fileType;
   videoType;
 
@@ -40,9 +62,12 @@ export class AddPostComponent implements OnInit {
     ) {
       this.form = this.fb.group({
         image: [null],
+        image1: [null],
+        image2: [null],
         title: [''],
         description: [''],
         content: [''],
+        content1: [''],
         price: [0],
         video: [''],
         file: ['']
@@ -94,57 +119,80 @@ export class AddPostComponent implements OnInit {
     }
 
     if(this.isEdit){
-      console.log("is edit");
       this.postData = window.location.href.split('/')[8];
+      console.log("is edit" ,this.postData);
       if(this.Type == 'learn') {
         this.http.getAdminEducations(this.postData).subscribe((data) => {
           console.log(data,"admin education");
-          const file = data['result']['image'];
-          this.imageSrc = file;
+          const image = data['result']['image'];
+          this.imageSrc = image;
+          const image1 = data['result']['image1'];
+          this.imageSrc2 = image1;
+          const image2 = data['result']['image2'];
+          this.imageSrc3 = image2;
+
           this.postId = data['result']['id'];
-          this.form.setValue({
-            description: data['result']['description'],
-            title: data['result']['title'],
-            image: data['result']['image'],
-            video: data['result']['video'],
-            file:data['result']['file'],
-            price: 0,
-            content: data['result']['content']
-          });
+
+          this.form.controls['description'].setValue(data['result']['description']);
+          this.form.controls['title'].setValue(data['result']['title']);
+          this.form.controls['image'].setValue(data['result']['image']);
+          this.form.controls['image1'].setValue(data['result']['image1']);
+          this.form.controls['image2'].setValue(data['result']['image2']);
+          this.form.controls['video'].setValue(data['result']['video']);
+          this.form.controls['file'].setValue(data['result']['file']);
+          this.form.controls['price'].setValue(0);
+          this.form.controls['content'].setValue(data['result']['content']);
+          this.form.controls['content1'].setValue(data['result']['content1']);
         });
 
       } else if(this.Type == 'news') {
         this.http.getAdminNews(this.postData).subscribe((data) => {
           console.log(data);
-          const file = data['result']['image'];
-          this.imageSrc = file;
+
+          const image = data['result']['image'];
+          this.imageSrc = image;
+          const image1 = data['result']['image1'];
+          this.imageSrc2 = image1;
+          const image2 = data['result']['image2'];
+          this.imageSrc3 = image2;
+
           this.postId = data['result']['id'];
-          this.form.setValue({
-            description: data['result']['description'],
-            title: data['result']['title'],
-            image: data['result']['image'],
-            video: [''],
-            file: [''],
-            price: 0,
-            content: data['result']['content']
-          });
+
+          this.form.controls['description'].setValue(data['result']['description']);
+          this.form.controls['title'].setValue(data['result']['title']);
+          this.form.controls['image'].setValue(data['result']['image']);
+          this.form.controls['image1'].setValue(data['result']['image1']);
+          this.form.controls['image2'].setValue(data['result']['image2']);
+          this.form.controls['video'].setValue(data['result']['video']);
+          this.form.controls['file'].setValue(data['result']['file']);
+          this.form.controls['price'].setValue(0);
+          this.form.controls['content'].setValue(data['result']['content']);
+          this.form.controls['content1'].setValue(data['result']['content1']);
+
         });
 
       } else if(this.Type == "analysis") {
         this.http.getAdminAnalysis(this.postData).subscribe((data) => {
           console.log(data);
-          const file = data['result']['image'];
-          this.imageSrc = file;
+          const image = data['result']['image'];
+          this.imageSrc = image;
+          const image1 = data['result']['image1'];
+          this.imageSrc2 = image1;
+          const image2 = data['result']['image2'];
+          this.imageSrc3 = image2;
+
           this.postId = data['result']['id'];
-          this.form.setValue({
-            description: data['result']['description'],
-            title: data['result']['title'],
-            image: data['result']['image'],
-            video: [''],
-            file: [''],
-            price: 0,
-            content: data['result']['content']
-          });
+
+          this.form.controls['description'].setValue(data['result']['description']);
+          this.form.controls['title'].setValue(data['result']['title']);
+          this.form.controls['image'].setValue(data['result']['image']);
+          this.form.controls['image1'].setValue(data['result']['image1']);
+          this.form.controls['image2'].setValue(data['result']['image2']);
+          this.form.controls['video'].setValue(data['result']['video']);
+          this.form.controls['file'].setValue(data['result']['file']);
+          this.form.controls['price'].setValue(0);
+          this.form.controls['content'].setValue(data['result']['content']);
+          this.form.controls['content1'].setValue(data['result']['content1']);
         });
 
       }
@@ -152,16 +200,34 @@ export class AddPostComponent implements OnInit {
 
   }
 
-  uploadFile(event) {
+  uploadFile(event,number) {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({
-      image: file
-    });
-    this.form.get('image').updateValueAndValidity();
+    if(number == 'first') {
+      this.form.patchValue({
+        image: file
+      });
+      this.form.get('image').updateValueAndValidity();
+    } else if(number == 'second') {
+      this.form.patchValue({
+        image1: file
+      });
+      this.form.get('image1').updateValueAndValidity();
+    } else if (number == 'third') {
+      this.form.patchValue({
+        image2: file
+      });
+      this.form.get('image2').updateValueAndValidity();
+    }
 
     const reader = new FileReader();
     reader.onload = () => {
-      this.imageSrc = reader.result;
+      if(number == 'first') {
+        this.imageSrc = reader.result;
+      } else if(number == 'second'){
+        this.imageSrc2 = reader.result;
+      } else if(number == 'third') {
+        this.imageSrc3 = reader.result;
+      }
     }
     reader.readAsDataURL(file);
   }
@@ -184,16 +250,16 @@ export class AddPostComponent implements OnInit {
   }
 
   onReady(eventData) {
-    eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      return new UploadAdapter(loader);
-    };
+    // eventData.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+    //   return new UploadAdapter(loader);
+    // };
   }
 
   submitForm() {
 
-    console.log(this.form.value, "from value");
-
     this.imageType = typeof  this.form.get("image").value;
+    this.imageType2 = typeof  this.form.get("image1").value;
+    this.imageType3 = typeof  this.form.get("image2").value;
     this.fileType = typeof  this.form.get("file").value;
     this.videoType = typeof  this.form.get("video").value;
 
@@ -202,6 +268,12 @@ export class AddPostComponent implements OnInit {
     if(this.isEdit) {
       if(this.imageType == 'object' && this.form.get("image").value != null) {
         formData.append("image", this.form.get("image").value);
+      }
+      if(this.imageType2 == 'object' && this.form.get("image1").value != null) {
+        formData.append("image1", this.form.get("image1").value);
+      }
+      if(this.imageType3 == 'object' && this.form.get("image2").value != null) {
+        formData.append("image2", this.form.get("image2").value);
       }
       if(this.fileType == 'object' && this.form.get("file").value != null) {
         formData.append("file", this.form.get("file").value);
@@ -213,12 +285,19 @@ export class AddPostComponent implements OnInit {
       formData.append("image", this.form.get("image").value);
       formData.append("file", this.form.get("file").value);
       formData.append("video", this.form.get("video").value);
+      formData.append("image1", this.form.get("image1").value);
+      formData.append("image2", this.form.get("image2").value);
     }
     formData.append("description", this.form.get("description").value);
     formData.append("content", this.form.get("content").value);
+    formData.append("content1", this.form.get("content").value);
     formData.append("price", this.form.get("price").value);
     formData.append("id", this.postId);
 
+    // for (var pair of formData.entries())
+    // {
+    //   console.log(pair[0]+ ', '+ pair[1]);
+    // }
     if(this.isEdit){
       if(this.Type == "news") {
         this.http.putNews(formData,this.postId).subscribe((data) => {

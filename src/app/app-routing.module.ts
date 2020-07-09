@@ -143,8 +143,13 @@ const routes: Routes = [
         component: NewsComponent,
         children: [
           {
-            path: ':id',
-            component:DetailsComponent
+            path: 'article',
+            children: [
+              {
+                path: ':id',
+                component:DetailsComponent
+              }
+            ]
           }
         ]
       },{
