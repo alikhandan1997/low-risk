@@ -48,12 +48,8 @@ export class ListItemsComponent implements OnInit {
       console.log("news")
       this.apiData = "?page_size=20&last"
       this.http.getAdminNews(this.apiData).subscribe((data) => {
-<<<<<<< HEAD
-        this.editData = (data['result']['results']);
-=======
         this.editData = data['result']['results'];
         console.log(data['result'])
->>>>>>> 0417-detailTemplate
       });
 
     } else if(this.Type == 'analysis'){
