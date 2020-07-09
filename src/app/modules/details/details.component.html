@@ -1,6 +1,6 @@
-<div class="container" *ngFor="let item of Post">
+<div class="container">
   <div class="row" dir="rtl">
-    <div class="col-lg-8 content_box">
+    <div class="col-lg-8 col-md-12 col-sm-12 content_box" *ngFor="let item of Post">
       <div>
         <mat-card class="main-news">
           <h1>{{item.title}}</h1>
@@ -10,9 +10,24 @@
               {{item.description}}
             </p>
           </mat-card-content>
-          <div class="content_box" [innerHTML]="item.content">
-
-          </div>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card class="main-news">
+          <img src="{{item.image1}}" alt="{{item.title}}">
+          <mat-card-content>
+            <p [innerHTML]="item.content">
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card class="main-news">
+          <img src="{{item.image2}}" alt="{{item.title}}">
+          <mat-card-content>
+            <p [innerHTML]="item.content1">
+            </p>
+          </mat-card-content>
         </mat-card>
       </div>
     </div>
@@ -26,25 +41,17 @@
               مطالب مرتبط
             </h1>
           </div>
-          <div class="col-lg-12 col-md-6 col-sm-6 col-12">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the six original and
-                </p>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-lg-12 col-md-6 col-sm-6 col-12">
-            <mat-card class="example-card">
-              <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-              <mat-card-content>
-                <p>
-                  The Shiba Inu is the smallest of the six original and
-                </p>
-              </mat-card-content>
-            </mat-card>
+          <div class="col-lg-12 col-md-6 col-sm-6 col-12" *ngFor="let item of otherPost">
+            <a href="/news/article/{{item.id}}">
+              <mat-card class="example-card">
+                <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
+                <mat-card-content>
+                  <p>
+                    {{item.title}}
+                  </p>
+                </mat-card-content>
+              </mat-card>
+            </a>
           </div>
         </div>
       </div>
@@ -89,34 +96,11 @@
         </h1>
 
         <mat-list role="list">
-          <mat-list-item role="listitem">
-            <a href="/learn/article/id">
-              sdkjsjd
+          <mat-list-item role="listitem" *ngFor="let item of otherPostList">
+            <a href="/news/article/{{item.id}}">
+              {{item.title}}
             </a>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item role="listitem">
-            <a href="/learn/article/id">
-              Itdfgsd sdfg sddg sgsdfbem jkkj kj kj kj kj kj kj jk 2
-            </a>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item role="listitem">
-            <a href="/learn/article/id">
-              Item 3
-            </a>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item role="listitem">
-            <a href="/learn/article/id">
-              Item 3
-            </a>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-          <mat-list-item role="listitem">
-            <a href="/learn/article/id">
-              Item 3
-            </a>
+            <mat-divider style="width: 90%;margin-left: 5%;"></mat-divider>
           </mat-list-item>
         </mat-list>
       </div>
