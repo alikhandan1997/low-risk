@@ -41,7 +41,7 @@ export class ListItemsComponent implements OnInit {
     if(this.Type == 'learn') {
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
         console.log(data);
-        this.editData = (data['result']);
+        this.editData = (data['result']['results']);
       });
 
     } else if (this.Type == 'news') {
@@ -55,7 +55,7 @@ export class ListItemsComponent implements OnInit {
     } else if(this.Type == 'analysis'){
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
         console.log(data)
-        this.editData = (data['result']);
+        this.editData = (data['result']['results']);
       });
 
     }
