@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
   captcha_image: string;
   captcha_key: string;
 
+  userError = '';
+  passError = '';
+  captchaError = '';
+
   constructor(
     private http: ServicesService,
     public dialogRef: MatDialogRef<LoginComponent>,
@@ -57,11 +61,24 @@ export class LoginComponent implements OnInit {
     },
     error => {
       console.log(error)
-      if(error['status'] == 400 || error['status'] == 500 ) {
-        this.ngOnInit();
-        this._snackBar.open('اطلاعات اشتباه است', '', {
-          duration: 2000,
-        });
+      for(let i=0; i<error['error']['messages'].length; i++) {
+        if(error['error']['messages'][0]['code'] == "00000000") {
+          this.ngOnInit();
+          this._snackBar.open('حساب کاربری با این اطلاعات وجود ندارد', '', {
+            duration: 2000,
+          });
+        }
+        if(error['error']['messages'][i]['field'] == "non_field_errors") {
+          this.captchaError = error['error']['messages'][i]['message'];
+          this.ngOnInit();
+        }
+        if(error['error']['messages'][i]['message'] == "required") {
+          this.ngOnInit();
+          this._snackBar.open('اطلاعات را کامل وارد کتید', '', {
+            duration: 2000,
+          });
+        }
+        console.log(this.captchaError)
       }
     })
   }
