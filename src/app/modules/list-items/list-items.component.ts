@@ -39,6 +39,7 @@ export class ListItemsComponent implements OnInit {
 
   getData() {
     if(this.Type == 'learn') {
+      this.apiData = "?page_size=20&last";
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
         console.log(data);
         this.editData = (data['result']['results']);
@@ -46,13 +47,14 @@ export class ListItemsComponent implements OnInit {
 
     } else if (this.Type == 'news') {
       console.log("news")
-      this.apiData = "?page_size=20&last"
+      this.apiData = "?page_size=20&last";
       this.http.getAdminNews(this.apiData).subscribe((data) => {
         this.editData = data['result']['results'];
         console.log(data['result'])
       });
 
     } else if(this.Type == 'analysis'){
+      this.apiData = "?page_size=20&last";
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
         console.log(data)
         this.editData = (data['result']['results']);
