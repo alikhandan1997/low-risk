@@ -60,9 +60,9 @@ export class LoginComponent implements OnInit {
       }
     },
     error => {
-      console.log(error)
       for(let i=0; i<error['error']['messages'].length; i++) {
         if(error['error']['messages'][0]['code'] == "00000000") {
+          this.captchaError = '';
           this.ngOnInit();
           this._snackBar.open('حساب کاربری با این اطلاعات وجود ندارد', '', {
             duration: 2000,
@@ -73,12 +73,12 @@ export class LoginComponent implements OnInit {
           this.ngOnInit();
         }
         if(error['error']['messages'][i]['message'] == "required") {
+          this.captchaError = '';
           this.ngOnInit();
           this._snackBar.open('اطلاعات را کامل وارد کتید', '', {
             duration: 2000,
           });
         }
-        console.log(this.captchaError)
       }
     })
   }
