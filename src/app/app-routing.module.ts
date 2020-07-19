@@ -28,6 +28,10 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
+        path:'users',
+        component: TablePageComponent
+      },
+      {
         path:'learn',
         children: [
           {
