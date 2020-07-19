@@ -9,16 +9,17 @@
         اخبار
         <a href="/news">مشاهده بیشتر</a>
       </h1>
-      <mat-card class="main-news">
-        <a href="/news/article/{{item.id}}">
-          <img src="{{item.image}}" alt="{{item.title}}">
-        </a>
-        <mat-card-content>
-          <p>
-            {{item.description}}
-          </p>
-        </mat-card-content>
-      </mat-card>
+      <a href="/news/article/{{item.id}}">
+        <mat-card class="main-news">
+
+            <img src="{{item.image}}" alt="{{item.title}}">
+          <mat-card-content>
+            <p>
+              {{item.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </a>
     </div>
 
     <!-- stuck data mat table  -->
@@ -196,60 +197,20 @@
       </h1>
     </div>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <mat-card class="example-card">
-        <img class="video_image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <a href="/learn/film/id" class="play_icon">
-          <img src="../../../assets/play.png" alt="">
-        </a>
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <mat-card class="example-card">
-        <img class="video_image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <a href="/learn/film/id" class="play_icon">
-          <img src="../../../assets/play.png" alt="">
-        </a>
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <mat-card class="example-card">
-        <img class="video_image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <a href="/learn/film/id" class="play_icon">
-          <img src="../../../assets/play.png" alt="">
-        </a>
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <mat-card class="example-card">
-        <img class="video_image" mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <a href="/learn/film/id" class="play_icon">
-          <img src="../../../assets/play.png" alt="">
-        </a>
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and
-          </p>
-        </mat-card-content>
-      </mat-card>
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of videoList">
+      <a href="/learn/film/{{item.id}}" >
+        <mat-card class="example-card">
+          <img class="video_image" mat-card-image src="{{item.image}}" alt="{{item.title}}" style="height: 150px;">
+          <div class="play_icon">
+            <img src="../../../assets/play.png" alt="">
+          </div>
+          <mat-card-content>
+            <p>
+              {{item.title}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </a>
     </div>
 
   </div>

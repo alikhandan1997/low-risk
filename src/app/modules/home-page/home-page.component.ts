@@ -78,7 +78,7 @@ export class HomePageComponent implements OnInit {
       this.learnList = data['result']['results'];
     });
 
-    this.apiData = "?page_size=7&last";
+    this.apiData = "?page_size=6&last";
     this.http.getEducations(this.apiData).subscribe(data => {
       for(let i=1; i<data['result']['results'].length; i++){
         this.subLearn.push(data['result']['results'][i])
@@ -88,6 +88,13 @@ export class HomePageComponent implements OnInit {
     this.apiData = "?page_size=4&last";
     this.http.getAnalysis(this.apiData).subscribe(data => {
       this.analysis = data['result']['results'];
+    });
+
+    this.apiData = "?category=2&page_size=4&last&";
+    this.http.getEducations(this.apiData).subscribe(data => {
+      console.log(data,"video")
+      this.videoList = data['result']['results'];
+      // console.log(this.videoList)
     });
   }
 
