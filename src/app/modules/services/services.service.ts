@@ -99,7 +99,6 @@ export class ServicesService {
   postRegister(data): Observable<Object>{
     let httpHeaders = new HttpHeaders()
       .set('Content-Type','application/json')
-      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
 
     this.data = data;
     this.apiUrl = ApiMap.api.servicesApi.post.postRegister;
