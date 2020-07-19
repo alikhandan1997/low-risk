@@ -6,6 +6,16 @@
   }
 }
 
+h1,h2,h3,h4,h5 {
+  text-align: right;
+  font-family: "BKoodakBold";
+}
+
+a,p {
+  text-align: right;
+  font-family: "BKoodakBold";
+}
+
 .mat-tab-label {
   font-family: "BKoodakBold";
   font-size: 20px;
@@ -27,10 +37,20 @@ mat-divider {
 
 .news_box{
   margin-bottom: 5%;
+
+  .title {
+    margin-bottom: 1%;
+    h1 img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
   a{
     text-decoration: none;
   }
   .example-card{
+    margin-bottom: 5%;
     .little_desc:hover {
       color: rgb(17, 158, 158);
     }
@@ -46,8 +66,16 @@ mat-divider {
     text-decoration: none;
   }
   .example-card{
+    margin-bottom: 5%;
+    mat-card-content {
+      text-align: right;
+    }
     .little_desc:hover {
       color: rgb(17, 158, 158);
+    }
+
+    img {
+      height: 150px;
     }
   }
 }
@@ -71,8 +99,16 @@ mat-divider {
       height: 55px;
     }
 
+    mat-card-content {
+      text-align: right;
+    }
+
     .little_desc:hover {
       color: rgb(17, 158, 158);
+    }
+
+    img {
+      height: 150px;
     }
   }
 }
@@ -91,6 +127,42 @@ mat-divider {
   height: 55px;
 }
 
+// ===================================================================================
+// pagination
+// ===================================================================================
+
+.pagination {
+  display: inline-block;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  direction: ltr;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pagination a.active {
+  background-color: #3F51B5;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+// ====================================================================================
+// mobile size
+// ====================================================================================
+
 @media screen and (max-width:576px){
   .container .row {
     margin-top: 5%;
@@ -99,5 +171,13 @@ mat-divider {
   }
   .example-card {
     margin-bottom: 5%;
+  }
+
+  .news_box{
+    .example-card{
+      img {
+        height: 200px;
+      }
+    }
   }
 }

@@ -4,56 +4,17 @@
   <div class="row article_box" dir="rtl" *ngIf="isLearn">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12 title">
       <h1>
-        عنوان مجموعه خبر
+        مقالات آموزشی
         <a href="/learn/article">مشاهده بیشتر</a>
       </h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of learnArticle">
+      <a href="/learn/article/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
@@ -66,68 +27,20 @@
   <div class="row video_box" dir="rtl" *ngIf="isLearn">
     <div class="col-lg-12 title">
       <h1>
-        عنوان مجموعه فیلم
+        فیلم های آموزشی
         <a href="/learn/film">مشاهده بیشتر</a>
       </h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of learnFilm">
+      <a href="/learn/film/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
+          <a class="play_icon">
             <img src="../../../assets/play.png" alt="">
           </a>
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
-            <img src="../../../assets/play.png" alt="">
-          </a>
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
-            <img src="../../../assets/play.png" alt="">
-          </a>
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
-            <img src="../../../assets/play.png" alt="">
-          </a>
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
@@ -139,58 +52,30 @@
 <div class="container" *ngIf="isArticle">
   <div class="row article_box" dir="rtl">
     <div class="col-lg-12 title">
-      <h1>عنوان مجموعه خبر</h1>
+      <h1>مقالات آموزشی</h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of learnArticleList">
+      <a href="/learn/article/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
       </a>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="pagination">
+        <a (click)="getData(pageNumber - 1)">&laquo;</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
+        <a *ngFor="let item of pageSize"
+           [ngClass]="pageNumber == item ? 'active' : ''"
+           (click)="getData(item)">{{item}}</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/article/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
+        <a (click)="getData(pageNumber + 1)">&raquo;</a>
+      </div>
     </div>
   </div>
 </div>
@@ -200,68 +85,31 @@
     <div class="col-lg-12 title">
       <h1>عنوان مجموعه فیلم</h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of learnFilmList">
+      <a href="/learn/film/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
+          <a class="play_icon">
             <img src="../../../assets/play.png" alt="">
           </a>
           <mat-card-content>
             <a class="little_desc">
-                The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
       </a>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="pagination">
+        <a (click)="getData(pageNumber - 1)">&laquo;</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
-            <img src="../../../assets/play.png" alt="">
-          </a>
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
+        <a *ngFor="let item of pageSize"
+           [ngClass]="pageNumber == item ? 'active' : ''"
+           (click)="getData(item)">{{item}}</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
-            <img src="../../../assets/play.png" alt="">
-          </a>
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/learn/film/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <a href="/learn/film/id" class="play_icon">
-            <img src="../../../assets/play.png" alt="">
-          </a>
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
+        <a (click)="getData(pageNumber + 1)">&raquo;</a>
+      </div>
     </div>
   </div>
 </div>
@@ -269,7 +117,10 @@
 <div class="container" *ngIf="isNews">
   <div class="row news_box" dir="rtl">
     <div class="col-lg-12 title">
-      <h1>هاعنوان مجموعه خبر</h1>
+      <h1>
+        <img src="../../../assets/news_icon.png" alt="">
+        آخرین اخبار
+      </h1>
     </div>
     <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of newsData">
       <a href="/news/article/{{item.id}}">
@@ -282,6 +133,17 @@
           </mat-card-content>
         </mat-card>
       </a>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="pagination">
+        <a (click)="getData(pageNumber - 1)">&laquo;</a>
+
+        <a *ngFor="let item of pageSize"
+           [ngClass]="pageNumber == item ? 'active' : ''"
+           (click)="getData(item)">{{item}}</a>
+
+        <a (click)="getData(pageNumber + 1)">&raquo;</a>
+      </div>
     </div>
   </div>
 </div>
