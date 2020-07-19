@@ -20,12 +20,21 @@ export class RegisterComponent implements OnInit {
   captcha_image: string;
   captcha_key: string;
 
+  mobileError = '';
+  passwordError = '';
+  confPasswordError = '';
+  captchaError = '';
+
 
   constructor(
     private http: ServicesService,
     private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.mobileError = '';
+    this.passwordError = '';
+    this.confPasswordError = '';
+    this.captchaError = '';
     this.getCaptcha();
   }
 
@@ -50,7 +59,6 @@ export class RegisterComponent implements OnInit {
 
   postLogin(){
     this.http.postRegister(this.dataObj).subscribe((data) => {
-      console.log(data);
       if(data['status'] == 201) {
         this._snackBar.open('ثبت نام با موفقیت انجام شد', '', {
           duration: 3000,
@@ -58,7 +66,29 @@ export class RegisterComponent implements OnInit {
       }
     },
     (error) => {
-      if(error['status'] == 400 || error['status'] == 500 ) {
+      console.log(error['error']['messages'])
+      if(error['status'] == 400 ) {
+        if(error['error']['messages'][0]['code'] == '010000000') {
+          this.ngOnInit();
+          this._snackBar.open('اطلاعات را کامل وارد نمایید', '', {
+            duration: 3000,
+          });
+        } else {
+          this.ngOnInit();
+          for(let i=0; i<error['error']['messages'].length; i++) {
+            if(error['error']['messages'][i]['field'] == "mobile") {
+              this.mobileError = error['error']['messages'][i]['message'];
+            } else if(error['error']['messages'][i]['field'] == "password") {
+              this.passwordError = error['error']['messages'][i]['message'];
+            } else if(error['error']['messages'][i]['field'] == "confirm_password") {
+              this.confPasswordError = error['error']['messages'][i]['message'];
+            } else if(error['error']['messages'][i]['field'] == "captcha_value") {
+              this.captchaError = error['error']['messages'][i]['message'];
+            }
+          }
+        }
+      }
+      if(error['status'] == 401 || error['status'] == 500 ) {
         this.ngOnInit();
         this._snackBar.open('اطلاعات اشتباه است', '', {
           duration: 3000,

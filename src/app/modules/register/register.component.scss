@@ -2,6 +2,12 @@
   font-family: "BKoodakBold";
 }
 
+.error_message p {
+  text-align: right;
+  color: red;
+  margin-right: 10%;
+}
+
 .mat-simple-snackbar {
   font-family: "BKoodakBold";
   font-size: 17px;
