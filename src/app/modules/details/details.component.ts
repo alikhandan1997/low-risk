@@ -18,6 +18,8 @@ export class DetailsComponent implements OnInit {
   otherPost = [];
   otherPostList = [];
 
+  Date;
+
   constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
@@ -37,7 +39,8 @@ export class DetailsComponent implements OnInit {
       // =================================================================
 
       this.http.getNews(this.postId).subscribe((data) => {
-        console.log(data);
+        console.log(data['result']['created_at']);
+        this.Date = data['result']['created_at'];
         this.Post.push(data['result']);
       });
 

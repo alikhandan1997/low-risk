@@ -3,7 +3,14 @@
     <div class="col-lg-8 col-md-12 col-sm-12 content_box" *ngFor="let item of Post">
       <div>
         <mat-card class="main-news">
-          <h1>{{item.title}}</h1>
+          <h1>{{item.title}}
+            <br>
+            <span class="with-icon">
+              <mat-icon style="font-size: 18px;">date_range</mat-icon>{{Date | date: 'yyyy/MM/dd'}}
+              <mat-icon style="margin-right:10%;font-size: 18px;">access_time</mat-icon>{{Date | date: 'h:mm'}}
+            </span>
+          </h1>
+
           <img src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <p>
