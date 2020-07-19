@@ -1,11 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { ServicesService } from '../services/services.service';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+}
+
+export interface Users {
+  id: number;
+  username: string;
+  mobile: string;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -31,14 +38,36 @@ export class TablePageComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor() { }
+  userSource: any;
+  userColumns: string[];
+
+  apiData = '';
+
+  isUserList: boolean = false;
+  userList: Users[];
+
+  constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
+    console.log(window.location.href.split('/'))
+    if(window.location.href.split('/')[4] == "users") {
+      this.isUserList = true;
+      this.getUsers()
+    }
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.userSource.filter = filterValue.trim();
+  }
+
+  getUsers() {
+    this.http.getAdminUsers(this.apiData).subscribe((data) => {
+      this.userList = data['result'];
+      console.log(this.userList);
+      this.userSource = new MatTableDataSource(this.userList);
+      this.userColumns = ['id', 'username', 'mobile'];
+    })
   }
 
 }
