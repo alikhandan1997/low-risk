@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-analysis',
@@ -7,12 +8,26 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class AnalysisComponent implements OnInit {
+
   showShort: boolean = false;
   showMedium: boolean = false;
   showLong: boolean = false;
   showMain: boolean = false;
 
-  constructor() { }
+  apiData = '';
+
+  shortAnalysis = [];
+  mediumAnalysis = [];
+  longAnalysis = [];
+
+  mainShortAnalysis = [];
+  mainMediumAnalysis = [];
+  mainLongAnalysis = [];
+
+  pageNumber = 1;
+  pageSize;
+
+  constructor(private http: ServicesService) { }
 
   ngOnInit(): void {
 
@@ -27,9 +42,62 @@ export class AnalysisComponent implements OnInit {
     } else if(window.location.href.split('/')[4] == 'long' && window.location.href.split('/').length == 5){
       this.showLong = true;
     }
+
+    this.getData(this.pageNumber);
   }
 
-  getData() {
+  getData(pageNumber) {
+
+    // short analysis for main page
+    this.apiData = '?type=1&page_size=4&last';
+    this.http.getAnalysis(this.apiData).subscribe((data) => {
+      console.log(data);
+      this.shortAnalysis = data['result']['results'];
+    });
+
+    // medium analysis for main page
+    this.apiData = '?type=2&page_size=4&last';
+    this.http.getAnalysis(this.apiData).subscribe((data) => {
+      console.log(data);
+      this.mediumAnalysis = data['result']['results'];
+    });
+
+    // long analysis for main page
+    this.apiData = '?type=3&page_size=4&last';
+    this.http.getAnalysis(this.apiData).subscribe((data) => {
+      console.log(data);
+      this.longAnalysis = data['result']['results'];
+    });
+
+    // all short analysis for main page
+    this.apiData = '?type=1&page_size=8&last';
+    this.http.getAnalysis(this.apiData).subscribe((data) => {
+      console.log(data, 'short');
+      this.mainShortAnalysis = data['result']['results'];
+      let numb = data['result']['count'];
+      numb = numb / 8;
+      this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
+    });
+
+    // all medium analysis for main page
+    this.apiData = '?type=2&page_size=8&last';
+    this.http.getAnalysis(this.apiData).subscribe((data) => {
+      console.log(data,'medium');
+      this.mainMediumAnalysis = data['result']['results'];
+      let numb = data['result']['count'];
+      numb = numb / 8;
+      this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
+    });
+
+    // all long analysis for main page
+    this.apiData = '?type=3&page_size=8&last';
+    this.http.getAnalysis(this.apiData).subscribe((data) => {
+      console.log(data, 'long');
+      this.mainLongAnalysis = data['result']['results'];
+      let numb = data['result']['count'];
+      numb = numb / 8;
+      this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
+    });
 
   }
 

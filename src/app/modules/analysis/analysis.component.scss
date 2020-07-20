@@ -41,46 +41,52 @@ mat-divider {
   margin-bottom: 5%;
   a {
     text-decoration: none;
+    text-align: right;
   }
   .example-card{
-    .little_desc:hover {
-      color: rgb(17, 158, 158);
-    }
-  }
-}
 
-.video_box {
-  margin-bottom: 5%;
-  a{
-    text-decoration: none;
-  }
-  .example-card {
-    .play_icon img {
-      position: absolute;
-      left: 40%;
-      top: 25%;
-      width: 50px;
-      height: 50px;
-    }
-
-    .play_icon img:hover {
-      width: 55px;
-      height: 55px;
-    }
+    margin-bottom: 5%;
 
     .little_desc:hover {
       color: rgb(17, 158, 158);
     }
+
+    img {
+      height: 150px;
+    }
   }
 }
 
+// ===================================================================================
+// pagination
+// ===================================================================================
 
-.play_icon img {
-  position: absolute;
-  left: 40%;
-  top: 25%;
-  width: 50px;
-  height: 50px;
+.pagination {
+  display: inline-block;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  direction: ltr;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pagination a.active {
+  background-color: #3F51B5;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
 }
 
 .play_icon img:hover {

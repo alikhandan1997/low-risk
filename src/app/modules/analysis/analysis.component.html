@@ -9,52 +9,13 @@
         <a href="/analysis/short">مشاهده بیشتر</a>
       </h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of shortAnalysis">
+      <a href="/analysis/short/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
@@ -71,52 +32,13 @@
         <a href="/analysis/medium">مشاهده بیشتر</a>
       </h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of mediumAnalysis">
+      <a href="/analysis/medium/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
@@ -126,65 +48,25 @@
 
   <mat-divider style="margin-top:5%"></mat-divider>
 
-  <div class="row video_box" dir="rtl">
+  <div class="row article_box" dir="rtl">
     <div class="col-lg-12 title">
       <h1>
         تحلیل بلند مدت
         <a href="/analysis/long">مشاهده بیشتر</a>
       </h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of longAnalysis">
+      <a href="/analysis/long/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
       </a>
     </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
   </div>
 </div>
 
@@ -194,174 +76,90 @@
     <div class="col-lg-12 title">
       <h1>تحلیل های کوتاه مدت</h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of mainShortAnalysis">
+      <a href="/analysis/short/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
       </a>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="pagination">
+        <a (click)="getData(pageNumber - 1)">&laquo;</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
+        <a *ngFor="let item of pageSize"
+           [ngClass]="pageNumber == item ? 'active' : ''"
+           (click)="getData(item)">{{item}}</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/short/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
+        <a (click)="getData(pageNumber + 1)">&raquo;</a>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container" *ngIf="showMedium">
-  <div class="row video_box" dir="rtl">
+  <div class="row article_box" dir="rtl">
     <div class="col-lg-12 title">
       <h1>تحلیل های میان مدت</h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of mainMediumAnalysis">
+      <a href="/analysis/medium/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
       </a>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="pagination">
+        <a (click)="getData(pageNumber - 1)">&laquo;</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
+        <a *ngFor="let item of pageSize"
+           [ngClass]="pageNumber == item ? 'active' : ''"
+           (click)="getData(item)">{{item}}</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/medium/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
+        <a (click)="getData(pageNumber + 1)">&raquo;</a>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="container" *ngIf="showLong">
-  <div class="row news_box" dir="rtl">
+  <div class="row article_box" dir="rtl">
     <div class="col-lg-12 title">
       <h1>تحلیل های بلند مدت</h1>
     </div>
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
+    <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let item of mainLongAnalysis">
+      <a href="/analysis/long/{{item.id}}">
         <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <img mat-card-image src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
+              {{item.title}}
             </a>
           </mat-card-content>
         </mat-card>
       </a>
     </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="pagination">
+        <a (click)="getData(pageNumber - 1)">&laquo;</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
+        <a *ngFor="let item of pageSize"
+           [ngClass]="pageNumber == item ? 'active' : ''"
+           (click)="getData(item)">{{item}}</a>
 
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
-    </div>
-
-    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-      <a href="/analysis/long/id">
-        <mat-card class="example-card">
-          <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-          <mat-card-content>
-            <a class="little_desc">
-              The Shiba Inu is the smallest of the six original and
-            </a>
-          </mat-card-content>
-        </mat-card>
-      </a>
+        <a (click)="getData(pageNumber + 1)">&raquo;</a>
+      </div>
     </div>
   </div>
 </div>
