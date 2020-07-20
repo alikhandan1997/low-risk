@@ -15,6 +15,10 @@ export class ListItemsComponent implements OnInit {
   listDisplay: boolean = true;
 
   editData = [];
+  empty: boolean = false;
+
+  pageNumber = 1;
+  pageSize;
 
   constructor(
     private http: ServicesService,
@@ -34,30 +38,51 @@ export class ListItemsComponent implements OnInit {
       this.Type = 'analysis';
     }
 
-    this.getData();
+    this.getData(this.pageNumber);
   }
 
-  getData() {
+  getData(pageNumber) {
+
+    this.pageNumber = pageNumber;
+
     if(this.Type == 'learn') {
-      this.apiData = "?page_size=20&last";
+      this.apiData = `?page=${pageNumber}&page_size=8&last`
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
         console.log(data);
         this.editData = (data['result']['results']);
+        if(this.editData.length == 0) {
+          this.empty = true;
+        }
+        let numb = data['result']['count'];
+        numb = numb / 8;
+        this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
       });
 
     } else if (this.Type == 'news') {
       console.log("news")
-      this.apiData = "?page_size=20&last";
+      this.apiData = `?page=${pageNumber}&page_size=8&last`
       this.http.getAdminNews(this.apiData).subscribe((data) => {
         this.editData = data['result']['results'];
+        if(this.editData.length == 0) {
+          this.empty = true;
+        }
+        let numb = data['result']['count'];
+        numb = numb / 8;
+        this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
         console.log(data['result'])
       });
 
     } else if(this.Type == 'analysis'){
-      this.apiData = "?page_size=20&last";
+      this.apiData = `?page=${pageNumber}&page_size=8&last`
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
         console.log(data)
         this.editData = (data['result']['results']);
+        if(this.editData.length == 0) {
+          this.empty = true;
+        }
+        let numb = data['result']['count'];
+        numb = numb / 8;
+        this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
       });
 
     }

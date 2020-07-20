@@ -6,7 +6,7 @@
   font-family: 'Material Icons' !important;
 }
 
-h1 {
+h1,h2,h3,h4,h5,h6 {
   text-align: right;
   font-family: "BKoodakBold";
 }
@@ -30,3 +30,40 @@ button {
 mat-card {
   margin-top: 5%;
 }
+mat-card-content {
+  text-align: right;
+  font-family: "BKoodakBold";
+}
+
+// ===================================================================================
+// pagination
+// ===================================================================================
+
+.pagination {
+  display: inline-block;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  direction: ltr;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.pagination a.active {
+  background-color: #3F51B5;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
