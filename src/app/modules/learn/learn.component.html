@@ -15,7 +15,7 @@
           </div>
         </mat-card>
         <div>
-          <mat-card class="main-news">
+          <mat-card class="main-news" *ngIf="!isFilm">
             <img src="{{item.image1}}" alt="{{item.title}}">
             <mat-card-content>
               <p [innerHTML]="item.content">
@@ -24,7 +24,7 @@
           </mat-card>
         </div>
         <div>
-          <mat-card class="main-news">
+          <mat-card class="main-news" *ngIf="!isFilm">
             <img src="{{item.image2}}" alt="{{item.title}}">
             <mat-card-content>
               <p [innerHTML]="item.content1">
