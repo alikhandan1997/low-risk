@@ -46,6 +46,13 @@
             </mat-form-field>
           </div>
 
+          <div class="col-lg-9 col-md-12 col-sm-12" *ngIf="postType == 'monetary' || price != 0">
+            <br>
+            <h3>مبلغ تحلیل را وارد کنید (ریال)</h3>
+            <input type="text" name="title" formControlName="price">
+            <p *ngIf="titleError != ''" style="color:red;text-align:right;">{{titleError}}</p>
+          </div>
+
           <!-- ====================================================================  -->
 
           <div class="col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="postType == 'article' || isEdit || Type == 'analysis'">

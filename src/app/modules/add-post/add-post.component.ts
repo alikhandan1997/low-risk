@@ -67,6 +67,7 @@ export class AddPostComponent implements OnInit {
 
   titleError = '';
   descriptionError = '';
+  price: any;
 
   @ViewChild('preView') dataContainer: ElementRef;
 
@@ -223,7 +224,9 @@ export class AddPostComponent implements OnInit {
 
           this.postId = data['result']['id'];
 
-          this.analysisType = data['result']['type']
+          this.analysisType = data['result']['type'];
+
+          this.price = data['result']['type'];
 
           this.form.controls['description'].setValue(data['result']['description']);
           this.form.controls['title'].setValue(data['result']['title']);
@@ -232,7 +235,7 @@ export class AddPostComponent implements OnInit {
           this.form.controls['image2'].setValue(data['result']['image2']);
           // this.form.controls['video'].setValue(data['result']['video']);
           // this.form.controls['file'].setValue(data['result']['file']);
-          this.form.controls['price'].setValue(0);
+          this.form.controls['price'].setValue(data['result']['price']);
           this.form.controls['content'].setValue(data['result']['content']);
           this.form.controls['content1'].setValue(data['result']['content1']);
           this.form.controls['type'].setValue(data['result']['type']);
