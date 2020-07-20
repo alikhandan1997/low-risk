@@ -55,7 +55,7 @@ export class AnalysisDetailComponent implements OnInit {
     });
 
     // get news list from data
-    this.apiData = '?page_size=6&last';
+    this.apiData = '?page_size=5&last';
     this.http.getNews(this.apiData).subscribe((data) => {
       this.newList = data['result']['results'];
       console.log(this.newList)
