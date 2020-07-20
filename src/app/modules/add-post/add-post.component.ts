@@ -4,6 +4,7 @@ import { UploadAdapter } from './UploadAdapter';
 import { ServicesService } from '../services/services.service';
 
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-post',
@@ -42,6 +43,9 @@ export class AddPostComponent implements OnInit {
   imageSrc2: any = '';
   imageSrc3: any = '';
   isEdit: boolean = false;
+  isFileVideo = false;
+  isFilm: boolean = false;
+  isFile: boolean = false;
 
   postData;
   postId;
@@ -53,24 +57,37 @@ export class AddPostComponent implements OnInit {
   imageType3;
   fileType;
   videoType;
+  analysisType;
+
+  selectOptions = [
+    {value: '1', viewValue: 'کوتاه مدت'},
+    {value: '2', viewValue: 'میان مدت'},
+    {value: '3', viewValue: 'بلند مدت'}
+  ]
+
+  titleError = '';
+  descriptionError = '';
 
   @ViewChild('preView') dataContainer: ElementRef;
 
   constructor(
     private http: ServicesService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    private _snackBar: MatSnackBar
     ) {
       this.form = this.fb.group({
-        image: [null],
-        image1: [null],
-        image2: [null],
+        image: [''],
+        image1: [''],
+        image2: [''],
         title: [''],
         description: [''],
         content: [''],
         content1: [''],
         price: [0],
         video: [''],
-        file: ['']
+        file: [''],
+        category:[''],
+        type:['']
       });
     }
 
@@ -86,9 +103,11 @@ export class AddPostComponent implements OnInit {
 
       if(window.location.href.split('/')[6] == 'file'){
         this.postType = 'file';
+        this.isFileVideo = true;
 
       } else if(window.location.href.split('/')[6] == 'film'){
         this.postType = 'film';
+        this.isFileVideo = true;
 
       } else if(window.location.href.split('/')[6] == 'article') {
         this.postType = 'article';
@@ -100,6 +119,7 @@ export class AddPostComponent implements OnInit {
 
       if(window.location.href.split('/')[6] == 'film'){
         this.postType = 'film';
+        this.isFileVideo = true;
 
       } else if(window.location.href.split('/')[6] == 'article') {
         this.postType = 'article';
@@ -131,6 +151,16 @@ export class AddPostComponent implements OnInit {
           const image2 = data['result']['image2'];
           this.imageSrc3 = image2;
 
+          if(data['result']['category'] == 2 || data['result']['category'] == 3) {
+            this.isFileVideo = true;
+          }
+
+          if(data['result']['category'] == 2) {
+            this.isFilm = true;
+          } else if(data['result']['category'] == 3) {
+            this.isFile = true;
+          }
+
           this.postId = data['result']['id'];
 
           this.form.controls['description'].setValue(data['result']['description']);
@@ -138,8 +168,8 @@ export class AddPostComponent implements OnInit {
           this.form.controls['image'].setValue(data['result']['image']);
           this.form.controls['image1'].setValue(data['result']['image1']);
           this.form.controls['image2'].setValue(data['result']['image2']);
-          this.form.controls['video'].setValue(data['result']['video']);
-          this.form.controls['file'].setValue(data['result']['file']);
+          // this.form.controls['video'].setValue(data['result']['video']);
+          // this.form.controls['file'].setValue(data['result']['file']);
           this.form.controls['price'].setValue(0);
           this.form.controls['content'].setValue(data['result']['content']);
           this.form.controls['content1'].setValue(data['result']['content1']);
@@ -156,6 +186,16 @@ export class AddPostComponent implements OnInit {
           const image2 = data['result']['image2'];
           this.imageSrc3 = image2;
 
+          if(data['result']['category'] == 2 || data['result']['category'] == 3) {
+            this.isFileVideo = true;
+          }
+
+          if(data['result']['category'] == 2) {
+            this.isFilm = true;
+          } else if(data['result']['category'] == 3) {
+            this.isFile = true;
+          }
+
           this.postId = data['result']['id'];
 
           this.form.controls['description'].setValue(data['result']['description']);
@@ -163,8 +203,8 @@ export class AddPostComponent implements OnInit {
           this.form.controls['image'].setValue(data['result']['image']);
           this.form.controls['image1'].setValue(data['result']['image1']);
           this.form.controls['image2'].setValue(data['result']['image2']);
-          this.form.controls['video'].setValue(data['result']['video']);
-          this.form.controls['file'].setValue(data['result']['file']);
+          // this.form.controls['video'].setValue(data['result']['video']);
+          // this.form.controls['file'].setValue(data['result']['file']);
           this.form.controls['price'].setValue(0);
           this.form.controls['content'].setValue(data['result']['content']);
           this.form.controls['content1'].setValue(data['result']['content1']);
@@ -183,16 +223,19 @@ export class AddPostComponent implements OnInit {
 
           this.postId = data['result']['id'];
 
+          this.analysisType = data['result']['type']
+
           this.form.controls['description'].setValue(data['result']['description']);
           this.form.controls['title'].setValue(data['result']['title']);
           this.form.controls['image'].setValue(data['result']['image']);
           this.form.controls['image1'].setValue(data['result']['image1']);
           this.form.controls['image2'].setValue(data['result']['image2']);
-          this.form.controls['video'].setValue(data['result']['video']);
-          this.form.controls['file'].setValue(data['result']['file']);
+          // this.form.controls['video'].setValue(data['result']['video']);
+          // this.form.controls['file'].setValue(data['result']['file']);
           this.form.controls['price'].setValue(0);
           this.form.controls['content'].setValue(data['result']['content']);
           this.form.controls['content1'].setValue(data['result']['content1']);
+          this.form.controls['type'].setValue(data['result']['type']);
         });
 
       }
@@ -265,6 +308,12 @@ export class AddPostComponent implements OnInit {
 
     var formData: any = new FormData();
     formData.append("title", this.form.get("title").value);
+
+    if(this.Type == 'analysis') {
+      formData.append("type", this.form.get("type").value);
+      formData.append("category", 1);
+    }
+
     if(this.isEdit) {
       if(this.imageType == 'object' && this.form.get("image").value != null) {
         formData.append("image", this.form.get("image").value);
@@ -290,9 +339,18 @@ export class AddPostComponent implements OnInit {
     }
     formData.append("description", this.form.get("description").value);
     formData.append("content", this.form.get("content").value);
-    formData.append("content1", this.form.get("content").value);
+    formData.append("content1", this.form.get("content1").value);
     formData.append("price", this.form.get("price").value);
     formData.append("id", this.postId);
+    if(!this.isEdit) {
+      if(this.postType == 'article') {
+        formData.append("category", 1);
+      } else if(this.postType == 'film') {
+        formData.append("category", 2);
+      } else if(this.postType == 'file') {
+        formData.append("category", 3);
+      }
+    }
 
     // for (var pair of formData.entries())
     // {
@@ -301,40 +359,106 @@ export class AddPostComponent implements OnInit {
     if(this.isEdit){
       if(this.Type == "news") {
         this.http.putNews(formData,this.postId).subscribe((data) => {
-          console.log(data);
+          console.log(data['status']);
+          if(data['status'] == 200) {
+            this._snackBar.open('به روز رسانی با موفقیت انجام شد', '', {
+              duration: 2000,
+            });
+          }
           console.log("editing news")
+        },
+        (error) => {
+          console.log(error['error']);
+          if(error['error']['status'] == 400) {
+            for(let i=0; i < error['error']['messages'].length; i++) {
+              if(error['error']['messages'][i]['field'] == "title") {
+                this.titleError = error['error']['messages'][i]['message']
+              } else if(error['error']['messages'][i]['field'] == "description") {
+                this.descriptionError = error['error']['messages'][i]['message']
+              }
+            }
+          }
         });
 
       } else if(this.Type == "learn") {
         console.log(this.postId);
         this.http.putEducation(formData,this.postId).subscribe((data) => {
-          console.log(data);
+          console.log(data['status']);
+          if(data['status'] == 200) {
+            this._snackBar.open('به روز رسانی با موفقیت انجام شد', '', {
+              duration: 2000,
+            });
+          }
           console.log("editing education")
+        },
+        (error) => {
+          console.log(error['error']);
+          if(error['error']['status'] == 400) {
+            for(let i=0; i < error['error']['messages'].length; i++) {
+              if(error['error']['messages'][i]['field'] == "title") {
+                this.titleError = error['error']['messages'][i]['message']
+              } else if(error['error']['messages'][i]['field'] == "description") {
+                this.descriptionError = error['error']['messages'][i]['message']
+              }
+            }
+          }
         });
 
       } else if(this.Type == "analysis") {
         console.log(this.postId);
         this.http.putAnalysis(formData,this.postId).subscribe((data) => {
-          console.log(data);
+          console.log(data['status']);
+          if(data['status'] == 200) {
+            this._snackBar.open('به روز رسانی با موفقیت انجام شد', '', {
+              duration: 2000,
+            });
+          }
           console.log("editing analysis")
+        },
+        (error) => {
+          console.log(error['error']);
+          if(error['error']['status'] == 400) {
+            for(let i=0; i < error['error']['messages'].length; i++) {
+              if(error['error']['messages'][i]['field'] == "title") {
+                this.titleError = error['error']['messages'][i]['message']
+              } else if(error['error']['messages'][i]['field'] == "description") {
+                this.descriptionError = error['error']['messages'][i]['message']
+              }
+            }
+          }
         });
       }
     } else if(!this.isEdit){
       if(this.Type == "news") {
         this.http.postٔNews(formData).subscribe((data) => {
           console.log(data);
+          if(data['status'] == 201) {
+            this._snackBar.open('پست با موفقیت ثبت شد', '', {
+              duration: 2000,
+            });
+          }
           console.log("posting news")
         });
 
       } else if(this.Type == "learn") {
         this.http.postEducation(formData).subscribe((data) => {
           console.log(data);
+          if(data['status'] == 201) {
+            this._snackBar.open('پست با موفقیت ثبت شد', '', {
+              duration: 2000,
+            });
+          }
           console.log("posting education")
         });
 
       } else if(this.Type == "analysis"){
         this.http.postAnalysis(formData).subscribe((data) => {
           console.log(data);
+          if(data['status'] == 201) {
+            this._snackBar.open('پست با موفقیت ثبت شد', '', {
+              duration: 2000,
+            });
+          }
           console.log("posting education")
         });
 

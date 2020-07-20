@@ -25,12 +25,25 @@
             <br>
             <h3>عنوان پست را انتخاب کنید</h3>
             <input type="text" name="title" formControlName="title">
+            <p *ngIf="titleError != ''" style="color:red;text-align:right;">{{titleError}}</p>
           </div>
 
           <div class="col-lg-12 col-md-12 col-sm-12">
             <br>
             <h3>خلاصه ای از پست را وارد نمایید</h3>
             <textarea name="description" formControlName="description" cols="30" rows="5" style="width: 100%;"></textarea>
+            <p *ngIf="descriptionError != ''" style="color:red;text-align:right;">{{descriptionError}}</p>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12" *ngIf="Type == 'analysis'">
+            <mat-form-field appearance="fill" style="float: right;margin-top: 5%;">
+              <mat-label>نوع تحلیل</mat-label>
+              <mat-select formControlName="type">
+                <mat-option *ngFor="let item of selectOptions" [value]="isEdit ? analysisType : item.value" >
+                  {{item.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
 
           <!-- ====================================================================  -->
@@ -39,24 +52,24 @@
             <mat-divider style="margin: 5% 0 5% 0;border-top: 1px solid rgb(190, 190, 190);"></mat-divider>
           </div>
 
-          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'article' || isEdit || Type == 'analysis'">
+          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'">
             <h3>عکس دوم را انتخاب کنید</h3>
             <input type='file' name="image" (change)="uploadFile($event, 'second')"/>
           </div>
-          <div class="col-lg-9 col-md-6" *ngIf="postType == 'article' || isEdit || Type == 'analysis'"></div><br>
+          <div class="col-lg-9 col-md-6" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'"></div><br>
 
-          <div class="col-lg-4 image_pre" *ngIf="imageSrc2 != ''">
+          <div class="col-lg-4 image_pre" *ngIf="imageSrc2 != '' && !isFileVideo">
             <p style="text-align: right;">
               <img [src]="imageSrc2" *ngIf="imageSrc2 != '' "/>
             </p>
           </div>
-          <div class="col-lg-9" *ngIf="postType == 'article' || isEdit || Type == 'analysis'"></div><br>
+          <div class="col-lg-9" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'"></div><br>
 
-          <div class="col-lg-12" *ngIf="postType == 'article' || Type == 'analysis' || isEdit">
+          <div class="col-lg-12" *ngIf="postType == 'article' || Type == 'analysis' || !isFileVideo">
             <h2>قسمت اول پست را وارد کنید</h2>
             <div class="editor_box">
               <ckeditor
-                *ngIf="postType == 'article' || isEdit || Type == 'analysis'"
+                *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'"
                 [config]="editorConfig"
                 [editor]="Editor"
                 (ready)="onReady($event)"
@@ -67,28 +80,28 @@
 
           <!-- ======================================================================  -->
 
-          <div class="col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="postType == 'article' || isEdit || Type == 'analysis'">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'">
             <mat-divider style="margin: 5% 0 5% 0;border-top: 1px solid rgb(190, 190, 190);"></mat-divider>
           </div>
 
-          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'article' || isEdit || Type == 'analysis'">
+          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'">
             <h3>عکس سوم را انتخاب کنید</h3>
             <input type='file' name="image" (change)="uploadFile($event, 'third')"/>
           </div>
-          <div class="col-lg-9 col-md-6" *ngIf="postType == 'article' || isEdit || Type == 'analysis'"></div><br>
+          <div class="col-lg-9 col-md-6" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'"></div><br>
 
-          <div class="col-lg-4 image_pre" *ngIf="imageSrc3 != ''">
+          <div class="col-lg-4 image_pre" *ngIf="imageSrc3 != '' && !isFileVideo">
             <p style="text-align: right;">
               <img [src]="imageSrc3" *ngIf="imageSrc3 != '' "/>
             </p>
           </div>
-          <div class="col-lg-9" *ngIf="postType == 'article' || isEdit || Type == 'analysis'"></div><br>
+          <div class="col-lg-9" *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'"></div><br>
 
-          <div class="col-lg-12" *ngIf="postType == 'article' || Type == 'analysis' || isEdit">
+          <div class="col-lg-12" *ngIf="postType == 'article' || Type == 'analysis' || !isFileVideo">
             <h2>قسمت دوم پست را وارد کنید</h2>
             <div class="editor_box">
               <ckeditor
-                *ngIf="postType == 'article' || isEdit || Type == 'analysis'"
+                *ngIf="postType == 'article' || !isFileVideo || Type == 'analysis'"
                 [config]="editorConfig"
                 [editor]="Editor"
                 (ready)="onReady($event)"
@@ -99,14 +112,14 @@
 
           <!-- ======================================================================  -->
 
-          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'film'">
+          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'film' || isFilm">
             <div class="video_input">
               <h3>ویدئو خود را انتخاب نمایید</h3>
               <input type='file' name="video" formControlName="video" (change)="readFile($event, 'video');" />
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'file'">
+          <div class="col-lg-3 col-md-6 col-sm-12" *ngIf="postType == 'file' || isFile">
             <div class="video_input">
               <h3>فایل خود را انتخاب نمایید</h3>
               <input type='file' name="file" formControlName="file" (change)="readFile($event, 'file');" />
