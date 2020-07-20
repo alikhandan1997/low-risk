@@ -66,7 +66,14 @@ export class TablePageComponent implements OnInit {
       this.userList = data['result'];
       console.log(this.userList);
       this.userSource = new MatTableDataSource(this.userList);
-      this.userColumns = ['id', 'username', 'mobile'];
+      this.userColumns = ['id', 'username', 'mobile', 'delete'];
+    })
+  }
+
+  deleteUser(id) {
+    this.http.deleteUsers(id).subscribe((data) => {
+      console.log(data);
+      location.reload();
     })
   }
 

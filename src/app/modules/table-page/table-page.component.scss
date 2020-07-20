@@ -3,8 +3,19 @@
   margin-bottom: 5%;
 }
 
+mat-form-field{
+  font-family: "BKoodakBold";
+  mat-label {
+    font-size: 17px;
+  }
+}
+
 table {
   width: 100%;
+  th {
+    font-family: "BKoodakBold";
+    font-size: 18px;
+  }
   tr {
     text-align: right;
   }
