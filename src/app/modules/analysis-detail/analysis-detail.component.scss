@@ -6,6 +6,23 @@ h1{
   font-size: 20px;
   text-align: right;
   font-family: "BKoodakBold";
+  span{
+    font-size: 14px;
+    color: gray;
+  }
+
+  span.time {
+    margin-right: 10%;
+  }
+}
+
+.mat-icon{
+  font-family: 'Material Icons' !important;
+}
+
+.with-icon {
+  display: flex;
+  align-items: center;
 }
 
 .container {
@@ -22,15 +39,6 @@ h1{
     font-size: 30px;
     text-align: right;
     font-family: "BKoodakBold";
-  }
-
-  .sub_title{
-    text-align: right;
-    margin-bottom: 3%;
-    p{
-      display: inline;
-      padding-left: 10%;
-    }
   }
 
   img {
@@ -59,6 +67,9 @@ h1{
 
   .example-card {
     margin-bottom: 5%;
+    p{
+      text-align: right;
+    }
     img {
       max-width: 400px;
       height: 200px;
@@ -90,7 +101,7 @@ h1{
 }
 
 .opinion{
-  margin-top: 3%;
+  margin-top: 5%;
   .opinion_card{
     padding-bottom: 4%;
   }
@@ -122,6 +133,7 @@ h1{
 }
 
 .learn_list {
+  margin-bottom: 5%;
   .sticky-top {
     margin-top: 5%;
     h1 img {
@@ -132,7 +144,6 @@ h1{
   mat-list {
     margin-left: 5%;
     box-shadow: 5px 10px 18px #b9b8b8;
-    height: 360px;
     background-color: white;
     mat-divider{
       width: 90%;
