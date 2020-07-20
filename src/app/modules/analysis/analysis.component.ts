@@ -51,28 +51,24 @@ export class AnalysisComponent implements OnInit {
     // short analysis for main page
     this.apiData = '?type=1&page_size=4&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
-      console.log(data);
       this.shortAnalysis = data['result']['results'];
     });
 
     // medium analysis for main page
     this.apiData = '?type=2&page_size=4&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
-      console.log(data);
       this.mediumAnalysis = data['result']['results'];
     });
 
     // long analysis for main page
     this.apiData = '?type=3&page_size=4&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
-      console.log(data);
       this.longAnalysis = data['result']['results'];
     });
 
     // all short analysis for main page
     this.apiData = '?type=1&page_size=8&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
-      console.log(data, 'short');
       this.mainShortAnalysis = data['result']['results'];
       let numb = data['result']['count'];
       numb = numb / 8;
@@ -82,7 +78,6 @@ export class AnalysisComponent implements OnInit {
     // all medium analysis for main page
     this.apiData = '?type=2&page_size=8&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
-      console.log(data,'medium');
       this.mainMediumAnalysis = data['result']['results'];
       let numb = data['result']['count'];
       numb = numb / 8;
@@ -92,7 +87,6 @@ export class AnalysisComponent implements OnInit {
     // all long analysis for main page
     this.apiData = '?type=3&page_size=8&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
-      console.log(data, 'long');
       this.mainLongAnalysis = data['result']['results'];
       let numb = data['result']['count'];
       numb = numb / 8;
