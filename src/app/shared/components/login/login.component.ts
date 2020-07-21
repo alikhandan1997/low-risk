@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ServicesService } from 'src/app/modules/services/services.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginComponent implements OnInit {
     private http: ServicesService,
     public dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _snackBar: MatSnackBar){
+    private _snackBar: MatSnackBar,
+    private router: Router){
   }
 
   ngOnInit(): void {
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access', data['result']['access']);
         localStorage.setItem('refresh', data['result']['refresh']);
         this.dialogRef.close();
-        location.reload();
+        this.router.navigate(['admin']);
       }
     },
     error => {
