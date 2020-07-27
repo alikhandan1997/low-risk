@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
     if(localStorage.getItem('access') != null) {
       this.register = true;
     }
+    console.log(JSON.parse(localStorage.getItem('permission') || "[]"))
   }
 
   toggleSideBar() {
