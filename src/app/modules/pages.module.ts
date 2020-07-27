@@ -38,6 +38,7 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { AnalysisDetailComponent } from './analysis-detail/analysis-detail.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { DialogComponent } from './list-items/dialog/dialog.component';
+import { DialogTableComponent } from './table-page/dialog-table/dialog-table.component';
 
 
 
@@ -60,7 +61,8 @@ import { DialogComponent } from './list-items/dialog/dialog.component';
     AddPostComponent,
     AnalysisDetailComponent,
     ListItemsComponent,
-    DialogComponent
+    DialogComponent,
+    DialogTableComponent
   ],
   imports: [
     CommonModule,
