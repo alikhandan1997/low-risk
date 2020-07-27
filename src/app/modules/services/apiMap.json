@@ -3,6 +3,7 @@
       "baseUrl" : "http://lowrisk.ir",
       "servicesApi": {
           "get": {
+            "getProfile": "/api/account/profile/",
             "getAdminUsers": "/api/account/users/",
             "getAdminNews": "/api/posts/news/",
             "getAdminEducation": "/api/posts/education/",
