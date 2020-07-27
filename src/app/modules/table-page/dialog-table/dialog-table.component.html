@@ -1,0 +1,66 @@
+<!-- delete user section  -->
+
+<div class="container" dir="rtl" *ngIf="dialogType == 'deleteUser'">
+  <div class="row" *ngFor="let item of userData">
+    <div class="col-lg-12">
+      <h2>نام کاربری</h2>
+      <p>{{item.username}}</p>
+    </div>
+    <div class="col-lg-12">
+      <h2>شماره موبایل</h2>
+      <p>{{item.mobile}}</p>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 buttons">
+      <button mat-raised-button color="primary" title="بازگشت" matDialogClose>
+        بازگشت
+      </button>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 buttons">
+      <button mat-raised-button color="warn" title="حذف" (click)="deleteUser()">
+        حذف کاربر
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- edit user section  -->
+
+<!-- change password section  -->
+<div class="container" *ngIf="dialogType == 'changePassword'">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>تغییر رمز کاربر</h1>
+    </div>
+    <form class="example-form">
+      <div class="col-lg-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>رمز جدید</mat-label>
+          <input matInput placeholder="رمز را وارد نمایید">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>تکرار رمز</mat-label>
+          <input matInput placeholder="رمز را تکرار نمایید">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <button mat-raised-button color="warn" title="تغییر">
+          اعمال تغییرات
+        </button>
+        <button mat-raised-button color="primary" title="بازگشت" class="return" matDialogClose>
+          بازگشت
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- menu section  -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+    </div>
+  </div>
+</div>
