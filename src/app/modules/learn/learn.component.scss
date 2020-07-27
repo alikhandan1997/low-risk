@@ -8,6 +8,27 @@ h1{
   font-family: "BKoodakBold";
 }
 
+.main-news {
+  span{
+    font-size: 14px;
+    color: gray;
+  }
+
+  span.time {
+    margin-right: 10%;
+  }
+}
+
+.mat-icon{
+  font-family: 'Material Icons' !important;
+}
+
+.with-icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
 .sticky-top h1 {
   font-size: 20px;
   text-align: right;

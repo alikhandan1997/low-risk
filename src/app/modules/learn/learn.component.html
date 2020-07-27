@@ -4,6 +4,11 @@
       <div>
         <mat-card class="main-news">
           <h1>{{item.title}}</h1>
+          <br>
+          <span class="with-icon">
+            <mat-icon style="font-size: 18px;">date_range</mat-icon>{{Date | date: 'yyyy/MM/dd'}}
+            <mat-icon style="margin-right:10%;font-size: 18px;">access_time</mat-icon>{{Date | date: 'hh:mm'}}
+          </span>
           <img src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>
             <p>
