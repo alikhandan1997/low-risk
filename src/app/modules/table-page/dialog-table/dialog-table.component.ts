@@ -13,6 +13,7 @@ export class DialogTableComponent implements OnInit {
   dialogType:string;
   apiData: string;
   userData = [];
+  imageSrc:any = '';
 
   constructor(
     public dialogRef: MatDialogRef<DialogTableComponent>,
@@ -50,6 +51,29 @@ export class DialogTableComponent implements OnInit {
       console.log(data);
       location.reload();
     })
+  }
+
+  uploadFile(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageSrc = reader.result;
+    }
+    reader.readAsDataURL(file);
+  }
+
+  menuClick(type) {
+    if(type == 'delete') {
+      this.dialogType = 'deleteUser';
+      this.ngOnInit();
+    }else if(type == 'edit') {
+      this.dialogType = 'editUser';
+      this.ngOnInit();
+    }else if(type == 'password') {
+      this.dialogType = 'changePassword';
+      this.ngOnInit();
+    }
   }
 
 }

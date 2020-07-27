@@ -38,8 +38,63 @@ button {
   margin-left: 35%;
 }
 
+.image_box {
+  margin-top: 5%;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(216, 215, 215);
+  border-radius: 5px;
+  img {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+.menu_buttons {
+  margin-top: 15%;
+}
+
+.edit_buttons {
+  margin-top: 5%;
+  .return {
+    margin-left: 50%;
+  }
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  margin-left: 75%;
+  font-family: "BKoodakBold";
+  background-color: rgb(68, 68, 211);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+@media screen and (max-width:820px) {
+  .edit_buttons {
+    .return {
+      margin-left: 45%;
+    }
+  }
+}
+
 @media screen and (max-width:576px) {
   .return {
     margin-left: 15%;
+  }
+
+  .edit_buttons {
+    .return {
+      margin-left: 15%;
+    }
+  }
+
+  .custom-file-upload {
+    margin-left: 60%;
   }
 }
