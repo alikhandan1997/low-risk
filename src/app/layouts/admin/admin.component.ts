@@ -10,7 +10,7 @@ export class AdminComponent implements OnInit {
 
   status: string = 'admin';
 
-  sideBarOpen: boolean = true;
+  sideBarOpen: boolean = false;
 
   constructor( private router: Router) { }
 
