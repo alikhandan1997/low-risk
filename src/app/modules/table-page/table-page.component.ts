@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServicesService } from '../services/services.service';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogTableComponent } from './dialog-table/dialog-table.component';
 
 export interface PeriodicElement {
   name: string;
@@ -46,7 +48,10 @@ export class TablePageComponent implements OnInit {
   isUserList: boolean = false;
   userList: Users[];
 
-  constructor(private http: ServicesService) { }
+  constructor(
+    private http: ServicesService,
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     console.log(window.location.href.split('/'))
@@ -66,15 +71,64 @@ export class TablePageComponent implements OnInit {
       this.userList = data['result'];
       console.log(this.userList);
       this.userSource = new MatTableDataSource(this.userList);
-      this.userColumns = ['id', 'username', 'mobile', 'delete'];
+      this.userColumns = ['id', 'username', 'mobile', 'delete', 'edit', 'pass','menu'];
     })
   }
 
   deleteUser(id) {
-    this.http.deleteUsers(id).subscribe((data) => {
-      console.log(data);
-      location.reload();
-    })
+    const dialogRef = this.dialog.open(DialogTableComponent, {
+      data:{
+        type: 'deleteUser',
+        userId: id
+      },
+      width: '350px',
+      height: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  editUser() {
+    const dialogRef = this.dialog.open(DialogTableComponent, {
+      data:{
+        type: 'editUser'
+      },
+      width: '450px',
+      height: '570px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  changeUserPassword(id){
+    const dialogRef = this.dialog.open(DialogTableComponent, {
+      data:{
+        type: 'changePassword',
+        userId: id
+      },
+      width: '350px',
+      height: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  openMenu(id){
+    const dialogRef = this.dialog.open(DialogTableComponent, {
+      data:{
+        type: 'menu',
+        userId: id,
+        panelClass: 'menu_box'
+      },
+      width: '400px',
+      height: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 
 }
