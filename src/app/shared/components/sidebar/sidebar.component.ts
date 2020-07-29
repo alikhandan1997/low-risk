@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.getProfile().subscribe((data) => {
-      console.log(data['result']['is_manager']);
       this.isAdmin = data['result']['is_manager']
       localStorage.setItem('is_manager', data['result']['is_manager']);
       localStorage.setItem('permission', JSON.stringify(data['result']['permissions']));
