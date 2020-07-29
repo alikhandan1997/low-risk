@@ -45,7 +45,7 @@
     .example-full-width {
       width: 100%;
       margin-right: 10%;
-      margin-top: 5%;
+      margin-top: 0;
     }
 
     .example-half-width {
@@ -82,25 +82,30 @@
     margin-right:0px;
     .example-form {
       .example-full-width {
-        margin-right: 15%;
+        width: 80%;
+        margin-bottom: 5%;
       }
 
       .example-half-width {
-        width: 100%;
-        margin-right: 30%;
+        width: 80%;
+        margin-top: 2%;
+      }
+
+      .captcha_code {
+        margin-right: 34%;
       }
 
       .captcha_image{
         img {
           height: 60px;
           width: 80%;
-          margin-right: 40%;
+          margin-left: 10%;
         }
       }
     }
 
     button {
-      margin-left: 20%;
+      margin-left: 35%;
     }
   }
 }
@@ -110,11 +115,16 @@
     .example-form {
       width: 80%;
       .example-full-width {
-        margin-right: 10%;
+        width: 100%;
       }
 
       .example-half-width {
         width: 100%;
+        margin-right: 10%;
+        margin-top: 0;
+      }
+
+      .captcha_code {
         margin-right: 20%;
       }
 

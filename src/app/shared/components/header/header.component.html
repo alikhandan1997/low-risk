@@ -133,11 +133,17 @@
                 </button>
               </a>
               <a href="/admin" style="color:black;text-decoration:none;">
-                  <button mat-menu-item *ngIf="register">
+                  <button mat-menu-item *ngIf="register && !isAdmin">
                   <mat-icon>account_box</mat-icon>
                   پنل کاربری
                 </button>
               </a>
+              <a style="color:black;text-decoration:none;">
+                <button mat-menu-item *ngIf="isAdmin">
+                <mat-icon>account_box</mat-icon>
+                پروفایل
+              </button>
+            </a>
               <a style="color:black;text-decoration:none;" (click)="logout()">
                 <button mat-menu-item *ngIf="register">
                 <mat-icon>cancel</mat-icon>
