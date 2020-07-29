@@ -56,7 +56,6 @@ export class ListItemsComponent implements OnInit {
     if(this.Type == 'learn') {
       this.apiData = `?page=${this.pageNumber}&page_size=8&last`
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
-        console.log(data);
         this.editData = (data['result']['results']);
         if(this.editData.length == 0) {
           this.empty = true;
@@ -67,7 +66,6 @@ export class ListItemsComponent implements OnInit {
       });
 
     } else if (this.Type == 'news') {
-      console.log("news")
       this.apiData = `?page=${this.pageNumber}&page_size=8&last`
       this.http.getAdminNews(this.apiData).subscribe((data) => {
         this.editData = data['result']['results'];
@@ -77,13 +75,11 @@ export class ListItemsComponent implements OnInit {
         let numb = data['result']['count'];
         numb = numb / 8;
         this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
-        console.log(data['result'])
       });
 
     } else if(this.Type == 'analysis'){
       this.apiData = `?page=${this.pageNumber}&page_size=8&last`
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
-        console.log(data)
         this.editData = (data['result']['results']);
         if(this.editData.length == 0) {
           this.empty = true;

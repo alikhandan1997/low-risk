@@ -54,7 +54,6 @@ export class TablePageComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(window.location.href.split('/'))
     if(window.location.href.split('/')[4] == "users") {
       this.isUserList = true;
       this.getUsers()
@@ -69,7 +68,6 @@ export class TablePageComponent implements OnInit {
   getUsers() {
     this.http.getAdminUsers(this.apiData).subscribe((data) => {
       this.userList = data['result'];
-      console.log(this.userList);
       this.userSource = new MatTableDataSource(this.userList);
       this.userColumns = ['id', 'username', 'mobile', 'delete', 'edit', 'pass','menu'];
     })

@@ -60,25 +60,20 @@ export class NewsComponent implements OnInit {
 
 
     if(this.isLearn) {
-      console.log("Learn");
       this.apiData = `?page_size=4&last`;
       this.http.getEducations(this.apiData).subscribe((data) => {
-        console.log(data);
         this.learnArticle = data['result']['results'];
       });
 
       this.apiData = `?category=2&page_size=4&last`;
       this.http.getEducations(this.apiData).subscribe((data) => {
-        console.log(data);
         this.learnFilm = data['result']['results'];
       });
     }
 
     if(this.isNews){
-      console.log("isnews");
       this.apiData = `?page=${this.pageNumber}&page_size=8&last`;
       this.http.getNews(this.apiData).subscribe((data) => {
-        console.log(data);
         this.newsData = data['result']['results'];
         let numb = data['result']['count'];
         numb = numb / 8;
@@ -86,20 +81,16 @@ export class NewsComponent implements OnInit {
       });
     }
     if(this.isArticle){
-      console.log("isArticle");
       this.apiData = `?page=${this.pageNumber}&category=1&page_size=8&last`;
       this.http.getEducations(this.apiData).subscribe((data) => {
-        console.log(data);
         this.learnArticleList = data['result']['results'];
         let numb = data['result']['count'];
         numb = numb / 8;
         this.pageSize = Array(Math.ceil(numb)).fill(1).map((x, i) => i + 1);
       });
     } else if(this.isFilm){
-      console.log("isFilm");
       this.apiData = `?page=${this.pageNumber}&category=2&page_size=8&last`;
       this.http.getEducations(this.apiData).subscribe((data) => {
-        console.log(data);
         this.learnFilmList = data['result']['results'];
         let numb = data['result']['count'];
         numb = numb / 8;

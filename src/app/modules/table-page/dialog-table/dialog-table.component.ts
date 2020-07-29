@@ -26,8 +26,6 @@ export class DialogTableComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.userId)
-    console.log(this.dialogType)
     if(this.dialogType == 'deleteUser') {
       this.getUsers();
     }
@@ -36,9 +34,7 @@ export class DialogTableComponent implements OnInit {
   getUsers() {
     this.apiData = `${this.userId}`;
     this.http.getAdminUsers(this.apiData).subscribe((data) => {
-      console.log(data);
       this.userData.push(data['result'])
-      console.log(this.userData)
     })
   }
 
@@ -48,7 +44,6 @@ export class DialogTableComponent implements OnInit {
 
   deleteUser() {
     this.http.deleteUsers(this.userId).subscribe((data) => {
-      console.log(data);
       location.reload();
     })
   }

@@ -28,8 +28,6 @@ export class DetailsComponent implements OnInit {
       this.Type = 'news';
       this.postId = window.location.href.split('/')[5];
     }
-    console.log(this.postId)
-
     this.getData();
   }
 
@@ -39,7 +37,6 @@ export class DetailsComponent implements OnInit {
       // =================================================================
 
       this.http.getNews(this.postId).subscribe((data) => {
-        console.log(data['result']['created_at']);
         this.Date = data['result']['created_at'];
         this.Post.push(data['result']);
       });
@@ -72,7 +69,6 @@ export class DetailsComponent implements OnInit {
         if(this.otherPostList.length == 6) {
           this.otherPostList.pop();
         }
-        console.log(this.otherPostList)
       });
     }
   }

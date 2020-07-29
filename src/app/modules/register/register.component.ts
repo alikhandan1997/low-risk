@@ -72,7 +72,6 @@ export class RegisterComponent implements OnInit {
       }
     },
     (error) => {
-      console.log(error['error']['messages'])
       if(error['status'] == 400 ) {
         if(error['error']['messages'][0]['code'] == '010000000') {
           this.ngOnInit();

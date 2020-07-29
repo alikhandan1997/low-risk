@@ -19,24 +19,20 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
 
   delete() {
     this.apiData = this.data.data.id
     if(this.data.type == 'learn'){
       this.http.deleteEducation(this.apiData).subscribe((data) => {
-        console.log(data);
         location.reload();
       });
     } else if(this.data.type == 'news'){
       this.http.deleteNews(this.apiData).subscribe((data) => {
-        console.log(data);
         location.reload();
       });
     } else if(this.data.type == 'analysis'){
       this.http.deleteAnalysis(this.apiData).subscribe((data) => {
-        console.log(data);
         location.reload();
       });
     }

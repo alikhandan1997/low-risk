@@ -141,10 +141,8 @@ export class AddPostComponent implements OnInit {
 
     if(this.isEdit){
       this.postData = window.location.href.split('/')[8];
-      console.log("is edit" ,this.postData);
       if(this.Type == 'learn') {
         this.http.getAdminEducations(this.postData).subscribe((data) => {
-          console.log(data,"admin education");
           const image = data['result']['image'];
           this.imageSrc = image;
           const image1 = data['result']['image1'];
@@ -178,8 +176,6 @@ export class AddPostComponent implements OnInit {
 
       } else if(this.Type == 'news') {
         this.http.getAdminNews(this.postData).subscribe((data) => {
-          console.log(data);
-
           const image = data['result']['image'];
           this.imageSrc = image;
           const image1 = data['result']['image1'];
@@ -214,7 +210,6 @@ export class AddPostComponent implements OnInit {
 
       } else if(this.Type == "analysis") {
         this.http.getAdminAnalysis(this.postData).subscribe((data) => {
-          console.log(data);
           const image = data['result']['image'];
           this.imageSrc = image;
           const image1 = data['result']['image1'];
@@ -362,16 +357,13 @@ export class AddPostComponent implements OnInit {
     if(this.isEdit){
       if(this.Type == "news") {
         this.http.putNews(formData,this.postId).subscribe((data) => {
-          console.log(data['status']);
           if(data['status'] == 200) {
             this._snackBar.open('به روز رسانی با موفقیت انجام شد', '', {
               duration: 2000,
             });
           }
-          console.log("editing news")
         },
         (error) => {
-          console.log(error['error']);
           if(error['error']['status'] == 400) {
             for(let i=0; i < error['error']['messages'].length; i++) {
               if(error['error']['messages'][i]['field'] == "title") {
@@ -384,18 +376,14 @@ export class AddPostComponent implements OnInit {
         });
 
       } else if(this.Type == "learn") {
-        console.log(this.postId);
         this.http.putEducation(formData,this.postId).subscribe((data) => {
-          console.log(data['status']);
           if(data['status'] == 200) {
             this._snackBar.open('به روز رسانی با موفقیت انجام شد', '', {
               duration: 2000,
             });
           }
-          console.log("editing education")
         },
         (error) => {
-          console.log(error['error']);
           if(error['error']['status'] == 400) {
             for(let i=0; i < error['error']['messages'].length; i++) {
               if(error['error']['messages'][i]['field'] == "title") {
@@ -408,18 +396,14 @@ export class AddPostComponent implements OnInit {
         });
 
       } else if(this.Type == "analysis") {
-        console.log(this.postId);
         this.http.putAnalysis(formData,this.postId).subscribe((data) => {
-          console.log(data['status']);
           if(data['status'] == 200) {
             this._snackBar.open('به روز رسانی با موفقیت انجام شد', '', {
               duration: 2000,
             });
           }
-          console.log("editing analysis")
         },
         (error) => {
-          console.log(error['error']);
           if(error['error']['status'] == 400) {
             for(let i=0; i < error['error']['messages'].length; i++) {
               if(error['error']['messages'][i]['field'] == "title") {
@@ -434,35 +418,29 @@ export class AddPostComponent implements OnInit {
     } else if(!this.isEdit){
       if(this.Type == "news") {
         this.http.postٔNews(formData).subscribe((data) => {
-          console.log(data);
           if(data['status'] == 201) {
             this._snackBar.open('پست با موفقیت ثبت شد', '', {
               duration: 2000,
             });
           }
-          console.log("posting news")
         });
 
       } else if(this.Type == "learn") {
         this.http.postEducation(formData).subscribe((data) => {
-          console.log(data);
           if(data['status'] == 201) {
             this._snackBar.open('پست با موفقیت ثبت شد', '', {
               duration: 2000,
             });
           }
-          console.log("posting education")
         });
 
       } else if(this.Type == "analysis"){
         this.http.postAnalysis(formData).subscribe((data) => {
-          console.log(data);
           if(data['status'] == 201) {
             this._snackBar.open('پست با موفقیت ثبت شد', '', {
               duration: 2000,
             });
           }
-          console.log("posting education")
         });
 
       }

@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
     this.http.getAdminNews(this.apiData).subscribe((data) => {
     },
     (error) => {
-      console.log(error['status'])
       if(error['status'] == 401) {
         localStorage.clear();
       }

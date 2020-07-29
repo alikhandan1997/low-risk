@@ -33,7 +33,6 @@ export class HeaderComponent implements OnInit {
       this.isAdmin = true;
     }
     this.http.getProfile().subscribe((data) => {
-      console.log(data);
       this.userName = data['result']['first_name'];
       this.userFamily = data['result']['last_name'];
       this.userAvatar = data['result']['image'];

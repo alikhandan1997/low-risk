@@ -52,7 +52,6 @@ export class LearnComponent implements OnInit {
 
     this.apiData = '?page_size=3&last';
     this.http.getEducations(this.apiData).subscribe((data) => {
-      console.log(data);
       this.otherPost = data['result']['results'];
       for(let i=0; i<this.otherPost.length; i++) {
         if(this.otherPost[i]['id'] == this.postId) {
@@ -66,7 +65,6 @@ export class LearnComponent implements OnInit {
 
     this.apiData = '?page_size=6&last';
     this.http.getEducations(this.apiData).subscribe((data) => {
-      console.log(data);
       this.otherPostList = data['result']['results'];
       for(let i=0; i<this.otherPostList.length; i++) {
         if(this.otherPostList[i]['id'] == this.postId) {
