@@ -11,15 +11,20 @@ export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   @Input() status;
   register: boolean = false;
+  isAdmin;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {
+    this.isAdmin = false;
+  }
 
   ngOnInit(){
     this.register = false
     if(localStorage.getItem('access') != null) {
       this.register = true;
     }
-    console.log(JSON.parse(localStorage.getItem('permission') || "[]"))
+    if(window.location.href.split('/')[3] == 'admin') {
+      this.isAdmin = true;
+    }
   }
 
   toggleSideBar() {
