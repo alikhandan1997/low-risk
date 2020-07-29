@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegisterComponent implements OnInit {
 
+  name;
+  family;
   mobile;
   password;
   conf_password;
@@ -31,6 +33,8 @@ export class RegisterComponent implements OnInit {
     private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.name = '';
+    this.family = '';
     this.mobileError = '';
     this.passwordError = '';
     this.confPasswordError = '';
@@ -48,6 +52,8 @@ export class RegisterComponent implements OnInit {
   click(){
     console.log('name',this.mobile,'pass',this.password,'conf',this.conf_password,'captcha', this.captcha)
     this.dataObj = {
+      first_name: this.name,
+      last_name: this.family,
       mobile: this.mobile,
       password: this.password,
       confirm_password: this.conf_password,
