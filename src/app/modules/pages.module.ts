@@ -39,6 +39,7 @@ import { AnalysisDetailComponent } from './analysis-detail/analysis-detail.compo
 import { ListItemsComponent } from './list-items/list-items.component';
 import { DialogComponent } from './list-items/dialog/dialog.component';
 import { DialogTableComponent } from './table-page/dialog-table/dialog-table.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -62,7 +63,8 @@ import { DialogTableComponent } from './table-page/dialog-table/dialog-table.com
     AnalysisDetailComponent,
     ListItemsComponent,
     DialogComponent,
-    DialogTableComponent
+    DialogTableComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
