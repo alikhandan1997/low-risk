@@ -48,6 +48,15 @@ export class AnalysisComponent implements OnInit {
 
   getData(pageNumber) {
 
+    if(pageNumber < 1) {
+      pageNumber = 1;
+    }
+    if(pageNumber >= 2){
+      if(pageNumber >= this.pageSize.length) {
+        pageNumber = this.pageSize.length;
+      }
+    }
+
     // short analysis for main page
     this.apiData = '?type=1&page_size=4&last';
     this.http.getAnalysis(this.apiData).subscribe((data) => {
@@ -67,7 +76,7 @@ export class AnalysisComponent implements OnInit {
     });
 
     // all short analysis for main page
-    this.apiData = '?type=1&page_size=8&last';
+    this.apiData = `?type=1&page=${pageNumber}&page_size=8&last`;
     this.http.getAnalysis(this.apiData).subscribe((data) => {
       this.mainShortAnalysis = data['result']['results'];
       let numb = data['result']['count'];
@@ -76,7 +85,7 @@ export class AnalysisComponent implements OnInit {
     });
 
     // all medium analysis for main page
-    this.apiData = '?type=2&page_size=8&last';
+    this.apiData = `?type=2&page=${pageNumber}&page_size=8&last`;
     this.http.getAnalysis(this.apiData).subscribe((data) => {
       this.mainMediumAnalysis = data['result']['results'];
       let numb = data['result']['count'];
@@ -85,7 +94,7 @@ export class AnalysisComponent implements OnInit {
     });
 
     // all long analysis for main page
-    this.apiData = '?type=3&page_size=8&last';
+    this.apiData = `?type=3&page=${pageNumber}&page_size=8&last`;
     this.http.getAnalysis(this.apiData).subscribe((data) => {
       this.mainLongAnalysis = data['result']['results'];
       let numb = data['result']['count'];

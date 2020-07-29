@@ -26,7 +26,7 @@ export class NewsComponent implements OnInit {
   learnFilmList = [];
 
   pageNumber = 1;
-  pageSize;
+  pageSize = [];
 
   ngOnInit(): void {
 
@@ -49,6 +49,15 @@ export class NewsComponent implements OnInit {
 
   getData(pageNumber) {
     this.pageNumber = pageNumber;
+    if(pageNumber < 1) {
+      this.pageNumber = 1;
+    }
+    if(pageNumber >= 2){
+      if(pageNumber >= this.pageSize.length) {
+        this.pageNumber = this.pageSize.length;
+      }
+    }
+
 
     if(this.isLearn) {
       console.log("Learn");
@@ -67,7 +76,7 @@ export class NewsComponent implements OnInit {
 
     if(this.isNews){
       console.log("isnews");
-      this.apiData = `?page=${pageNumber}&page_size=8&last`;
+      this.apiData = `?page=${this.pageNumber}&page_size=8&last`;
       this.http.getNews(this.apiData).subscribe((data) => {
         console.log(data);
         this.newsData = data['result']['results'];
@@ -78,7 +87,7 @@ export class NewsComponent implements OnInit {
     }
     if(this.isArticle){
       console.log("isArticle");
-      this.apiData = `?page=${pageNumber}&category=1&page_size=8&last`;
+      this.apiData = `?page=${this.pageNumber}&category=1&page_size=8&last`;
       this.http.getEducations(this.apiData).subscribe((data) => {
         console.log(data);
         this.learnArticleList = data['result']['results'];
@@ -88,7 +97,7 @@ export class NewsComponent implements OnInit {
       });
     } else if(this.isFilm){
       console.log("isFilm");
-      this.apiData = `?page=${pageNumber}&category=2&page_size=8&last`;
+      this.apiData = `?page=${this.pageNumber}&category=2&page_size=8&last`;
       this.http.getEducations(this.apiData).subscribe((data) => {
         console.log(data);
         this.learnFilmList = data['result']['results'];

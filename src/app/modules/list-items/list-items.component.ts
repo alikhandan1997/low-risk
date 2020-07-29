@@ -44,9 +44,17 @@ export class ListItemsComponent implements OnInit {
   getData(pageNumber) {
 
     this.pageNumber = pageNumber;
+    if(pageNumber < 1) {
+      this.pageNumber = 1;
+    }
+    if(pageNumber >= 2){
+      if(pageNumber >= this.pageSize.length) {
+        this.pageNumber = this.pageSize.length;
+      }
+    }
 
     if(this.Type == 'learn') {
-      this.apiData = `?page=${pageNumber}&page_size=8&last`
+      this.apiData = `?page=${this.pageNumber}&page_size=8&last`
       this.http.getAdminEducations(this.apiData).subscribe((data) => {
         console.log(data);
         this.editData = (data['result']['results']);
@@ -60,7 +68,7 @@ export class ListItemsComponent implements OnInit {
 
     } else if (this.Type == 'news') {
       console.log("news")
-      this.apiData = `?page=${pageNumber}&page_size=8&last`
+      this.apiData = `?page=${this.pageNumber}&page_size=8&last`
       this.http.getAdminNews(this.apiData).subscribe((data) => {
         this.editData = data['result']['results'];
         if(this.editData.length == 0) {
@@ -73,7 +81,7 @@ export class ListItemsComponent implements OnInit {
       });
 
     } else if(this.Type == 'analysis'){
-      this.apiData = `?page=${pageNumber}&page_size=8&last`
+      this.apiData = `?page=${this.pageNumber}&page_size=8&last`
       this.http.getAdminAnalysis(this.apiData).subscribe((data) => {
         console.log(data)
         this.editData = (data['result']['results']);
