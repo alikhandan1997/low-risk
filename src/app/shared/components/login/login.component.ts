@@ -57,10 +57,6 @@ export class LoginComponent implements OnInit {
       if(data['status'] == 200 ) {
         localStorage.setItem('access', data['result']['access']);
         localStorage.setItem('refresh', data['result']['refresh']);
-        this.http.getProfile().subscribe((data) => {
-          console.log(data['result']['permissions'],'permission');
-          localStorage.setItem('permission', JSON.stringify(data['result']['permissions']));
-        });
         this.dialogRef.close();
         this.router.navigate(['admin']);
       }
