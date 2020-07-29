@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { ServicesService } from 'src/app/modules/services/services.service';
 import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-header',
@@ -12,8 +13,14 @@ export class HeaderComponent implements OnInit {
   @Input() status;
   register: boolean = false;
   isAdmin;
+  userName;
+  userFamily;
+  userAvatar;
 
-  constructor(public dialog: MatDialog) {
+  constructor(
+    public dialog: MatDialog,
+    private http: ServicesService
+    ) {
     this.isAdmin = false;
   }
 
@@ -25,6 +32,12 @@ export class HeaderComponent implements OnInit {
     if(window.location.href.split('/')[3] == 'admin') {
       this.isAdmin = true;
     }
+    this.http.getProfile().subscribe((data) => {
+      console.log(data);
+      this.userName = data['result']['first_name'];
+      this.userFamily = data['result']['last_name'];
+      this.userAvatar = data['result']['image'];
+    });
   }
 
   toggleSideBar() {

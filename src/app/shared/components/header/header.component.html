@@ -117,7 +117,10 @@
         <ul fxLayout="row" fxLayoutGap="10px">
           <li>
             <button mat-button [matMenuTriggerFor]="menu">
-              <mat-icon>person_outline</mat-icon>
+              <img src="{{userAvatar}}" *ngIf="userAvatar != null">
+              <mat-icon *ngIf="userAvatar == null">person_outline</mat-icon>
+              {{userName}}
+              {{userFamily}}
             </button>
             <mat-menu #menu="matMenu" xPosition="before">
               <a (click)="openDialog()">
