@@ -53,7 +53,6 @@ export class HomePageComponent implements OnInit {
     // getting main news
     this.apiData = "?page_size=1&last";
     this.http.getNews(this.apiData).subscribe(data => {
-      console.log(data);
       this.mainNews = data['result']['results'];
     });
 
