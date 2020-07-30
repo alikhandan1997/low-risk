@@ -11,12 +11,29 @@
       </h1>
       <a href="/news/article/{{item.id}}">
         <mat-card class="main-news">
-
-            <img src="{{item.image}}" alt="{{item.title}}">
-          <mat-card-content>
+          <img src="{{item.image}}" alt="{{item.title}}">
+          <mat-card-content style="margin-bottom: -3%">
             <p>
               {{item.description}}
             </p>
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                <span class="with-icon">
+                  <mat-icon>date_range</mat-icon>{{item.created_at | date: 'yyyy/MM/dd'}}
+                </span>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                <span class="with-icon">
+                  <mat-icon>access_time</mat-icon>{{item.created_at | date: 'hh:mm'}}
+                </span>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                <p class="review_icon" style="text-align:center;">
+                  <mat-icon *ngFor="let item of [].constructor(item.review)">star</mat-icon>
+                  <mat-icon *ngFor="let item of [].constructor(6 - item.review)">star_border</mat-icon>
+                </p>
+              </div>
+            </div>
           </mat-card-content>
         </mat-card>
       </a>
@@ -106,6 +123,17 @@
             <p>
               {{item.title}}
             </p>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+              <p style="text-align: left;margin-bottom:-5%;color: rgb(139, 138, 138);" *ngIf="item.type == 1">
+                کوتاه مدت
+              </p>
+              <p style="text-align: left;margin-bottom:-5%;color: gray;" *ngIf="item.type == 2">
+                میان مدت
+              </p>
+              <p style="text-align: left;margin-bottom:-5%;color: gray;" *ngIf="item.type == 3">
+                بلند مدت
+              </p>
+            </div>
           </mat-card-content>
         </mat-card>
       </a>
@@ -133,10 +161,28 @@
         <a href="/learn/article/{{item.id}}">
           <img src="{{item.image}}" alt="{{item.title}}">
         </a>
-        <mat-card-content>
+        <mat-card-content style="margin-bottom: -3%">
           <p>
             {{item.title}}
           </p>
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+              <span class="with-icon">
+                <mat-icon>date_range</mat-icon>{{item.created_at | date: 'yyyy/MM/dd'}}
+              </span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+              <span class="with-icon">
+                <mat-icon>access_time</mat-icon>{{item.created_at | date: 'hh:mm'}}
+              </span>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+              <p class="review_icon" style="text-align:center;">
+                <mat-icon *ngFor="let item of [].constructor(item.review)">star</mat-icon>
+                <mat-icon *ngFor="let item of [].constructor(6 - item.review)">star_border</mat-icon>
+              </p>
+            </div>
+          </div>
         </mat-card-content>
       </mat-card>
     </div>
