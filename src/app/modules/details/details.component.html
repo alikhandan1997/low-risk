@@ -3,13 +3,21 @@
     <div class="col-lg-8 col-md-12 col-sm-12 content_box" *ngFor="let item of Post">
       <div>
         <mat-card class="main-news">
-          <h1>{{item.title}}
-            <br>
-            <span class="with-icon">
-              <mat-icon style="font-size: 18px;">date_range</mat-icon>{{Date | date: 'yyyy/MM/dd'}}
-              <mat-icon style="margin-right:10%;font-size: 18px;">access_time</mat-icon>{{Date | date: 'hh:mm'}}
-            </span>
-          </h1>
+          <h1>{{item.title}}</h1>
+          <div class="row" style="margin-bottom:2%;">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 with-icon">
+              <mat-icon>date_range</mat-icon>{{Date | date: 'yyyy/MM/dd'}}
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4 with-icon">
+              <mat-icon>access_time</mat-icon>{{Date | date: 'hh:mm'}}
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+              <p class="review_icon" style="margin-bottom: -2%;">
+                <mat-icon *ngFor="let item of [].constructor(item.review)">star</mat-icon>
+                <mat-icon *ngFor="let item of [].constructor(6 - item.review)">star_border</mat-icon>
+              </p>
+            </div>
+          </div>
 
           <img src="{{item.image}}" alt="{{item.title}}">
           <mat-card-content>

@@ -5,6 +5,10 @@
 .with-icon {
   display: flex;
   align-items: center;
+  color: rgb(151, 150, 150);
+  mat-icon{
+    font-size: 18px;
+  }
 }
 
 h1,h2,h3,h4,h5 {
@@ -42,6 +46,14 @@ h1{
   .row {
     margin-top: 0%;
 
+  }
+}
+
+.review_icon {
+  mat-icon {
+    font-size: 16px;
+    margin-left: -5%;
+    padding-bottom: -2%;
   }
 }
 
@@ -250,6 +262,14 @@ h1{
       button{
         margin-left: 0%;
       }
+    }
+  }
+
+  .review_icon {
+    mat-icon {
+      font-size: 16px;
+      margin-left: -21%;
+      padding-bottom: -2%;
     }
   }
 }
