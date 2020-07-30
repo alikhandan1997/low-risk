@@ -11,7 +11,6 @@ export class AnalysisDetailComponent implements OnInit {
   apiData;
   postId;
   postData = [];
-  Date;
   analysisTypeNumber = '';
   analysisType = '';
   otherAnalysis = [];
@@ -28,7 +27,6 @@ export class AnalysisDetailComponent implements OnInit {
 
     // get the main post data
     this.http.getAnalysis(this.postId).subscribe((data) => {
-      this.Date = data['result']['created_at'];
       this.postData.push(data['result']);
       this.analysisTypeNumber = data['result']['type'];
       if(data['result']['type'] == 1) {

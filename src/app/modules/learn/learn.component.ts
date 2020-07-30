@@ -18,7 +18,6 @@ export class LearnComponent implements OnInit {
   Post = [];
   otherPost = [];
   otherPostList = [];
-  Date;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -45,7 +44,7 @@ export class LearnComponent implements OnInit {
 
   getData() {
     this.http.getEducations(this.postId).subscribe((data) => {
-      this.Date = data['result']['created_at'];
+      console.log(data);
       this.Post.push(data['result']);
     });
 

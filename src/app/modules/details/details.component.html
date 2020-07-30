@@ -6,10 +6,10 @@
           <h1>{{item.title}}</h1>
           <div class="row" style="margin-bottom:2%;">
             <div class="col-lg-4 col-md-4 col-sm-4 col-4 with-icon">
-              <mat-icon>date_range</mat-icon>{{Date | date: 'yyyy/MM/dd'}}
+              <mat-icon>date_range</mat-icon>{{item.created_at | date: 'yyyy/MM/dd'}}
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-4 with-icon">
-              <mat-icon>access_time</mat-icon>{{Date | date: 'hh:mm'}}
+              <mat-icon>access_time</mat-icon>{{item.created_at | date: 'hh:mm'}}
             </div>
             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
               <p class="review_icon" style="margin-bottom: -2%;">

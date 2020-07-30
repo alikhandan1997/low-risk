@@ -23,6 +23,18 @@ h1{
 .with-icon {
   display: flex;
   align-items: center;
+  color: rgb(121, 120, 120);
+  mat-icon{
+    font-size: 18px;
+  }
+}
+
+.review_icon {
+  mat-icon {
+    font-size: 16px;
+    margin-left: -5%;
+    padding-bottom: -2%;
+  }
 }
 
 .container {
