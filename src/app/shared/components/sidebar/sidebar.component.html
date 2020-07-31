@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list >
 
   <h2 matSubheader style="font-family: 'BKoodakBold';font-size: 20px;" >صفحات</h2>
 
@@ -132,7 +132,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="!isAdmin">
     <mat-expansion-panel>
 
       <mat-expansion-panel-header>
