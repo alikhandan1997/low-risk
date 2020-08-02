@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <label class="custom-file-upload">
+        <input type="file" (change)="uploadFile($event)">
+        آپلود عکس
+      </label>
+    </div>
+    <div class="col-lg-12">
+      <div class="image_box">
+        <img [src]="imageSrc" *ngIf="imageSrc != ''" >
+      </div>
+    </div>
+    <div class="col-lg-12 edit_buttons">
+      <button mat-raised-button color="warn" title="تغییر">
+        اعمال تغییرات
+      </button>
+      <button mat-raised-button color="primary" title="بازگشت" class="return" matDialogClose>
+        بازگشت
+      </button>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,8 @@
             "putNews": "/api/posts/news/",
             "putUsers": "/api/account/users/",
             "putEducation": "/api/posts/education/",
-            "putAnalysis": "/api/posts/analysis/"
+            "putAnalysis": "/api/posts/analysis/",
+            "putProfile": "/api/account/profile/"
           }
       }
   }
