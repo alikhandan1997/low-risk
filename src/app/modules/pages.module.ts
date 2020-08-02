@@ -41,6 +41,7 @@ import { DialogComponent } from './list-items/dialog/dialog.component';
 import { DialogTableComponent } from './table-page/dialog-table/dialog-table.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileDialogComponent } from './profile/profile-dialog/profile-dialog.component';
+import { DiagramsComponent } from './diagrams/diagrams.component';
 
 
 
@@ -66,7 +67,8 @@ import { ProfileDialogComponent } from './profile/profile-dialog/profile-dialog.
     DialogComponent,
     DialogTableComponent,
     ProfileComponent,
-    ProfileDialogComponent
+    ProfileDialogComponent,
+    DiagramsComponent
   ],
   imports: [
     CommonModule,
