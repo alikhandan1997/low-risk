@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ServicesService } from '../../services/services.service';
+import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
   selector: 'app-dialog-table',
@@ -15,26 +16,43 @@ export class DialogTableComponent implements OnInit {
   userData = [];
   imageSrc:any = '';
 
+  form: FormGroup;
+
   constructor(
     public dialogRef: MatDialogRef<DialogTableComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private http: ServicesService
+    private http: ServicesService,
+    public fb: FormBuilder
   ) {
     this.userId = this.data.userId
     this.dialogType = this.data.type;
     this.apiData = '';
+
+    this.form = this.fb.group({
+      first_name: [''],
+      last_name: [''],
+      mobile: [''],
+      email: [''],
+      image: ['']
+    });
+
    }
 
   ngOnInit(): void {
-    if(this.dialogType == 'deleteUser') {
-      this.getUsers();
-    }
+    this.getUsers();
   }
 
   getUsers() {
     this.apiData = `${this.userId}`;
     this.http.getAdminUsers(this.apiData).subscribe((data) => {
-      this.userData.push(data['result'])
+      console.log(data);
+      this.imageSrc = data['result']['image'];
+      this.userData.push(data['result']);
+
+      this.form.controls['first_name'].setValue(data['result']['first_name']);
+      this.form.controls['last_name'].setValue(data['result']['last_name']);
+      this.form.controls['mobile'].setValue(data['result']['mobile']);
+      this.form.controls['email'].setValue(data['result']['email']);
     })
   }
 
@@ -50,6 +68,11 @@ export class DialogTableComponent implements OnInit {
 
   uploadFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
+
+    this.form.patchValue({
+      image: file
+    });
+    this.form.get('image').updateValueAndValidity();
 
     const reader = new FileReader();
     reader.onload = () => {
@@ -69,6 +92,31 @@ export class DialogTableComponent implements OnInit {
       this.dialogType = 'changePassword';
       this.ngOnInit();
     }
+  }
+
+  editUser() {
+    console.log('edit user')
+    var formData: any = new FormData();
+    formData.append("first_name", this.form.get("first_name").value);
+    formData.append("last_name", this.form.get("last_name").value);
+    formData.append("mobile", this.form.get("mobile").value);
+    formData.append("email", this.form.get("email").value);
+    if(this.form.get("image").value != ''){
+      formData.append("image", this.form.get("image").value);
+    }
+    formData.append("id", this.userId);
+
+    // for (var pair of formData.entries())
+    // {
+    //   console.log(pair[0]+ ', '+ pair[1]);
+    // }
+
+    this.http.putUsers(formData,this.userId).subscribe((data) => {
+      console.log(data);
+      if(data['status'] == 200) {
+        location.reload();
+      }
+    })
   }
 
 }

@@ -81,7 +81,7 @@
         <ng-container matColumnDef="edit">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element" class="edit_button">
-            <button mat-raised-button color="primary" title="ویرایش" (click)="editUser()">
+            <button mat-raised-button color="primary" title="ویرایش" (click)="editUser(element.id)">
               <mat-icon>edit</mat-icon>ویرایش
             </button>
           </td>

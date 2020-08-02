@@ -87,10 +87,11 @@ export class TablePageComponent implements OnInit {
     });
   }
 
-  editUser() {
+  editUser(id) {
     const dialogRef = this.dialog.open(DialogTableComponent, {
       data:{
-        type: 'editUser'
+        type: 'editUser',
+        userId: id
       },
       width: '450px',
       height: '570px'

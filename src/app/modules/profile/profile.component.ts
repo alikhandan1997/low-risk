@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
     this.http.putProfile(formData).subscribe((data) => {
       console.log(data);
       if(data['status'] == 200) {
-        location.reload();
+        location.reload()
       }
     })
   }

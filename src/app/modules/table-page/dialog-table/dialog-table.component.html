@@ -29,17 +29,29 @@
     <div class="col-lg-12">
       <h1>تغییر اطلاعات کاربر</h1>
     </div>
-    <form class="example-form">
-      <div class="col-lg-12">
+    <form class="row example-form" [formGroup]="form">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
         <mat-form-field class="example-full-width">
-          <mat-label>نام جدید</mat-label>
-          <input matInput placeholder="نام را وارد نمایید">
+          <mat-label>نام خانوادگی</mat-label>
+          <input matInput placeholder="نام خانوادگی را تکرار نمایید" name="last_name" formControlName="last_name">
         </mat-form-field>
       </div>
-      <div class="col-lg-12">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
         <mat-form-field class="example-full-width">
-          <mat-label>نام خانوادگی رمز</mat-label>
-          <input matInput placeholder="نام خانوادگی را تکرار نمایید">
+          <mat-label>نام</mat-label>
+          <input matInput placeholder="نام را وارد نمایید" name="first_name" formControlName="first_name">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>ایمیل</mat-label>
+          <input matInput placeholder="ایمیل را وارد نمایید" name="email" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+        <mat-form-field class="example-full-width">
+          <mat-label>شماره تلفن</mat-label>
+          <input matInput placeholder="شماره تلفن را تکرار نمایید" name="mobile" formControlName="mobile">
         </mat-form-field>
       </div>
       <div class="col-lg-12">
@@ -54,7 +66,7 @@
         </div>
       </div>
       <div class="col-lg-12 edit_buttons">
-        <button mat-raised-button color="warn" title="تغییر">
+        <button mat-raised-button color="warn" title="تغییر" (click)="editUser()">
           اعمال تغییرات
         </button>
         <button mat-raised-button color="primary" title="بازگشت" class="return" matDialogClose>
