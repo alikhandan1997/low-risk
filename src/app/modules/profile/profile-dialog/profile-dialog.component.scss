@@ -1,0 +1,36 @@
+input[type="file"] {
+  display: none;
+}
+
+button {
+  font-family: "BKoodakBold";
+}
+
+.custom-file-upload {
+  margin-left: 65%;
+  font-family: "BKoodakBold";
+  background-color: rgb(68, 68, 211);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.image_box {
+  margin-top: 5%;
+  width: 100%;
+  height: 150px;
+  background-color: rgb(216, 215, 215);
+  border-radius: 5px;
+  img {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+.edit_buttons {
+  margin-top: 5%;
+  .return {
+    margin-left: 30%;
+  }
+}
