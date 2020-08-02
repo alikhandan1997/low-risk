@@ -303,4 +303,15 @@ export class ServicesService {
       headers: httpHeaders
     });
   }
+
+  putProfile(data): Observable<Object> {
+    let httpHeaders = new HttpHeaders()
+      .set('Authorization',`Bearer ${localStorage.getItem('access')}`);
+
+    this.apiUrl = ApiMap.api.servicesApi.put.putProfile;
+    return this.http.put(`${this.baseurl}${this.apiUrl}`, data,{
+      headers: httpHeaders
+    });
+  }
+
 }
