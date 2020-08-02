@@ -1,1 +1,136 @@
-<p>profile works!</p>
+<!-- main user profile  -->
+<div class="container-fluid" *ngIf="!isEdit">
+  <div class="row" *ngFor="let item of userData">
+    <mat-card class="profile-card">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="top_image" style="background-image: url(../../../assets/profile-background.jpeg);">
+            <img src="../../../assets/usericon.png" alt="{{item.first_name}}" *ngIf="item.image == null">
+            <img src="{{item.image}}" alt="{{item.first_name}}" *ngIf="item.image != null">
+
+            <button mat-raised-button color="primary" class="edit_button" (click)="edit('edit')">
+              <mat-icon>edit</mat-icon>ویرایش
+            </button>
+
+          </div>
+        </div>
+      </div>
+      <mat-card-content>
+        <div class="row user_content">
+
+          <!-- first name  -->
+          <div class="col-lg-2 col-md-4 col-sm-4 col-5">
+            <h2>
+              نام :
+            </h2>
+          </div>
+          <div class="col-lg-10 col-md-8 col-sm-8 col-7">
+            <h3>
+              {{item.first_name}}
+            </h3>
+          </div>
+
+          <!-- last name  -->
+          <div class="col-lg-2 col-md-4 col-sm-4 col-5">
+            <h2>
+              نام خانوادگی :
+            </h2>
+          </div>
+          <div class="col-lg-10 col-md-8 col-sm-8 col-7">
+            <h3>
+              {{item.last_name}}
+            </h3>
+          </div>
+
+          <!-- email  -->
+          <div class="col-lg-2 col-md-4 col-sm-4 col-5">
+            <h2>
+              ایمیل :
+            </h2>
+          </div>
+          <div class="col-lg-10 col-md-8 col-sm-8 col-7">
+            <h3>
+              {{item.email}}
+            </h3>
+          </div>
+
+          <!-- user mobile  -->
+          <div class="col-lg-2 col-md-4 col-sm-4 col-5">
+            <h2>
+              شماره موبایل :
+            </h2>
+          </div>
+          <div class="col-lg-10 col-md-8 col-sm-8 col-7">
+            <h3>
+              {{item.mobile}}
+            </h3>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- edit user profile  -->
+<div class="container-fluid" *ngIf="isEdit">
+  <div class="row" *ngFor="let item of userData">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+      <mat-card class="example-card">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+            <!-- <button mat-mini-fab color="primary" class="add_photo">
+              <mat-icon>photo_camera</mat-icon>
+            </button> -->
+            <label class="custom-file-upload">
+              <input type="file" (change)="uploadFile($event)">
+              <mat-icon>photo_camera</mat-icon>
+            </label>
+            <img [src]=" imageSrc == '' ? '../../../assets/usericon.png' : imageSrc" alt="{{item.first_name}}" *ngIf="item.image == null">
+            <img [src]="imageSrc == '' ? item.image : imageSrc" alt="{{item.first_name}}" *ngIf="item.image != null">
+          </div>
+        </div>
+        <mat-card-content>
+          <div class="row edit_form" style="margin-top: 5%;" [formGroup]="form">
+
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+              <mat-form-field class="example-full-width">
+                <mat-label>نام</mat-label>
+                <input matInput placeholder="نام خود را وارد نمایید" name="first_name" formControlName="first_name">
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12 second">
+              <mat-form-field class="example-full-width">
+                <mat-label>نام خانوادگی</mat-label>
+                <input matInput placeholder="نام خانوادگی خود را وارد نمایید" name="last_name" formControlName="last_name">
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12">
+              <mat-form-field class="example-full-width">
+                <mat-label>ایمیل</mat-label>
+                <input matInput placeholder="ایمیل خود را وارد نمایید" name="email" formControlName="email">
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12 second">
+              <mat-form-field class="example-full-width">
+                <mat-label>شماره همراه</mat-label>
+                <input matInput placeholder="شماره همراه خود را وارد نمایید" name="mobile" formControlName="mobile">
+              </mat-form-field>
+            </div>
+
+            <div class="col-lg-12">
+              <button mat-raised-button color="primary" (click)="edit('return')">بازگشت</button>
+              <button mat-raised-button color="warn" (click)="submitForm()">اعمال تغییرات</button>
+            </div>
+
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
